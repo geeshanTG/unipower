@@ -1,0 +1,430 @@
+@charset "utf-8";
+/* CSS Document */
+
+
+/*==========  Non-Mobile First Method  ==========*/
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1920px) {  
+
+
+ 
+} 
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1536px) {
+
+	.main_slider .carousel-item {
+	    height: 530px;
+	}
+
+	.inner_page_top_slider .carousel-item {
+	    height: 240px;
+	}
+	
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1366px) {
+
+	.main_slider .carousel-item {
+	    height: 470px;
+	}
+
+	.inner_page_top_slider .carousel-item {
+	    height: 240px;
+	}
+	
+}
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1280px) {
+
+	.nav-tabs .nav-link {
+	    border-radius: 50px;
+	    padding: 5px 15px;
+	    width: 180px;
+	    margin-bottom: 10px;
+	}
+
+}
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1199px) {
+
+	.navbar-light .navbar-nav .nav-link {
+	    font-size: 11px;
+	}
+
+	.navbar-expand-lg .navbar-nav .nav-link {
+	    padding-right: 0.3rem;
+	    padding-left: 0.3rem;
+	}
+
+	.channel_div {
+	    min-height: 364px;
+	}
+
+	.main_slider_col {
+	    padding-right: 50px;
+	    padding-left: 50px;
+	    border-top-left-radius: 10px;
+	}
+
+}
+
+
+/* Large Devices, Wide Screens */
+@media only screen and (max-width : 1024px) {
+
+	.home_top_div {
+	    height: auto;
+	    padding-bottom: 40px;
+	    margin-top: -30px;
+	}
+
+	.facility_bg {
+	    width: 150px;
+	}
+
+	.facility_bg img {
+	    width: 70px;
+	}
+
+	.nav-tabs .nav-link {
+	    border-radius: 50px;
+	    padding: 5px 15px;
+	    width: 180px;
+	    margin-bottom: 10px;
+	}
+
+}
+
+/* Medium Devices, Desktops */
+@media only screen and (max-width : 991px) {
+
+	.fixed-top {
+	    top: 0;
+	    right: 0;
+	    left: 0;
+	    z-index: 9999;
+	}
+
+	#jarallax-container-0 {
+	    display: none !important;
+	}
+
+	#jarallax-container-1 {
+	    display: none !important;
+	}
+
+	#jarallax-container-2 {
+	    display: none !important;
+	}
+
+	#jarallax-container-3 {
+	    display: none !important;
+	}
+
+	.bg_row{
+	    background-repeat:no-repeat;
+	    background-size:cover;
+	    background-position:center left;
+	}
+
+	.test_img_col{
+		display: none;
+	}
+
+	.testi_slider_col {
+	    padding: 80px 40px 40px 40px;
+	}
+
+	.mobile_top_lang_txt{
+		text-align: right;
+	}
+
+	.mobile_top_lang_txt li{
+		display: inline-block;
+	}
+
+	.navbar-toggler {
+	    position: relative;
+	    top: 10px;
+	}
+
+	.navbar-collapse {
+	    align-items: center;
+	    background-color: #ffffff;
+	    margin-top: 13px;
+	}
+
+	.navbar-light .navbar-nav .nav-link {
+	    text-align: center;
+	}
+
+	.dropdown-item {
+	    font-size: 11px;
+	    text-align: center !important;
+	}
+
+	.about_col {
+	    padding: 0px 15px 15px 20px;
+	    margin-bottom: 35px;
+	}
+
+	.health_pack_col{
+		padding-top: 50px !important;
+		padding-bottom: 50px !important;
+	}
+
+	.health_pack_img{
+		width: 100% !important;
+	}
+
+	.logo_row {
+	    padding-top: 60px;
+	    padding-bottom: 30px;
+	    border-right: 1px solid transparent;
+	    border-left: 1px solid transparent;
+	    border-bottom: 1px solid #ffffff;
+	}
+
+	.social_row {
+	    padding-top: 40px;
+	    padding-bottom: 40px;
+	    border-top: 1px solid #ffffff;
+	    border-right: 1px solid transparent;
+	    border-left: 1px solid transparent;
+	}
+
+	.helath_tip_bg{
+		background-image: none !important;
+		background-color: #eeeeee;
+	}
+
+	.search-input-wrapper.change {
+	    opacity: 1;
+	    visibility: visible;
+	    /* transition: all 0.5s 0.5s; */
+	    top: 35px;
+	    height: 67px;
+	    z-index: 9999999999;
+	}
+
+	.new_eq_bg{
+		background-image: none !important;
+	}
+
+	.new_eq_bg .heading{
+		color: #8bc53e !important;
+	}
+
+	.new_eq_bg p{
+		color: #212529 !important;
+	}
+
+	.new_eq_bg br{
+		display: none;
+	}
+
+	.nav-tabs {
+	    width: 100%;
+	    overflow-x: scroll;
+	    overflow-y: hidden;
+	    display: inherit;
+	    flex-wrap: nowrap;
+	    height: 100%;
+	}
+
+	.channel_div {
+	    background-position: center center;
+	}
+
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 768px) {
+
+	
+
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 767px) {
+
+	.carousel-caption {
+	    position: absolute;
+	    right: 0px;
+	    left: 0px;
+	    width: 100%;
+	    padding: 30px;
+	}
+
+	.main_logo {
+	    width: 200px !important;
+	}
+
+	/*.spec_service_img_div {
+	    display: none;
+	}*/
+
+	.health_pack_img {
+	    display: none !important;
+	}
+
+	.faci_first_row {
+	    padding-bottom: 0px;
+	    margin-bottom: 0px;
+	    border-bottom: none;
+	}
+
+	.faci_item{
+		margin-bottom: 30px !important;
+	}
+
+	.tips_bg_con {
+	    background-position: top left;
+	}
+
+	.nav-pills .nav-link {
+	    padding: 10px 35px;
+	}
+
+	.f_link_col {
+	    padding: 25px 40px 20px 40px;
+	}
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 575px) {
+
+	.faci_first_row {
+	    padding-bottom: 0px;
+	    margin-bottom: 0px;
+	    border-bottom: none;
+	}
+
+	.home_top_div {
+	    background-size: inherit;
+	}
+
+	.fxd_btn_1 {
+	    right: -215px;
+	    top: 100px;
+	}
+ 
+	.fxd_btn_2 {
+	    right: -215px;
+	    top: 162px;
+	}
+
+	.appoin_btn_row img {
+	    width: 45px !important;
+	    padding: 5px;
+	    margin-top: 5px;
+	}
+
+	.appoin_btn_row {
+	    width: 260px;
+	    text-align: left;
+	}
+
+	.heading {
+	    font-size: 25px;
+	}
+
+	.f_link_col {
+	    padding: 0px 25px 40px 25px;
+	}
+
+	.logo_row{
+		margin-bottom: 40px;
+	}
+
+	.carousel-caption p{
+		display: none;
+	}
+
+	.health_pack_col p{
+		color: #000000 !important;
+	}
+
+	.health_pack_col .heading{
+		color: #000000 !important;
+	}
+
+	.inner_top_div {
+	    background-size: inherit;
+	    height: auto;
+	}
+
+	.breadcrumb-item {
+	    font-size: 10px;
+	}
+
+	.search-input input {
+        width: 90%;
+    }
+
+    .search-input-wrapper.change {
+	    opacity: 1;
+	    visibility: visible;
+	    /* transition: all 0.5s 0.5s; */
+	    top: 32px;
+	    height: 67px;
+    }
+
+    .inner_page_top_slider .carousel-caption {
+	    padding-right: 31px;
+	}
+
+	.career_inq_col{
+		padding: 25px !important;
+	}
+
+	.career_text_div {
+	    padding-left: 10px;
+	    border-left: none;
+	}
+
+	.spec_service_img_div {
+	    display: none;
+	}
+
+}
+
+/* Extra Small Devices, Phones */
+@media only screen and (max-width : 480px) {
+
+	.carousel-caption h1 {
+	    font-size: 20px;
+	}
+
+}
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 375px) {
+
+
+
+}
+
+
+/* Custom, iPhone Retina */
+@media only screen and (max-width : 360px) {
+
+
+
+}
+
+
+@media only screen and (max-width : 320px) {
+
+
+
+}
