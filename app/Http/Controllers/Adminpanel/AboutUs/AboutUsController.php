@@ -13,7 +13,7 @@ class AboutUsController extends Controller
     function __construct()
     {
 
-        $this->middleware('permission:who-we-are', ['only' => ['index, update']]);
+        $this->middleware('permission:who-we-are-edit', ['only' => ['index, update']]);
     }
 
     public function index()
