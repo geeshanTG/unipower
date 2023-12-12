@@ -94,7 +94,7 @@
                                         </label>
                                     </section>
                                     <section class="col col-2">
-                                        <img id="preview-image-before-upload-image-1" src="../storage/app/{{ $data->image_1 }}" alt="preview image" style="max-height: 250px;">
+                                        <img id="preview-image-before-upload-image-1" src="storage/app/{{ $data->image_1 }}" alt="preview image" style="max-height: 250px;">
                                     </section>
 
                                     <section class="col col-2">
@@ -104,7 +104,7 @@
                                         </label>
                                     </section>
                                     <section class="col col-2">
-                                        <img id="preview-image-before-upload-image-2" src="../storage/app/{{ $data->image_2 }}" alt="preview image" style="max-height: 250px;">
+                                        <img id="preview-image-before-upload-image-2" src="storage/app/{{ $data->image_2 }}" alt="preview image" style="max-height: 250px;">
                                     </section>
 
                                     <section class="col col-2">
@@ -114,7 +114,7 @@
                                         </label>
                                     </section>
                                     <section class="col col-2">
-                                        <img id="preview-image-before-upload-image-3" src="../storage/app{{ $data->image_3 }}" alt="preview image" style="max-height: 250px;">
+                                        <img id="preview-image-before-upload-image-3" src="storage/app/{{ $data->image_3 }}" alt="preview image" style="max-height: 250px;">
                                     </section>
                                 </div>
                             </fieldset>

@@ -28,10 +28,7 @@ class AboutUsController extends Controller
         $request->validate([
             'heading' => 'required',
             'description_1' => 'required',
-            'description_2' => 'required',
-            'image_1' => 'required',
-            'image_2' => 'required',
-            'image_3' => 'required'
+            'description_2' => 'required'
         ]);
 
         if ($request->hasFile('image_1')) {
@@ -43,6 +40,8 @@ class AboutUsController extends Controller
             $image1 = $request->file('image_1')->getClientOriginalName();
 
             $pathimage_1 = $request->file('image_1')->store('public/aboutusimages');
+
+        } else {
 
         }
 
@@ -74,9 +73,15 @@ class AboutUsController extends Controller
         $data->heading = $request->heading;
         $data->description_1 = $request->description_1;
         $data->description_2 = $request->description_2;
-        $data->image_1 = $pathimage_1;
-        $data->image_2 = $pathimage_2;
-        $data->image_3 = $pathimage_3;
+        if(!empty($pathimage_1)) {
+            $data->image_1 = $pathimage_1;
+        }
+        if(!empty($pathimage_2)) {
+            $data->image_2 = $pathimage_2;
+        }
+        if(!empty($pathimage_3)) {
+            $data->image_3 = $pathimage_3;
+        }
         $data->save();
 
         \LogActivity::addToLog('who we are content updated.');
