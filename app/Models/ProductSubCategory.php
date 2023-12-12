@@ -10,7 +10,7 @@ class ProductSubCategory extends Model
     use HasFactory;
     protected $table = 'product_subcategory';
     public $timestamps = true;
-    protected $fillable = ['name', 'urlname', 'image', 'status', 'is_delete', 'order'];
+    protected $fillable = ['name', 'urlname', 'category_id', 'status', 'is_delete',];
     public function productCategory()
     {
         return $this->belongsTo(ProductCategory::class,'category_id');

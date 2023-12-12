@@ -119,7 +119,7 @@ class CategoryController extends Controller
             $data->save();
             $id = $data->id;
 
-            // \LogActivity::addToLog('category record ');
+            \LogActivity::addToLog('category record '.$data->name.' deactivated('.$id.')');
 
             return redirect()
                 ->route('category-list')
@@ -129,7 +129,7 @@ class CategoryController extends Controller
             $data->save();
             $id = $data->id;
 
-            // \LogActivity::addToLog('category record ');
+            \LogActivity::addToLog('category record '.$data->name.' activated('.$id.')');
 
             return redirect()
                 ->route('category-list')
