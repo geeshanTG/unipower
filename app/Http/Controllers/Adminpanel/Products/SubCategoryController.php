@@ -13,6 +13,7 @@ class SubCategoryController extends Controller
     {
         $this->middleware('permission:subcategory-list', ['only' => ['datalist']]);
         $this->middleware('permission:subcategory-create', ['only' => ['index', 'store']]);
+        $this->middleware('permission:subcategory-edit', ['only' => ['edit','activation']]);
     }
 
     public function index()
@@ -51,7 +52,7 @@ class SubCategoryController extends Controller
                     return $row->p_name;
                 })
                 ->addColumn('edit', function ($row) {
-                    $edit_url = route('subcategory-list', encrypt($row->id));
+                    $edit_url = route('edit-subcategory', encrypt($row->id));
                     $btn = '<a href="' . $edit_url . '"><i class="fa fa-edit"></i></a>';
                     return $btn;
                 })
@@ -63,7 +64,7 @@ class SubCategoryController extends Controller
                         $status = 'fa fa-remove';
                     }
 
-                    $status_url = route('subcategory-list', encrypt($row->id));
+                    $status_url = route('status-subcategory', encrypt($row->id));
                     $btn = '<a href="' . $status_url . '"><i class="' . $status . '"></i></a>';
 
                     return $btn;
@@ -75,4 +76,100 @@ class SubCategoryController extends Controller
 
         return view('adminpanel.products.subcategory.list');
     }
+
+    public function store(Request $request)
+    {
+        if ($request->savestatus == 'A') {
+            $request->validate([
+                'name' => 'required|max:50',
+               
+                'category_id' => 'required',       
+                'status' => 'required'
+                
+            ]);
+        } else {
+            $request->validate([
+                'name' => 'required|max:50',
+               
+                'category_id' => 'required',
+                'status' => 'required'
+                
+            ]);
+        }
+        
+        $data_arry = array();
+        $data_arry['name'] = $request->name;
+       
+        $data_arry['category_id'] = $request->category_id;
+        $data_arry['status'] = $request->status; 
+        $data_arry['urlname'] = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->name))));
+     
+              
+        if($request->savestatus == 'A'){
+                       
+            $id= ProductSubcategory::create($data_arry);
+             \LogActivity::addToLog('New subcategory'.$request->name.' added('.$id->id.').');
+            return redirect('new-subcategory')->with('success', 'New subcategory created successfully');
+        }else{
+            
+            $recid = $request->id;
+            
+            ProductSubcategory::where('id', decrypt($recid))->update($data_arry);
+            \LogActivity::addToLog('subcategory ' . $request->name . ' updated(' . decrypt($recid) . ').');
+            return redirect('/edit-subcategory/'.$recid.'')->with('success', 'subcategory updated successfully');
+        }
+
+    }
+
+  
+ public function activation(Request $request)
+    {
+        $idD = decrypt($request->id);
+
+        $data =  ProductSubcategory::find($idD);
+
+        if ( $data->status == "Y" ) {
+
+            $data->status = 'N';
+            $data->save();
+            $id = $data->id;
+
+            \LogActivity::addToLog('subcategory record '.$data->name.' deactivated('.$id.')');
+
+            return redirect()->route('subcategory-list')
+            ->with('success', 'Record deactivate successfully.');
+
+        } else {
+
+            $data->status = "Y";
+            $data->save();
+            $id = $data->id;
+
+            \LogActivity::addToLog('subcategory record '.$data->name.' activated('.$id.')');
+
+            return redirect()->route('subcategory-list')
+            ->with('success', 'Record activate successfully.');
+        }
+
+    }
+
+    public function edit($id)
+    {
+        $ID = decrypt($id);
+     
+        $info = ProductSubcategory::where('id', '=', $ID)->get();
+      
+        $title = 'Edit';
+      
+        $savestatus = 'E';
+        $categories = ProductCategory::select('*')->where('is_delete',  0)->orderBy('name','ASC')->get();
+
+        return view('adminpanel.products.subcategory.index')->with(['info' => $info, 'savestatus' => $savestatus, 'title' => $title, 'categories' => $categories]);
+        
+        
+        //return view('masterdata.complain_category.edit', ['data' => $data]);
+        //return view('masterdata.complain_category.edit');
+    }
+
+    
 }

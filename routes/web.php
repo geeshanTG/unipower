@@ -1,15 +1,16 @@
 <?php
 
-use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
-use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
-use App\Http\Controllers\Adminpanel\ContactUs\EnquiryController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Adminpanel\DashboardController;
-
+use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
+use App\Http\Controllers\Adminpanel\ContactUs\EnquiryController;
+use App\Http\Controllers\Adminpanel\Products\CategoryController;
+use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
+use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,9 +33,7 @@ Route::get('/admin', function () {
 //     //return view('welcome');
 // });
 
-
 // Route::get('/', [HomeController::class, 'index']);
-
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
@@ -71,8 +70,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('subcategory-list', [SubCategoryController::class, 'datalist'])->name('subcategory-list');
     Route::get('new-subcategory', [SubCategoryController::class, 'index'])->name('new-subcategory');
     Route::post('save-subcategory', [SubCategoryController::class, 'store'])->name('save-subcategory');
-
-
+    Route::get('/edit-subcategory/{id}', [SubCategoryController::class, 'edit'])->name('edit-subcategory');
+    Route::get('/status-subcategory/{id}', [SubCategoryController::class, 'activation'])->name('status-subcategory');
 });
 
 require __DIR__ . '/auth.php';
