@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\Adminpanel\AboutUs\CeoMessageController;
+use App\Http\Controllers\Adminpanel\AboutUs\OurValuesController;
+use App\Http\Controllers\Adminpanel\AboutUs\VisionMissionController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -49,6 +52,16 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('who-we-are-edit', [AboutUsController::class, 'index'])->name('who-we-are-edit');
     Route::put('save-who-we-are', [AboutUsController::class, 'update'])->name('save-who-we-are');
+
+    Route::get('vision-mission-edit', [VisionMissionController::class, 'index'])->name('vision-mission-edit');
+    Route::put('save-vision-mission', [VisionMissionController::class, 'update'])->name('save-vision-mission');
+
+    Route::get('ceo-message-edit', [CeoMessageController::class, 'index'])->name('ceo-message-edit');
+    Route::put('save-ceo-message', [CeoMessageController::class, 'update'])->name('save-ceo-message');
+
+    Route::get('our-values-list', [OurValuesController::class, 'index'])->name('our-values-list');
+    Route::get('/our-values-edit/{id}', [OurValuesController::class, 'edit'])->name('our-values-edit');
+    Route::put('save-our-values', [OurValuesController::class, 'update'])->name('save-our-values');
 
     //geeshan
     //contactus
