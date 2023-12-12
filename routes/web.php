@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
+use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
+use App\Http\Controllers\Adminpanel\ContactUs\EnquiryController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
@@ -48,6 +50,28 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('who-we-are-edit', [AboutUsController::class, 'index'])->name('who-we-are-edit');
     Route::put('save-who-we-are', [AboutUsController::class, 'update'])->name('save-who-we-are');
+
+    //geeshan
+    //contactus
+    Route::get('contact-info-edit', [ContactUsController::class, 'index'])->name('contact-info-edit');
+    Route::put('save-contact-info', [ContactUsController::class, 'update'])->name('save-contact-info');
+
+    Route::get('enquiry-list', [EnquiryController::class, 'listEnquiry'])->name('enquiry-list');
+    Route::get('view-enquiry/{id}', [EnquiryController::class, 'view'])->name('view-enquiry');
+
+    //products
+
+    Route::get('new-category', [CategoryController::class, 'index'])->name('new-category');
+    Route::post('save-category', [CategoryController::class, 'store'])->name('save-category');
+    Route::get('category-list', [CategoryController::class, 'datalist'])->name('category-list');
+    Route::get('/status-category/{id}', [CategoryController::class, 'activation'])->name('status-category');
+    Route::get('/edit-category/{id}', [CategoryController::class, 'edit'])->name('edit-category');
+
+    //subcategory
+    Route::get('subcategory-list', [SubCategoryController::class, 'datalist'])->name('subcategory-list');
+    Route::get('new-subcategory', [SubCategoryController::class, 'index'])->name('new-subcategory');
+    Route::post('save-subcategory', [SubCategoryController::class, 'store'])->name('save-subcategory');
+
 
 });
 
