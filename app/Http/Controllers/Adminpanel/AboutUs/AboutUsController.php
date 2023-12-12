@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Adminpanel\AboutUs;
 
 use App\Http\Controllers\Controller;
-use App\Models\Overview;
 use App\Models\WhoWeAre;
 use Illuminate\Http\Request;
 use DataTables;

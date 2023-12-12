@@ -1,4 +1,4 @@
-@section('title', 'Who We Are')
+@section('title', 'Edit Our Values')
 <x-app-layout>
     <x-slot name="header">
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@
             <!-- Widget ID (each widget will need unique ID)-->
             <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
                 <header>
-                    <h2>{{ __('Who We Are') }}</h2>
+                    <h2>{{ __('Our Values') }}</h2>
                 </header>
                 <!-- widget div-->
                 <div>
@@ -58,63 +58,43 @@
                     <!-- end widget edit box -->
                     <!-- widget content -->
                     <div class="widget-body no-padding">
-                        <form action="{{ route('save-who-we-are') }}" enctype="multipart/form-data" method="post" id="who-we-are-form" class="smart-form">
+                        <form action="{{ route('save-our-values') }}" enctype="multipart/form-data" method="post" id="our-values-form" class="smart-form">
                         @csrf
                         @method('PUT')
                             <fieldset>
                                 <div class="row">
-                                    <section class="col col-md-12">
+                                    <section class="col col-md-6">
                                         <label class="label">{{ __('Heading') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="text" id="heading" name="heading" required value="{{ $data->heading }}">
                                         </label>
                                     </section>
+
+                                    <section class="col col-md-3">
+                                        <label class="label">{{ __('Icon') }} (50 x 50) <span style=" color: red;">*</span></label>
+                                        <label class="input">
+                                            <input type="file" class="form-control form-input" id="icon" name="icon" style="overflow: hidden;">
+                                        </label>
+                                    </section>
+                                    <section class="col col-md-3">
+                                        <img id="preview-image-before-upload" src="storage/app/{{ $data->icon }}" alt="preview image" style="max-height: 250px;">
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-md-6">
+                                        <label class="label">{{ __('Order') }}<span style=" color: red;">*</span> </label>
+                                        <label class="input">
+                                            <input type="number" id="order" name="order" required value="{{ $data->order }}">
+                                        </label>
+                                    </section>
                                 </div>
                                 <div class="row">
                                     <section class="col col-md-11"  style="width: 100%;">
-                                        <label class="label">{{ __('Description 1') }}<span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Description (Max word count limit is 200)') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <textarea class="form-control summernote" id="description_1" name="description_1" rows="3" required>{{ $data->description_1 }}</textarea>
+                                            <textarea class="form-control summernote" id="description" name="description" rows="2" required>{{ $data->description }}</textarea>
                                         </label>
-                                    </section>
-                                </div>
-                                <div class="row">
-                                    <section class="col col-md-11"  style="width: 100%;">
-                                        <label class="label">{{ __('Description 2') }}<span style=" color: red;">*</span> </label>
-                                        <label class="input">
-                                            <textarea class="form-control summernote" id="description_2" name="description_2" rows="3" required>{{ $data->description_2 }}</textarea>
-                                        </label>
-                                    </section>
-                                </div>
-                                <div class="row">
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image 1') }} (1080 x 1080) <span style=" color: red;">*</span></label>
-                                        <label class="input">
-                                            <input type="file" class="form-control form-input" id="image_1" name="image_1" style="overflow: hidden;">
-                                        </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload-image-1" src="storage/app/{{ $data->image_1 }}" alt="preview image" style="max-height: 250px;">
-                                    </section>
-
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image 2') }} (1080 x 1080) <span style=" color: red;">*</span></label>
-                                        <label class="input">
-                                            <input type="file" class="form-control form-input" id="image_2" name="image_2" style="overflow: hidden;">
-                                        </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload-image-2" src="storage/app/{{ $data->image_2 }}" alt="preview image" style="max-height: 250px;">
-                                    </section>
-
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image 3') }} (1200 x 800) <span style=" color: red;">*</span></label>
-                                        <label class="input">
-                                            <input type="file" class="form-control form-input" id="image_3" name="image_3" style="overflow: hidden;">
-                                        </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload-image-3" src="storage/app/{{ $data->image_3 }}" alt="preview image" style="max-height: 250px;">
+                                        <div id="word-count" style="color:#F00; margin-top: -3px"></div>
                                     </section>
                                 </div>
                             </fieldset>
@@ -141,7 +121,7 @@
 
         <script>
             $(function(){
-                $('#who-we-are-form').parsley();
+                $('#our-values-form').parsley();
             });
 
             $(document).ready(function() {
@@ -162,7 +142,44 @@
                         // ['view', ['fullscreen', 'codeview', 'help']]
                         ['view', ['codeview']]
 
-                    ]
+                    ],
+                    callbacks: {
+                        onKeydown: function (e) {
+                            var words = e.currentTarget.innerText.trim().split(/\s+/).length;
+
+                            // Adjust the word limit as needed
+                            var maxWords = 200;
+
+                            if (words >= maxWords) {
+                                // Prevent further typing
+                                e.preventDefault();
+                            }
+                        },
+                        onChange: function (contents, $editable) {
+                            // Optional: Update word count display
+                            var words = contents.trim().split(/\s+/).length;
+
+                            var wordCountWarning = 'Word Count ' + words;
+
+                            $('#word-count').text(wordCountWarning);
+
+                            // Adjust the word limit as needed
+                            var maxWords = 200;
+
+                            if (words > maxWords) {
+                                // Trim excess words
+                                var delta = words - maxWords;
+                                var text = $editable.text().trim().split(/\s+/);
+                                text.splice(-delta);
+                                $editable.html(text.join(' '));
+
+                                var wordCountWarning = 'Maximum Word count length is 200.';
+
+                                // Optional: Update word count display after trimming
+                                $('#word-count').text(wordCountWarning);
+                            }
+                        }
+                    }
                 });
             });
         </script>
@@ -170,13 +187,13 @@
         <script type="text/javascript">
             $(document).ready(function(e) {
 
-                $('#image_1').change(function() {
+                $('#icon').change(function() {
 
                     let reader = new FileReader();
 
                     reader.onload = (e) => {
 
-                        $('#preview-image-before-upload-image-1').attr('src', e.target.result);
+                        $('#preview-image-before-upload').attr('src', e.target.result);
                     }
 
                     reader.readAsDataURL(this.files[0]);
@@ -184,37 +201,6 @@
                 });
             });
 
-            $(document).ready(function(e) {
-
-                $('#image_2').change(function() {
-
-                    let reader = new FileReader();
-
-                    reader.onload = (e) => {
-
-                        $('#preview-image-before-upload-image-2').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(this.files[0]);
-
-                });
-            });
-
-            $(document).ready(function(e) {
-
-                $('#image_3').change(function() {
-
-                    let reader = new FileReader();
-
-                    reader.onload = (e) => {
-
-                        $('#preview-image-before-upload-image-3').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(this.files[0]);
-
-                });
-            });
         </script>
 
     </x-slot>

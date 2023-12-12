@@ -1,4 +1,4 @@
-@section('title', 'Who We Are')
+@section('title', 'Vision & Mission')
 <x-app-layout>
     <x-slot name="header">
         <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
@@ -47,7 +47,7 @@
             <!-- Widget ID (each widget will need unique ID)-->
             <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
                 <header>
-                    <h2>{{ __('Who We Are') }}</h2>
+                    <h2>{{ __('Vision & Mission') }}</h2>
                 </header>
                 <!-- widget div-->
                 <div>
@@ -58,63 +58,40 @@
                     <!-- end widget edit box -->
                     <!-- widget content -->
                     <div class="widget-body no-padding">
-                        <form action="{{ route('save-who-we-are') }}" enctype="multipart/form-data" method="post" id="who-we-are-form" class="smart-form">
+                        <form action="{{ route('save-vision-mission') }}" enctype="multipart/form-data" method="post" id="vision-mission-form" class="smart-form">
                         @csrf
                         @method('PUT')
                             <fieldset>
                                 <div class="row">
                                     <section class="col col-md-12">
-                                        <label class="label">{{ __('Heading') }}<span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Vision Heading') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <input type="text" id="heading" name="heading" required value="{{ $data->heading }}">
+                                            <input type="text" id="vision_heading" name="vision_heading" required value="{{ $data->vision_heading }}">
                                         </label>
                                     </section>
                                 </div>
                                 <div class="row">
                                     <section class="col col-md-11"  style="width: 100%;">
-                                        <label class="label">{{ __('Description 1') }}<span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Vision Description') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <textarea class="form-control summernote" id="description_1" name="description_1" rows="3" required>{{ $data->description_1 }}</textarea>
+                                            <textarea class="form-control summernote" id="vision_description" name="vision_description" rows="3" required>{{ $data->vision_description }}</textarea>
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-md-12">
+                                        <label class="label">{{ __('Mission Heading') }}<span style=" color: red;">*</span> </label>
+                                        <label class="input">
+                                            <input type="text" id="mission_heading" name="mission_heading" required value="{{ $data->mission_heading }}">
                                         </label>
                                     </section>
                                 </div>
                                 <div class="row">
                                     <section class="col col-md-11"  style="width: 100%;">
-                                        <label class="label">{{ __('Description 2') }}<span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Mission Description') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <textarea class="form-control summernote" id="description_2" name="description_2" rows="3" required>{{ $data->description_2 }}</textarea>
+                                            <textarea class="form-control summernote" id="mission_description" name="mission_description" rows="3" required>{{ $data->mission_description }}</textarea>
                                         </label>
-                                    </section>
-                                </div>
-                                <div class="row">
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image 1') }} (1080 x 1080) <span style=" color: red;">*</span></label>
-                                        <label class="input">
-                                            <input type="file" class="form-control form-input" id="image_1" name="image_1" style="overflow: hidden;">
-                                        </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload-image-1" src="storage/app/{{ $data->image_1 }}" alt="preview image" style="max-height: 250px;">
-                                    </section>
-
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image 2') }} (1080 x 1080) <span style=" color: red;">*</span></label>
-                                        <label class="input">
-                                            <input type="file" class="form-control form-input" id="image_2" name="image_2" style="overflow: hidden;">
-                                        </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload-image-2" src="storage/app/{{ $data->image_2 }}" alt="preview image" style="max-height: 250px;">
-                                    </section>
-
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image 3') }} (1200 x 800) <span style=" color: red;">*</span></label>
-                                        <label class="input">
-                                            <input type="file" class="form-control form-input" id="image_3" name="image_3" style="overflow: hidden;">
-                                        </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload-image-3" src="storage/app/{{ $data->image_3 }}" alt="preview image" style="max-height: 250px;">
                                     </section>
                                 </div>
                             </fieldset>
@@ -141,7 +118,7 @@
 
         <script>
             $(function(){
-                $('#who-we-are-form').parsley();
+                $('#vision-mission-form').parsley();
             });
 
             $(document).ready(function() {
@@ -163,56 +140,6 @@
                         ['view', ['codeview']]
 
                     ]
-                });
-            });
-        </script>
-
-        <script type="text/javascript">
-            $(document).ready(function(e) {
-
-                $('#image_1').change(function() {
-
-                    let reader = new FileReader();
-
-                    reader.onload = (e) => {
-
-                        $('#preview-image-before-upload-image-1').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(this.files[0]);
-
-                });
-            });
-
-            $(document).ready(function(e) {
-
-                $('#image_2').change(function() {
-
-                    let reader = new FileReader();
-
-                    reader.onload = (e) => {
-
-                        $('#preview-image-before-upload-image-2').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(this.files[0]);
-
-                });
-            });
-
-            $(document).ready(function(e) {
-
-                $('#image_3').change(function() {
-
-                    let reader = new FileReader();
-
-                    reader.onload = (e) => {
-
-                        $('#preview-image-before-upload-image-3').attr('src', e.target.result);
-                    }
-
-                    reader.readAsDataURL(this.files[0]);
-
                 });
             });
         </script>
