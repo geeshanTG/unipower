@@ -13,7 +13,7 @@ class OurValuesController extends Controller
     {
 
         $this->middleware('permission:our-values-list|our-values-edit', ['only' => ['list']]);
-        $this->middleware('permission:our-values-edit|our-values-edit', ['only' => ['edit', 'update']]);
+        $this->middleware('permission:our-values-edit', ['only' => ['edit', 'update']]);
     }
 
     public function index(Request $request)
