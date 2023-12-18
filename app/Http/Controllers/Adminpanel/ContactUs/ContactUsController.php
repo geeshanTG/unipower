@@ -12,7 +12,7 @@ class ContactUsController extends Controller
     function __construct()
     {
         $this->middleware('permission:contact-info-edit', ['only' => ['index, update']]);
-        
+
     }
     public function index()
     {
@@ -28,8 +28,24 @@ class ContactUsController extends Controller
             'address' => 'required',
             'phone1' => 'required',
             'phone2' => 'required',
+            'fax' => 'required',
             'email' => 'required',
+            'facebook_url' => 'required',
+            'linkedin_url' => 'required',
+            'twitter_url' => 'required',
         ]);
+
+        if ($request->hasFile('logo')) {
+
+            $request->validate([
+                'logo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+            $Image = $request->file('logo')->getClientOriginalName();
+
+            $pathImage = $request->file('logo')->store('public/contactusimages');
+
+        }
 
         $data = ContactInfo::find($request->id);
         $data->heading_title = $request->heading;
@@ -37,7 +53,14 @@ class ContactUsController extends Controller
         $data->address = $request->address;
         $data->phone_number_1 = $request->phone1;
         $data->phone_number_2 = $request->phone2;
+        $data->fax = $request->fax;
         $data->email = $request->email;
+        $data->facebook_url = $request->facebook_url;
+        $data->linkedin_url = $request->linkedin_url;
+        $data->twitter_url = $request->twitter_url;
+        if(!empty($pathImage)) {
+            $data->logo = $pathImage;
+        }
         $data->save();
 
         \LogActivity::addToLog('contact info content updated.');
