@@ -27,7 +27,7 @@
                     <div class="well no-padding" style="box-shadow: none; background-color: transparent;">
 
 
-                        <img src="{{ asset('public/css/userpanel/img/kings-login-logo.png') }}" alt="" class="img-responsive labor_logo center-block" style="padding-left: 15px; padding-right: 15px; margin-bottom: 30px;">
+                        <img src="{{ asset('public/back/img/unipower-logo.png') }}" alt="" class="img-responsive labor_logo center-block" style="padding-left: 15px; padding-right: 15px; margin-bottom: 30px;">
 
                         <!-- <div class="mx-auto logo_col no_padding">
                             <div class="logo_col">

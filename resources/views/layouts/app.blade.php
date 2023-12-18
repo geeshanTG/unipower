@@ -407,7 +407,7 @@
 			<div class="col-xs-12 col-sm-6">
 				<!--<span class="txt-color-white">SmartAdmin 1.9.0 <span class="hidden-xs"> - Web Application Framework</span> © 2017-2019</span>-->
                 <span class="txt-color-white">&copy; <script type="text/javascript">document.write( new Date().getFullYear() );</script>  |  <small>Solution by - <a href="https://www.tekgeeks.net/" target="_blank" style="color: #999999;">TekGeeks</a></small></span>
-                <span class="txt-color-white">&emsp;&emsp;Hotline: +94 778478547  | Email: info@kingshospital.lk</span>
+                <span class="txt-color-white">&emsp;&emsp;Hotline: +94 112-451551  | Email: info@unipower.com</span>
 			</div>
 
 			<?php
