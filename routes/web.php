@@ -30,6 +30,8 @@ use App\Http\Controllers\Adminpanel\News\TopStoriesController;
 use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
 use App\Http\Controllers\Adminpanel\Products\ProductsController;
 use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
+use App\Http\Controllers\Userpanel\AboutController;
+use App\Http\Controllers\Userpanel\HomeController;
 use App\Models\BottomBannerContent;
 
 /*
@@ -53,7 +55,8 @@ Route::get('/admin', function () {
 //     //return view('welcome');
 // });
 
-// Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('about-us', [AboutController::class, 'index']);
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
