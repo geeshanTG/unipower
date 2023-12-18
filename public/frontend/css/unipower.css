@@ -4,10 +4,10 @@
 /******************************/
 /*******common css*************/
 
- 
+
 /******* fonts *********/
 @import url('../fonts/stylesheet_oswald.css');
-@import url('../fonts/stylesheet_roboto.css');   
+@import url('../fonts/stylesheet_roboto.css');
 /******* fonts *********/
 
 
@@ -186,7 +186,7 @@ a{
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size: cover; 
+    background-size: cover;
 }
 
 .slider_image_caption {
@@ -212,7 +212,7 @@ a{
 .slider_image_caption img{
     width: 520px;
 }
-  
+
 .main_slider h5{
     font-size: 50px;
     font-family: 'Oswald', sans-serif;
@@ -227,13 +227,13 @@ a{
     background-color: rgb(12 72 37 / 64%);
     border-bottom: 2px white solid;
 }
-  
+
 .carousel-indicators .carousel_indi{
     position: relative;
     height: 70px;
     width: 100%;
     opacity: 1;
-    background: rgba(179.56, 172.17, 158.61, 0.45); 
+    background: rgba(179.56, 172.17, 158.61, 0.45);
     border-bottom: 2px #CDCDCD solid;
     align-items: center;
 }
@@ -314,7 +314,7 @@ a{
 .prod_card:hover{
     -ms-transform: scale(1.04); /* IE 9 */
     -webkit-transform: scale(1.04); /* Safari 3-8 */
-    transform: scale(1.04); 
+    transform: scale(1.04);
 }
 
 .serv_detail_card .go-corner {
@@ -422,7 +422,7 @@ a{
 
 .accordion-button:after {
     font-family: "FontAwesome";
-    font-weight: 300; 
+    font-weight: 300;
     content: "\f067";
     color: #333333;
     float: right;
@@ -433,7 +433,7 @@ a{
 .accordion-button:not(.collapsed)::after{
     background-image: none !important;
     font-family: "FontAwesome";
-    font-weight: 300; 
+    font-weight: 300;
     content: "\f068";
 }
 
@@ -698,7 +698,7 @@ a{
     color: #333333;
     transition: 0.4s ease;
   }
-  
+
 .social_links a:hover{
     color: #00732E;
 }
@@ -822,7 +822,7 @@ a{
 #search-wrap.panelactive{
 	 opacity: 1;
 	 z-index: 3;
-	 background:rgba(0, 0, 0, 0.65);
+	 background:rgba(0, 0, 0, 0.8);
 	 display: flex;
 	 justify-content: center;
 	 align-items: center;
@@ -887,7 +887,7 @@ a{
     width: 60px;
     height:60px;
 }
-	
+
 .close-btn span{
     display: inline-block;
     position: absolute;

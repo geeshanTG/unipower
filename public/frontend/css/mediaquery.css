@@ -20,6 +20,10 @@
     min-height: 333px;
   }
 
+  .value_card {
+    min-height: 276px;
+  }
+
 }
 
 /* Large Devices, Wide Screens */
@@ -136,7 +140,20 @@
     .product_card{
       min-height: 206px;
     }
-    
+
+    .mob_search{
+      position: absolute;
+      right: 58px;
+      top: 4px;
+      font-size: 14px;
+      color: #fff;
+      padding: 5px 10px;
+      background: red;
+    }
+
+    #search-wrap input[type="text"] {
+      width: 75%;
+    }
 
 }
 
@@ -153,6 +170,11 @@
 
   .inner_banner h1{
     font-size: 38px;
+  }
+
+  .footer_bottom .bottom_links a p{
+    text-align: start;
+    margin-top: 5px;
   }
     
 	
