@@ -146,7 +146,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: "{{ route('news-list') }}",
-                    order: [ 3, 'asc' ],
+                    order: [ 2, 'desc' ],
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'id'
