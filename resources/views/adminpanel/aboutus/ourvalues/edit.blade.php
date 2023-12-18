@@ -77,7 +77,7 @@
                                         </label>
                                     </section>
                                     <section class="col col-md-3">
-                                        <img id="preview-image-before-upload" src="storage/app/{{ $data->icon }}" alt="preview image" style="max-height: 250px;">
+                                        <img id="preview-image-before-upload" src="@if(!empty($data->icon)) ../storage/app/{{ $data->icon }} @else {{ asset('public/back/img/whitebg.jpg'); }} @endif" alt="preview image" style="max-height: 250px;">
                                     </section>
                                 </div>
                                 <div class="row">

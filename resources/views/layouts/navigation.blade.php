@@ -5,7 +5,7 @@
         <div id="logo-group">
 
             <!-- PLACE YOUR LOGO HERE -->
-            <h1 class="hidden-xs" style="font-weight: 900; color: #3b2c46; font-size: 18px; padding-top: 16px; padding-left: 10px;"><img src="{{ asset('public/back/img/kings-cms-logo.png') }}" alt="Unipower Content Management System" style="position: relative; top: -6px; width: 21px; float: left; padding-right: 12px;"> Content Management System - Unipower</h1>
+            <h1 class="hidden-xs" style="font-weight: 900; color: #3b2c46; font-size: 18px; padding-top: 16px; padding-left: 10px;"><img src="{{ asset('public/back/img/unipower-logo.png') }}" alt="Unipower Content Management System" style="position: relative; top: -6px; width: 100px; float: left; padding-right: 12px;"> Content Management System - Unipower</h1>
             <span id="logo" class="visible-xs"> <img src="{{ asset('public/back/img/mobile_labor_logo.svg') }}" alt="Unipower Content Management System"> </span>
             <!-- END LOGO PLACEHOLDER -->
 
