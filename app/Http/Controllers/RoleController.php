@@ -153,7 +153,7 @@ class RoleController extends Controller
         $permission = Permission::get();
         $dynamicMenu =  DynamicMenu::where('dynamic_menu.show_menu', 1)->orderBy('dynamic_menu.fOrder', 'ASC')->get();
 
-        //         print_r($dynamicMenu);
+                // print_r($dynamicMenu);
         // die();
         $rolePermissions = DB::table("role_has_permissions")->where("role_has_permissions.role_id", $id)
             ->pluck('role_has_permissions.permission_id', 'role_has_permissions.permission_id')
