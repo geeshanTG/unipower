@@ -6,127 +6,49 @@
     <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-inner main_slider">
-            <div class="carousel-item active">
+            @php
+                $c = 0;
+            @endphp
+            @foreach ($mainSliders as $slider)
+            <div class="carousel-item @if($c == 0) {{ 'active' }} @endif">
                 <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider01.jpg); height: 600px;">
+                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(storage/app/{{ $slider->desktop_image }}); height: 600px;">
                 </div>
                 <div class="container carousel-caption">
                     <div class="slider_image_caption">
                         <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
+                            <h5 style="text-transform: uppercase;">{{ $slider->heading }}</h5>
                             <!-- <br>
                     <img src="images/partner_logos.png" class="m-auto" alt=""> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider03.jpg); height: 600px;">
-                </div>
-                <div class="container carousel-caption">
-                    <div class="slider_image_caption">
-                        <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
-                            <!-- <br>
-                    <img src="images/partner_logos.png" class="m-auto" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider04.jpg); height: 600px;">
-                </div>
-                <div class="container carousel-caption">
-                    <div class="slider_image_caption">
-                        <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
-                            <!-- <br>
-                    <img src="images/partner_logos.png" class="m-auto" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider02.jpg); height: 600px;">
-                </div>
-                <div class="container carousel-caption">
-                    <div class="slider_image_caption">
-                        <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
-                            <!-- <br>
-                    <img src="images/partner_logos.png" class="m-auto" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="container carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
-                class="active carousel_indi" aria-current="true" aria-label="Slide 1">
+            @php
+            $c = 0;
+            @endphp
+            @foreach ($mainSliders as $slider)
+            <button type="button" data-bs-target="#carouselExampleCaptions" class="@if($c == 0) {{'active'}} @endif carousel_indi" data-bs-slide-to="{{ $c }}" @if($c == 0) {{ 'aria-current=true' }} @endif aria-label="Slide {{ $c + 1 }}">
                 <div class="row mx-auto align-items-center px-3">
                     <div class="col-lg-3 col-md-3">
-                        <img src="images/potted-plant.png" style="width: 45px;" class="m-auto" alt="">
+                        <img src="storage/app/{{ $slider->icon }}" style="width: 45px;" class="m-auto" alt="">
                     </div>
                     <div class="col-lg-9 col-md-9">
                         <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Specialty Plant</h6>
-                            <h6 class="mb-0">Nutrients</h6>
+                            <h6 class="mb-1">{{ $slider->sub_heading }}</h6>
+                            {{-- <h6 class="mb-0">Nutrients</h6> --}}
                         </div>
                     </div>
                 </div>
             </button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" class="carousel_indi" data-bs-slide-to="1"
-                aria-label="Slide 2">
-                <!-- <h6 class="mb-0">Responsible Agri Solutions</h6>
-              <h6>Provider</h6> -->
-                <div class="row mx-auto align-items-center px-3">
-                    <div class="col-lg-3 col-md-3">
-                        <img src="images/planting.png" style="width: 45px;" class="m-auto" alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Responsible Agri</h6>
-                            <h6 class="mb-0">Solutions</h6>
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" class="carousel_indi" data-bs-slide-to="2"
-                aria-label="Slide 3">
-                <!-- <h6 class="mb-0">Advancing</h6>
-              <h6>Productivity</h6> -->
-                <div class="row mx-auto align-items-center px-3">
-                    <div class="col-lg-3 col-md-3">
-                        <img src="images/bulb.png" style="width: 45px;" class="m-auto" alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Advancing</h6>
-                            <h6 class="mb-0">Productivity</h6>
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <button type="button" data-bs-target="#carouselExampleCaptions" class="carousel_indi" data-bs-slide-to="3"
-                aria-label="Slide 4">
-                <!-- <h6 class="mb-0">Sustainability and</h6>
-              <h6>Prosperity</h6> -->
-                <div class="row mx-auto align-items-center px-3">
-                    <div class="col-lg-3 col-md-3">
-                        <img src="images/replant.png" style="width: 45px;" class="m-auto" alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Sustainability and</h6>
-                            <h6 class="mb-0">Prosperity</h6>
-                        </div>
-                    </div>
-                </div>
-            </button>
+            @php
+                $c++;
+            @endphp
+            @endforeach
         </div>
     </div>
 </div>
@@ -141,127 +63,49 @@
     <div id="carouselExampleCaptions_mob" class="carousel slide" data-bs-ride="carousel">
 
         <div class="carousel-inner main_slider">
-            <div class="carousel-item active">
+            @php
+            $c = 0;
+            @endphp
+            @foreach ($mainSliders as $slider)
+            <div class="carousel-item @if($c == 0) {{ 'active' }} @endif">
                 <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider01_mob.jpg); height: 600px;">
+                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(storage/app/{{ $slider->desktop_image }}); height: 600px;">
                 </div>
                 <div class="container carousel-caption">
                     <div class="slider_image_caption">
                         <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
+                            <h5>{{ $slider->heading }}</h5>
                             <!-- <br>
                       <img src="images/partner_logos.png" class="m-auto" alt=""> -->
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="carousel-item">
-                <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider03_mob.jpg); height: 600px;">
-                </div>
-                <div class="container carousel-caption">
-                    <div class="slider_image_caption">
-                        <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
-                            <!-- <br>
-                      <img src="images/partner_logos.png" class="m-auto" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider04_mob.jpg); height: 600px;">
-                </div>
-                <div class="container carousel-caption">
-                    <div class="slider_image_caption">
-                        <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
-                            <!-- <br>
-                      <img src="images/partner_logos.png" class="m-auto" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="carousel-item">
-                <div class="bg_img_fill"
-                    style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(./images/slider02_mob.jpg); height: 600px;">
-                </div>
-                <div class="container carousel-caption">
-                    <div class="slider_image_caption">
-                        <div class="col-lg-8">
-                            <h5>Empowering Agriculture, Enriching Lives</h5>
-                            <!-- <br>
-                      <img src="images/partner_logos.png" class="m-auto" alt=""> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
+            @endforeach
         </div>
 
         <div class="container carousel-indicators">
-            <button type="button" data-bs-target="#carouselExampleCaptions_mob" data-bs-slide-to="0"
-                class="active carousel_indi" aria-current="true" aria-label="Slide 1">
+            @php
+            $c = 0;
+            @endphp
+            @foreach ($mainSliders as $slider)
+            <button type="button" data-bs-target="#carouselExampleCaptions_mob" class="@if($c == 0) {{'active'}} @endif carousel_indi" data-bs-slide-to="{{ $c }}" @if($c == 0) {{ 'aria-current=true' }} @endif aria-label="Slide {{ $c + 1 }}">
                 <div class="row mx-auto align-items-center px-3">
                     <div class="col-lg-3 col-md-3">
                         <img src="images/potted-plant.png" style="width: 45px;" class="m-auto" alt="">
                     </div>
                     <div class="col-lg-9 col-md-9">
                         <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Specialty Plant</h6>
-                            <h6 class="mb-0">Nutrients</h6>
+                            <h6 class="mb-1">{{ $slider->sub_heading }}</h6>
+                            {{-- <h6 class="mb-0">Nutrients</h6> --}}
                         </div>
                     </div>
                 </div>
             </button>
-            <button type="button" data-bs-target="#carouselExampleCaptions_mob" class="carousel_indi"
-                data-bs-slide-to="1" aria-label="Slide 2">
-                <!-- <h6 class="mb-0">Responsible Agri Solutions</h6>
-                <h6>Provider</h6> -->
-                <div class="row mx-auto align-items-center px-3">
-                    <div class="col-lg-3 col-md-3">
-                        <img src="images/planting.png" style="width: 45px;" class="m-auto" alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Responsible Agri</h6>
-                            <h6 class="mb-0">Solutions</h6>
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <button type="button" data-bs-target="#carouselExampleCaptions_mob" class="carousel_indi"
-                data-bs-slide-to="2" aria-label="Slide 3">
-                <!-- <h6 class="mb-0">Advancing</h6>
-                <h6>Productivity</h6> -->
-                <div class="row mx-auto align-items-center px-3">
-                    <div class="col-lg-3 col-md-3">
-                        <img src="images/bulb.png" style="width: 45px;" class="m-auto" alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Advancing</h6>
-                            <h6 class="mb-0">Productivity</h6>
-                        </div>
-                    </div>
-                </div>
-            </button>
-            <button type="button" data-bs-target="#carouselExampleCaptions_mob" class="carousel_indi"
-                data-bs-slide-to="3" aria-label="Slide 4">
-                <!-- <h6 class="mb-0">Sustainability and</h6>
-                <h6>Prosperity</h6> -->
-                <div class="row mx-auto align-items-center px-3">
-                    <div class="col-lg-3 col-md-3">
-                        <img src="images/replant.png" style="width: 45px;" class="m-auto" alt="">
-                    </div>
-                    <div class="col-lg-9 col-md-9">
-                        <div class="d-flex flex-column align-items-start text-start caro_indi_text">
-                            <h6 class="mb-1">Sustainability and</h6>
-                            <h6 class="mb-0">Prosperity</h6>
-                        </div>
-                    </div>
-                </div>
-            </button>
+            @php
+            $c++;
+            @endphp
+            @endforeach
         </div>
     </div>
 </div>
@@ -274,7 +118,7 @@
 <br class="d-lg-block d-none">
 
 <div class="container"
-    style="background-image: url(images/leaf_2.png); background-repeat: no-repeat; background-position: bottom right;">
+    style="background-image: url({{ asset('public/frontend/images/leaf_2.png') }}); background-repeat: no-repeat; background-position: bottom right;">
     <div class="row flex-lg-row flex-column-reverse">
         <div class="col-lg-6 bg_img_none text-center" data-aos="fade-up">
             <!-- style="background-image: url(images/leaf_1.png); background-repeat: no-repeat; background-position: top right;" -->
