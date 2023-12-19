@@ -6,7 +6,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
-                        <img src="{{ asset('public/frontend/images/logo.png') }}" class="m-auto w-100" alt="">
+                        <img src="{{asset("/storage/app/").'/'.$contactInfo->logo}}" class="m-auto w-100" alt="">
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
@@ -18,7 +18,8 @@
                         </a>
                         <p class="mb-1"><b>Tel:</b> <a href="tel:{{ $contactInfo->phone_number_1 }}"
                                 style="color: #616161;">{{ $contactInfo->phone_number_1 }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                                href="tel:{{ $contactInfo->phone_number_2 }}0112-302347" style="color: #616161;">{{ $contactInfo->phone_number_2 }}</a></p>
+                                href="tel:{{ $contactInfo->phone_number_2 }}0112-302347"
+                                style="color: #616161;">{{ $contactInfo->phone_number_2 }}</a></p>
                         <p class="mb-1"><b>Fax:</b> {{ $contactInfo->fax }}</p>
                     </div>
                 </div>
@@ -135,66 +136,167 @@
 
 <script>
     AOS.init({
-    easing: 'ease-out-back',
-            duration: 1000
+        easing: 'ease-out-back',
+        duration: 1000
     });
 </script>
 <!--loading effects-->
 
+
+<!-- Timeline  -->
+<script src="{{ asset('public/frontend/timeline/script.js') }}"></script>
+<!-- Timeline  -->
+
+<!-- Image Gallery -->
+<script src="{{ asset('public/frontend/gallery/baguetteBox.min.js') }}"></script>
+
+<script>
+    baguetteBox.run('.tz-gallery');
+</script>
+<!-- Image Gallery  -->
+
+
 <!-- owl carousel js -->
 <script>
     $(function() {
-    // Owl Carousel
-    var owl = $(".serv_caro");
-    owl.owlCarousel({
-      autoplay:true,
-      autoplayTimeout:5000,
-      autoplayHoverPause:true,
-      margin: 10,
-      loop: true,
-      nav: false,
-      dots: true,
-      responsive: { 0: { items: 1, }, 575: { items: 2, }, 740: { items: 2, }, 991: { items: 3, }, 1025: { items: 4, }, },
+        // Owl Carousel
+        var owl = $(".serv_caro");
+        owl.owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: true,
+            margin: 10,
+            loop: true,
+            nav: false,
+            dots: true,
+            responsive: {
+                0: {
+                    items: 1,
+                },
+                575: {
+                    items: 2,
+                },
+                740: {
+                    items: 2,
+                },
+                991: {
+                    items: 3,
+                },
+                1025: {
+                    items: 4,
+                },
+            },
+        });
     });
-  });
 </script>
 
 <script>
     $(function() {
-    // Owl Carousel
-    var owl = $(".client_slider");
-    owl.owlCarousel({
-      autoplay:true,
-      autoplayTimeout:4000,
-      autoplayHoverPause:true,
-      margin: 10,
-      loop: true,
-      nav: true,
-      dots: false,
-      responsive: { 0: { items: 3, }, 400: { items: 3, }, 740: { items: 4, }, 940: { items: 5, }, 1025: { items: 5, }, },
+        // Owl Carousel
+        var owl = $(".client_slider");
+        owl.owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            margin: 10,
+            loop: true,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 3,
+                },
+                400: {
+                    items: 3,
+                },
+                740: {
+                    items: 4,
+                },
+                940: {
+                    items: 5,
+                },
+                1025: {
+                    items: 5,
+                },
+            },
+        });
     });
-  });
 </script>
 <!-- owl carousel js -->
 
 <script>
     $(function() {
-    // Owl Carousel
-    var owl = $(".first_client_slider");
-    owl.owlCarousel({
-      autoplay:true,
-      autoplayTimeout:4000,
-      autoplayHoverPause:true,
-      margin: 10,
-      loop: true,
-      nav: false,
-      dots: false,
-      responsive: { 0: { items: 3, }, 400: { items: 4, }, 740: { items: 4, }, 940: { items: 4, }, 1025: { items: 4
-        , }, },
+        // Owl Carousel
+        var owl = $(".first_client_slider");
+        owl.owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            margin: 10,
+            loop: true,
+            nav: false,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 3,
+                },
+                400: {
+                    items: 4,
+                },
+                740: {
+                    items: 4,
+                },
+                940: {
+                    items: 4,
+                },
+                1025: {
+                    items: 4,
+                },
+            },
+        });
     });
-  });
 </script>
 <!-- owl carousel js -->
+
+
+<script>
+    $(function() {
+        // Owl Carousel
+        var owl = $(".related_caro");
+        owl.owlCarousel({
+            autoplay: true,
+            autoplayTimeout: 4000,
+            autoplayHoverPause: true,
+            margin: 10,
+            loop: true,
+            nav: true,
+            dots: false,
+            responsive: {
+                0: {
+                    items: 3,
+                },
+                400: {
+                    items: 3,
+                },
+                740: {
+                    items: 4,
+                },
+                940: {
+                    items: 5,
+                },
+                1025: {
+                    items: 6,
+                },
+            },
+        });
+    });
+</script>
+
+{{-- <!-- owl carousel -->
+<script src="owl/owl.carousel.min.js"></script>
+<script src="owl/owl_js.js"></script>
+<!-- owl carousel --> --}}
+
 
 <!-- owl carousel -->
 <script src="{{ asset('public/frontend/owl/owl.carousel.min.js') }}"></script>
@@ -203,23 +305,23 @@
 
 <!-- Search Bar  -->
 <script>
-    $(".search_nav").click(function () {
-    $("#search-wrap").addClass('panelactive');
-    $('#search-text').focus();
+    $(".search_nav").click(function() {
+        $("#search-wrap").addClass('panelactive');
+        $('#search-text').focus();
     });
 
-    $(".close-btn").click(function () {
+    $(".close-btn").click(function() {
         $("#search-wrap").removeClass('panelactive');
     });
 </script>
 
 <script>
-    $(".mob_search").click(function () {
-    $("#search-wrap").addClass('panelactive');
-    $('#search-text').focus();
+    $(".mob_search").click(function() {
+        $("#search-wrap").addClass('panelactive');
+        $('#search-text').focus();
     });
 
-    $(".close-btn").click(function () {
+    $(".close-btn").click(function() {
         $("#search-wrap").removeClass('panelactive');
     });
 </script>
@@ -232,11 +334,11 @@
 <!--jarallax-->
 <script type="text/javascript">
     /* init Jarallax */
-      $('.jarallax').jarallax({
-          speed: 0.5,
-          imgWidth: 1366,
-          imgHeight: 768
-      })
+    $('.jarallax').jarallax({
+        speed: 0.5,
+        imgWidth: 1366,
+        imgHeight: 768
+    })
 </script>
 <!--jarallax-->
 

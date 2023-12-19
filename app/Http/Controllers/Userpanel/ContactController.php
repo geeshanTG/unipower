@@ -37,8 +37,7 @@ class ContactController extends Controller
         $data->save();
 
         return redirect()->route('contact-us')
-        ->with('success', 'Message submitted successfully.');
+        ->with('success', 'Your enquiry has been submitted successfully.');
 
-        
-    }
+}
 }
