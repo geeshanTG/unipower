@@ -1,39 +1,30 @@
 <?php
 
+use App\Http\Controllers\Adminpanel\AboutUs\CeoMessageController;
+use App\Http\Controllers\Adminpanel\AboutUs\OurValuesController;
+use App\Http\Controllers\Adminpanel\AboutUs\VisionMissionController;
 use GuzzleHttp\Middleware;
-use App\Models\BottomBannerContent;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-
-use App\Http\Controllers\Userpanel\HomeController;
-use App\Http\Controllers\Userpanel\AboutController;
-use App\Http\Controllers\Userpanel\ContactController;
-use App\Http\Controllers\Userpanel\ServiceController;
-use App\Http\Controllers\Adminpanel\Home\FaqController;
-use App\Http\Controllers\Adminpanel\ServicesController;
 use App\Http\Controllers\Adminpanel\DashboardController;
-use App\Http\Controllers\Adminpanel\News\NewsController;
-use App\Http\Controllers\Adminpanel\AboutUs\AwardsController;
 use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
-use App\Http\Controllers\Adminpanel\Home\MainSliderController;
-use App\Http\Controllers\Adminpanel\News\TopStoriesController;
+use App\Http\Controllers\Adminpanel\AboutUs\AwardsController;
 use App\Http\Controllers\Adminpanel\AboutUs\OurStoryController;
-use App\Http\Controllers\Adminpanel\Home\OurServicesController;
-use App\Http\Controllers\Adminpanel\AboutUs\OurValuesController;
+use App\Http\Controllers\Adminpanel\ServicesController;
 use App\Http\Controllers\Adminpanel\ContactUs\EnquiryController;
-use App\Http\Controllers\Adminpanel\Home\BottomBannerController;
-use App\Http\Controllers\Adminpanel\Home\MiddleBannerController;
-use App\Http\Controllers\Adminpanel\News\FeaturedNewsController;
 use App\Http\Controllers\Adminpanel\Products\CategoryController;
-use App\Http\Controllers\Adminpanel\Products\ProductsController;
-use App\Http\Controllers\Adminpanel\AboutUs\CeoMessageController;
 use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
 use App\Http\Controllers\Adminpanel\Home\BottomBannerController;
 use App\Http\Controllers\Adminpanel\Home\FaqController;
+use App\Http\Controllers\Adminpanel\Home\HomeAboutController;
 use App\Http\Controllers\Adminpanel\Home\IndustryInsightsController;
-use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
+use App\Http\Controllers\Adminpanel\News\FeaturedNewsController;
+use App\Http\Controllers\Adminpanel\Home\MainSliderController;
+use App\Http\Controllers\Adminpanel\Home\MiddleBannerController;
+use App\Http\Controllers\Adminpanel\Home\OurCoreProductsController;
+use App\Http\Controllers\Adminpanel\Home\OurServicesController;
 use App\Http\Controllers\Adminpanel\Home\OurTrustedPartnersController;
 use App\Http\Controllers\Adminpanel\News\NewsController;
 use App\Http\Controllers\Adminpanel\News\TopStoriesController;
@@ -43,7 +34,7 @@ use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
 use App\Http\Controllers\Userpanel\AboutController;
 use App\Http\Controllers\Userpanel\ContactController;
 use App\Http\Controllers\Userpanel\HomeController;
-use App\Models\BottomBannerContent;
+use App\Http\Controllers\Userpanel\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,7 +64,6 @@ Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWe
 Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
-
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
