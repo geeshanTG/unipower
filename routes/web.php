@@ -18,6 +18,7 @@ use App\Http\Controllers\Adminpanel\Products\CategoryController;
 use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
 use App\Http\Controllers\Adminpanel\Home\BottomBannerController;
 use App\Http\Controllers\Adminpanel\Home\FaqController;
+use App\Http\Controllers\Adminpanel\Home\HomeAboutController;
 use App\Http\Controllers\Adminpanel\Home\IndustryInsightsController;
 use App\Http\Controllers\Adminpanel\News\FeaturedNewsController;
 use App\Http\Controllers\Adminpanel\Home\MainSliderController;
@@ -83,6 +84,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('save-main-slider', [MainSliderController::class, 'update'])->name('save-main-slider');
     Route::get('changestatus-main-slider/{id}', [MainSliderController::class, 'activation'])->name('changestatus-main-slider');
     Route::get('blockmainslider/{id}', [MainSliderController::class, 'block'])->name('blockmainslider');
+
+    Route::get('about-edit', [HomeAboutController::class, 'index'])->name('about-edit');
+    Route::put('save-about', [HomeAboutController::class, 'update'])->name('save-about');
 
     Route::get('middle-banner-edit', [MiddleBannerController::class, 'index'])->name('middle-banner-edit');
     Route::put('save-middle-banner-content', [MiddleBannerController::class, 'update'])->name('save-middle-banner-content');
