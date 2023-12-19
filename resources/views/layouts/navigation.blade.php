@@ -169,7 +169,7 @@
 
             <ul>
                 <li class="{{ request()->is('dashboard') ? 'active' : '' }}">
-                    <a href="{{ route('dashboard') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">@if($lng == "EN"){{ "Dashboard" }}@elseif($lng == "SI"){{ "මුහුණත" }}@else{{ "முகப்பு" }}@endif</span></a>
+                    <a href="{{ route('dashboard') }}" title="Dashboard"><i class="fa fa-lg fa-fw fa-home"></i> <span class="menu-item-parent">{{ "Dashboard" }}</span></a>
                     <!--<ul style="display: block;">
                         <li class="active">
                             <a href="{{ route('profile') }}" title="Dashboard"><span class="menu-item-parent">{{ __('My Profile') }}</span></a>

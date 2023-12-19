@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
                 view()->share('menuItems', $menuItems);
 
                 // $subMenuItems = DynamicMenu::join('privilage','privilage.iFormID','=','dynamic_menu.id')->where('privilage.iUserTypeID',1)->where('dynamic_menu.show_menu',1)->where('dynamic_menu.parent_id','!=','0')->get();
-                $subMenuItems = DynamicMenu::where('dynamic_menu.show_menu', 1)->where('dynamic_menu.parent_id', '!=', '0')->get();
+                $subMenuItems = DynamicMenu::where('dynamic_menu.show_menu', 1)->where('dynamic_menu.parent_id', '!=', '0')->orderBy('fOrder', 'ASC')->get();
                 view()->share('subMenuItems', $subMenuItems);
 
                 $userID = Auth::id();
