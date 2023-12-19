@@ -8,8 +8,6 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Models\BottomBannerContent;
-
 use App\Http\Controllers\Adminpanel\DashboardController;
 use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
 use App\Http\Controllers\Adminpanel\AboutUs\AwardsController;
@@ -37,7 +35,6 @@ use App\Http\Controllers\Userpanel\AboutController;
 use App\Http\Controllers\Userpanel\ContactController;
 use App\Http\Controllers\Userpanel\HomeController;
 use App\Http\Controllers\Userpanel\ProductController;
-use App\Http\Controllers\Userpanel\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -67,11 +64,6 @@ Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWe
 Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
-
-Route::get('services', [ServiceController::class, 'index'])->name('services');
-Route::get('service/{name}/{id}', [ServiceController::class, 'service'])->name('service');
-
-Route::get('services', [ServiceController::class, 'index'])->name('services');
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 

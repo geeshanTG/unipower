@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-lg-10 col-10">
                     <h5 class="mb-0">Phone</h5>
-                    <p class="mb-0">{{ $contactInfo->phone_number_1 }} | {{ $contactInfo->phone_number_2 }}</p>
+                    <p class="mb-0">{{ $contactInfo->phone_number_1 }}| {{ $contactInfo->phone_number_2 }}</p>
                 </div>
             </div>
             <br>

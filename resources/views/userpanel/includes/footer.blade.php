@@ -6,7 +6,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
-                        <img src="{{asset("/storage/app/").'/'.$contactInfo->logo}}" class="m-auto w-100" alt="">
+                        <img src="storage/app/{{ $contactInfo->logo }}" class="m-auto w-100" alt="">
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
@@ -143,17 +143,6 @@
 
 <!-- Timeline  -->
 <script src="{{ asset('public/frontend/timeline/script.js') }}"></script>
- <!-- Timeline  -->
-
-
-
- <!-- Image Gallery -->
- <script src="{{ asset('public/frontend/gallery/baguetteBox.min.js') }}"></script>
-
- <script>
-   baguetteBox.run('.tz-gallery');
- </script>
- <!-- Image Gallery  -->
 <!-- Timeline  -->
 
 <!-- owl carousel js -->

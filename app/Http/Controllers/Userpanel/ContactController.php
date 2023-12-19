@@ -18,8 +18,6 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-
-        dd('hello');
         
         $this->validate($request, [
             'name' => 'required',
@@ -39,7 +37,7 @@ class ContactController extends Controller
         $data->save();
 
         return redirect()->route('contact-us')
-        ->with('success', 'Your enquiry has been submitted successfully.');
+        ->with('success', 'Message submitted successfully.');
 
         
     }
