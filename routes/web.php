@@ -31,6 +31,7 @@ use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
 use App\Http\Controllers\Adminpanel\Products\ProductsController;
 use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
 use App\Http\Controllers\Userpanel\AboutController;
+use App\Http\Controllers\Userpanel\ContactController;
 use App\Http\Controllers\Userpanel\HomeController;
 use App\Models\BottomBannerContent;
 
@@ -57,6 +58,9 @@ Route::get('/admin', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('about-us', [AboutController::class, 'index']);
+Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
+Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
+
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
