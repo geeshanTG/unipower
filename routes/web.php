@@ -30,12 +30,20 @@ use App\Http\Controllers\Adminpanel\Products\CategoryController;
 use App\Http\Controllers\Adminpanel\Products\ProductsController;
 use App\Http\Controllers\Adminpanel\AboutUs\CeoMessageController;
 use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
-use App\Http\Controllers\Adminpanel\Home\OurCoreProductsController;
-use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
-use App\Http\Controllers\Adminpanel\AboutUs\VisionMissionController;
+use App\Http\Controllers\Adminpanel\Home\BottomBannerController;
+use App\Http\Controllers\Adminpanel\Home\FaqController;
 use App\Http\Controllers\Adminpanel\Home\IndustryInsightsController;
 use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
 use App\Http\Controllers\Adminpanel\Home\OurTrustedPartnersController;
+use App\Http\Controllers\Adminpanel\News\NewsController;
+use App\Http\Controllers\Adminpanel\News\TopStoriesController;
+use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
+use App\Http\Controllers\Adminpanel\Products\ProductsController;
+use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
+use App\Http\Controllers\Userpanel\AboutController;
+use App\Http\Controllers\Userpanel\ContactController;
+use App\Http\Controllers\Userpanel\HomeController;
+use App\Models\BottomBannerContent;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,16 +68,11 @@ Route::get('/admin', function () {
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('about-us', [AboutController::class, 'index']);
+Route::get('products', [ProductController::class, 'index']);
+Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWeb'])->name('getSubCategoriesWeb');
+Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
-Route::get('services', [ServiceController::class, 'index'])->name('services');
-Route::get('service/{name}/{id}', [ServiceController::class, 'service'])->name('service');
-// Route::get('service/{id}/{name}', function ($id, $name) {
-//     // Use the $id and $name variables here
-//     return "Service ID: $id, Service Name: $name";
-// })->name('service');
-
-
 
 
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
@@ -91,6 +94,9 @@ Route::group(['middleware' => 'auth'], function () {
     Route::put('save-main-slider', [MainSliderController::class, 'update'])->name('save-main-slider');
     Route::get('changestatus-main-slider/{id}', [MainSliderController::class, 'activation'])->name('changestatus-main-slider');
     Route::get('blockmainslider/{id}', [MainSliderController::class, 'block'])->name('blockmainslider');
+
+    Route::get('about-edit', [HomeAboutController::class, 'index'])->name('about-edit');
+    Route::put('save-about', [HomeAboutController::class, 'update'])->name('save-about');
 
     Route::get('middle-banner-edit', [MiddleBannerController::class, 'index'])->name('middle-banner-edit');
     Route::put('save-middle-banner-content', [MiddleBannerController::class, 'update'])->name('save-middle-banner-content');

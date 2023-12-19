@@ -34,14 +34,25 @@ class ProductsController extends Controller
             'main_category_id' => 'required',
             'sub_category_id' => 'required',
             'heading' => 'required',
+            'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             'order' => 'required',
             'status' => 'required',
         ]);
+
+        if (!$request->file('image') == "") {
+
+            $image = $request->file('image')->getClientOriginalName();
+
+            $pathimage = $request->file('image')->store('public/productimages');
+        } else {
+            $pathimage = "";
+        }
 
         $product = new Product();
         $product->main_category_id = $request->main_category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->heading = $request->heading;
+        $product->image = $pathimage;
         $product->order = $request->order;
         $product->status = $request->status;
         $product->save();
@@ -108,10 +119,25 @@ class ProductsController extends Controller
             'status' => 'required',
         ]);
 
+        if ($request->hasFile('image')) {
+
+            $request->validate([
+                'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            ]);
+
+            $Image = $request->file('image')->getClientOriginalName();
+
+            $pathimage = $request->file('image')->store('public/productimages');
+
+        }
+
         $data =  Product::find($request->id);
         $data->main_category_id = $request->main_category_id;
         $data->sub_category_id = $request->sub_category_id;
         $data->heading = $request->heading;
+        if(!empty($pathimage)) {
+            $data->image = $pathimage;
+        }
         $data->order = $request->order;
         $data->status = $request->status;
         $data->save();

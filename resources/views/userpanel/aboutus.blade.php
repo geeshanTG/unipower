@@ -116,9 +116,9 @@
                             $c = 0;
                         @endphp
                         @foreach ($ourStories as $ourStory)
-                        <li><a href="#0" data-date="16/01/2014" class="h--timeline-date @if($c == 0) {{ 'h--timeline-date--selected' }}@endif">{{ $ourStory->year }}</a></li>
+                        <li><a href="#0" data-date="{{ \Carbon\Carbon::parse($ourStory->year)->format('d/m/Y') }}" class="h--timeline-date @if($c == 0) {{ 'h--timeline-date--selected' }} @endif">{{ \Carbon\Carbon::parse($ourStory->year)->format('Y') }}</a></li>
                         @php
-                        $c++;
+                            $c++;
                         @endphp
                         @endforeach
                     </ol>
@@ -140,198 +140,31 @@
 
         <div class="h--timeline-events">
             <ol>
-                <li class="h--timeline-event h--timeline-event--selected text-component">
+                @php
+                    $c = 0;
+                @endphp
+                @foreach ($ourStories as $ourStory)
+                <li class="h--timeline-event text-component @if($c ==0) {{ 'h--timeline-event--selected' }} @endif">
                     <div class="row">
                         <div class="offset-lg-1 col-lg-10">
                             <div class="story_card">
                                 <div class="row align-items-center ">
                                     <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
+                                        <h3 class="text-dark mb-3">{{ $ourStory->heading }}</h3>
+                                        <p>{{ $ourStory->description }}</p>
                                     </div>
                                     <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
+                                        <img src="storage/app/{{ $ourStory->image }}" alt="" class="w-100 m-auto">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
-                <li class="h--timeline-event text-component">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">Lorem ipsum heading</h3>
-                                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                            Lorem Ipsum has been the industry's standard dummy text ever since the
-                                            1500s, when an unknown printer took a galley of type and scrambled it to
-                                            make a type specimen book. Lorem Ipsum is simply dummy text of the printing
-                                            and typesetting industry. Lorem Ipsum has been the industry's
-                                            standard dummy text ever since the 1500s, when an unknown printer took a
-                                            galley of type and scrambled it to make a type specimen book.</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="images/story_img.jpg" alt="" class="w-100 m-auto">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </li>
-
+                @php
+                    $c++;
+                @endphp
+                @endforeach
             </ol>
         </div> <!-- .h--timeline-events -->
     </section>
@@ -345,27 +178,28 @@
 <div class="container">
     <div class="row align-items-center" data-aos="fade-up">
         <div class="col-lg-6 col-md-6">
-            <h1>Awards</h1>
+            <h1>{{ $awards->heading }}</h1>
             <br>
-            <p>Unipower wins Gold award for "Best Agriculture Input Provider" and Silver award for "Best Emerging Agri
-                Enterprise" at the National Agribusiness Awards 2015 held at BMICH on 9th August 2015.</p>
+            <p>{{ $awards->description }}</p>
             <div class="row mx-auto">
                 <div class="col-lg-6 col-md-6 col-6 text-center">
                     <div class="p-3">
-                        <img src="images/award_2.png" alt="" class="m-auto mb-2 w-100">
-                        <p class="fw-bold">Best Agri Input Provider Gold Award - 2015</p>
+                        <img src="storage/app/{{ $awards->award_image_1 }}" alt="" class="m-auto mb-2 w-100">
+                        <p class="fw-bold">{{ $awards->award_name_1 }}</p>
                     </div>
                 </div>
+                @if(!empty($awards->award_image_2))
                 <div class="col-lg-6 col-md-6 col-6 text-center">
                     <div class="p-3">
-                        <img src="images/award_2.png" alt="" class="m-auto mb-2 w-100">
-                        <p class="fw-bold">Best Agri Input Provider Gold Award - 2015</p>
+                        <img src="storage/app/{{ $awards->award_image_2 }}" alt="" class="m-auto mb-2 w-100">
+                        <p class="fw-bold">{{ $awards->award_name_2 }}</p>
                     </div>
                 </div>
+                @endif
             </div>
         </div>
         <div class="col-lg-6 col-md-6 award_winner text-lg-end">
-            <img src="images/award_winner.png" alt="" class="m-auto">
+            <img src="storage/app/{{ $awards->image }}" alt="" class="m-auto">
         </div>
     </div>
 
