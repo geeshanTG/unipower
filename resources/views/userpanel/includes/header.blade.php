@@ -21,7 +21,8 @@
     <meta name="twitter:title" content="" />
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <!-- Custom CSS -->
     <link href="{{ asset('public/frontend/css/unipower.css') }}" rel="stylesheet">
@@ -39,7 +40,8 @@
     <!-- Add icon library -->
 
     <!--loading effect-->
-    <link rel="stylesheet" href="{{ asset('public/frontend/css/loading_styles.css') }}" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ asset('public/frontend/css/loading_styles.css') }}" type="text/css"
+        media="screen" />
     <link rel="stylesheet" href="{{ asset('public/frontend/css/aos.css') }}" type="text/css" media="screen" />
     <!--loading effect-->
 
@@ -49,7 +51,8 @@
     <!-- owl carousel -->
 
     <!--jarallax js & css-->
-    <link href="{{ asset('public/frontend/jarallax/jarallax_css.css') }}" rel="stylesheet" type="text/css" media="screen">
+    <link href="{{ asset('public/frontend/jarallax/jarallax_css.css') }}" rel="stylesheet" type="text/css"
+        media="screen">
     <!--jarallax js & css-->
 
     <!-- animate -->
@@ -59,6 +62,9 @@
     <!-- Timeline -->
     <link rel='stylesheet' href='{{ asset('public/frontend/timeline/style.css') }}'>
     <!-- Timeline -->
+    <!-- Image Gallery  -->
+    <link rel='stylesheet' href='{{ asset('public/frontend/gallery/baguetteBox.min.css') }}'>
+    <!-- Image Gallery  -->
 
 
     <!--scroll bar style-->
@@ -98,11 +104,14 @@
                 </a>
                 <div class="position-relative">
                     <div class="d-lg-none d-block">
-                      <a class="nav-link mob_search" href="#" >
-                        <div><i class="fa fa-search" aria-hidden="true"></i></div></a>
+                        <a class="nav-link mob_search" href="#">
+                            <div><i class="fa fa-search" aria-hidden="true"></i></div>
+                        </a>
                     </div>
-                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                      <span class="navbar-toggler-icon"></span>
+                    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+                        aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
                     </button>
                 </div>
                 <div class="collapse navbar-collapse flex-grow-1 text-right navbar_main" id="navbarNav">
