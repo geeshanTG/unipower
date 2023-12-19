@@ -17,6 +17,7 @@ class Product extends Model
         'main_category_id',
         'sub_category_id',
         'heading',
+        'image',
         'order',
         'status',
         'is_delete',

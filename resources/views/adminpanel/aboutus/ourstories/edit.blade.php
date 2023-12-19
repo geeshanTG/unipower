@@ -71,8 +71,9 @@
                                     </section>
                                     <section class="col col-md-4">
                                         <label class="label">{{ __('Year') }}<span style=" color: red;">*</span> </label>
-                                        <label class="input">
-                                            <input type="text" id="year" name="year" required value="{{ $data->year }}">
+                                        <label class="input"><i class="icon-append fa fa-calendar"></i>
+                                            {{-- <input type="text" id="year" name="year" required value="{{ $data->year }}"> --}}
+                                            <input type="text" id="year" name="year" value="{{ $data->year }}" class="datepicker" data-date-format='yyyy-mm-dd' placeholder="YYYY-MM-DD" data-parsley-type="date" required>
                                         </label>
                                     </section>
                                     <section class="col col-md-4">
@@ -133,6 +134,7 @@
     </div>
     <x-slot name="script">
         <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.8.0/js/bootstrap-datepicker.min.js"></script>
 
         <script>
             $(function(){
