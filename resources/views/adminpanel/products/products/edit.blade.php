@@ -86,6 +86,17 @@
                                             <input type="text" id="heading" name="heading" required value="{{ $data->heading }}">
                                         </label>
                                     </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-2">
+                                        <label class="label">{{ __('Image') }} (600 x 600) <span style=" color: red;">*</span></label>
+                                        <label class="input">
+                                            <input type="file" class="form-control form-input" id="image" name="image" style="overflow: hidden;">
+                                        </label>
+                                    </section>
+                                    <section class="col col-2">
+                                        <img id="preview-image-before-upload" src="../storage/app/{{ $data->image }}" alt="preview image" style="max-height: 250px;">
+                                    </section>
                                     <section class="col col-md-4">
                                         <label class="label">{{ __('Order') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
@@ -163,6 +174,25 @@
                     $("#sub_category_id").empty();
                 }
             });
+        </script>
+
+        <script type="text/javascript">
+            $(document).ready(function(e) {
+
+                $('#image').change(function() {
+
+                    let reader = new FileReader();
+
+                    reader.onload = (e) => {
+
+                        $('#preview-image-before-upload').attr('src', e.target.result);
+                    }
+
+                    reader.readAsDataURL(this.files[0]);
+
+                });
+            });
+
         </script>
 
     </x-slot>

@@ -56,6 +56,10 @@
     <link rel='stylesheet' href='{{ asset('public/frontend/css/animate.min.css') }}'>
     <!-- animate -->
 
+    <!-- Timeline -->
+    <link rel='stylesheet' href='{{ asset('public/frontend/timeline/style.css') }}'>
+    <!-- Timeline -->
+
 
     <!--scroll bar style-->
     <style>
