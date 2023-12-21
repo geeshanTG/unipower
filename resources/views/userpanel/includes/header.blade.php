@@ -62,6 +62,9 @@
     <!-- Timeline -->
     <link rel='stylesheet' href='{{ asset('public/frontend/timeline/style.css') }}'>
     <!-- Timeline -->
+    <!-- Image Gallery  -->
+    <link rel='stylesheet' href='{{ asset('public/frontend/gallery/baguetteBox.min.css') }}'>
+    <!-- Image Gallery  -->
 
 
     <!--scroll bar style-->

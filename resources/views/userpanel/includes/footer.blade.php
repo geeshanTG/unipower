@@ -142,6 +142,14 @@
 </script>
 <!--loading effects-->
 
+<!-- Image Gallery -->
+<script src="{{ asset('public/frontend/gallery/baguetteBox.min.js') }}"></script>
+
+<script>
+  baguetteBox.run('.tz-gallery');
+</script>
+<!-- Image Gallery  -->
+
 <!-- owl carousel js -->
 <script>
     $(function() {
