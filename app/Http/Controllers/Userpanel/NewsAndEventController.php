@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Userpanel;
 use App\Models\News;
 
+use App\Models\Product;
+use App\Models\Service;
 use App\Models\TopStory;
 use App\Models\ContactInfo;
 use App\Models\FeaturedNews;
@@ -31,7 +33,7 @@ class NewsAndEventController extends Controller
             ->where('is_delete', 0)
             ->whereNotIn('id', [$topStoryId->top_story_news_1, $topStoryId->top_story_news_2, $featuredNewsId->featured_news_1, $featuredNewsId->featured_news_2, $featuredNewsId->featured_news_3])
             ->orderBy('news_date', 'ASC')
-            ->paginate(3);
+            ->paginate(1);
 
         return view('userpanel.news', compact('contactInfo', 'pageTitle', 'topStory', 'featuredNews', 'news'));
     }
@@ -46,10 +48,10 @@ class NewsAndEventController extends Controller
             ->where('is_delete', 0)
             ->first();
         $Allnews = News::where('status', 'Y')
-            ->where('is_delete', 0)->whereNotIn('id', [$news->id])
+            ->where('is_delete', 0)
+            ->whereNotIn('id', [$news->id])
             ->orderBy('news_date', 'ASC')
             ->paginate(4);
-        
 
         $images = [];
         if ($news->image_1) {
@@ -65,6 +67,7 @@ class NewsAndEventController extends Controller
             $images[3] = $news->image_4;
         }
 
-        return view('userpanel.newsdetail', compact('contactInfo', 'pageTitle', 'news', 'images','Allnews'));
+        return view('userpanel.newsdetail', compact('contactInfo', 'pageTitle', 'news', 'images', 'Allnews'));
     }
+     
 }

@@ -6,7 +6,8 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
-                        <img src="{{ asset('public/frontend/images/logo.png') }}" class="m-auto w-100" alt="">
+                        <img src="{{ asset('/storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100"
+                            alt="">
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
@@ -146,7 +147,7 @@
 <script src="{{ asset('public/frontend/gallery/baguetteBox.min.js') }}"></script>
 
 <script>
-  baguetteBox.run('.tz-gallery');
+    baguetteBox.run('.tz-gallery');
 </script>
 <!-- Image Gallery  -->
 
@@ -343,6 +344,35 @@
     scrollTop.init();
 </script>
 <!-- scroll top -->
+
+<!-- search bar -->
+<script type="module">
+    $('#search-text').on('keyup', function(event) {
+
+        if (event.key === 'Enter') {
+            $("#form-submit").submit(function(event) {
+                event.preventDefault();
+            });
+        }
+    });
+    if (window.history.replaceState) {
+    window.history.replaceState(null, null, window.location.href);
+
+    }
+    
+   
+   
+    // $(document).ready(function() {
+        // prevent form submit on refresh or resubmit with back button
+        // if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+    // });
+
+
+
+</script>
+
+<!-- search bar -->
+
 
 </body>
 
