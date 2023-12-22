@@ -14,10 +14,18 @@ class MetaTag extends Model
 
 
     protected $fillable = [
-        'image',
-        'order',
-        'status',
-        'is_delete'
+        'page_name',
+        'page_title',
+        'description',
+        'keywords',
+        'og_title',
+        'og_type',
+        'og_url',
+        'og_image',
+        'og_sitename',
+        'og_description',
+        'is_delete',
+        'status'    
     ];
 
 }

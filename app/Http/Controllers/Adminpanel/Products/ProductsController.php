@@ -34,7 +34,10 @@ class ProductsController extends Controller
             'main_category_id' => 'required',
             'sub_category_id' => 'required',
             'heading' => 'required',
+            'sub_heading' => 'required',
+            'description' => 'required',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'brochure' => 'required|mimes:pdf,docx',
             'order' => 'required',
             'status' => 'required',
         ]);
@@ -48,11 +51,23 @@ class ProductsController extends Controller
             $pathimage = "";
         }
 
+        if (!$request->file('brochure') == "") {
+
+            $brochure = $request->file('brochure')->getClientOriginalName();
+
+            $pathbrochure = $request->file('brochure')->store('public/productimages');
+        } else {
+            $pathbrochure = "";
+        }
+
         $product = new Product();
         $product->main_category_id = $request->main_category_id;
         $product->sub_category_id = $request->sub_category_id;
         $product->heading = $request->heading;
+        $product->sub_heading = $request->sub_heading;
+        $product->description = $request->description;
         $product->image = $pathimage;
+        $product->brochure = $pathbrochure;
         $product->order = $request->order;
         $product->status = $request->status;
         $product->save();
@@ -115,6 +130,8 @@ class ProductsController extends Controller
             'main_category_id' => 'required',
             'sub_category_id' => 'required',
             'heading' => 'required',
+            'sub_heading' => 'required',
+            'description' => 'required',
             'order' => 'required',
             'status' => 'required',
         ]);
@@ -131,12 +148,29 @@ class ProductsController extends Controller
 
         }
 
+        if ($request->hasFile('brochure')) {
+
+            $request->validate([
+                'brochure' => 'required|mimes:pdf,docx',
+            ]);
+
+            $brochure = $request->file('brochure')->getClientOriginalName();
+
+            $pathbrochure = $request->file('brochure')->store('public/productimages');
+
+        }
+
         $data =  Product::find($request->id);
         $data->main_category_id = $request->main_category_id;
         $data->sub_category_id = $request->sub_category_id;
         $data->heading = $request->heading;
+        $data->sub_heading = $request->sub_heading;
+        $data->description = $request->description;
         if(!empty($pathimage)) {
             $data->image = $pathimage;
+        }
+        if(!empty($pathbrochure)) {
+            $data->brochure = $pathbrochure;
         }
         $data->order = $request->order;
         $data->status = $request->status;

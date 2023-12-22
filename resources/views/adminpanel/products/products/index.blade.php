@@ -1,6 +1,7 @@
 @section('title', 'Products')
 <x-app-layout>
     <x-slot name="header">
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     </x-slot>
 
     <div id="main" role="main">
@@ -87,14 +88,11 @@
                                     </section>
                                 </div>
                                 <div class="row">
-                                    <section class="col col-md-2">
-                                        <label class="label">{{ __('Image') }} (600 x 600) <span style=" color: red;">*</span></label>
+                                    <section class="col col-md-4">
+                                        <label class="label">{{ __('Sub Heading') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <input type="file" class="form-control form-input" id="image" name="image" style="overflow: hidden;" required>
+                                            <input type="text" id="sub_heading" name="sub_heading" required value="">
                                         </label>
-                                    </section>
-                                    <section class="col col-md-2">
-                                        <img id="preview-image-before-upload" src="{{ asset('public/back/img/whitebg.jpg'); }}" alt="preview image" style="max-height: 250px;">
                                     </section>
                                     <section class="col col-md-4">
                                         <label class="label">{{ __('Order') }}<span style=" color: red;">*</span> </label>
@@ -110,6 +108,34 @@
                                                 <option value="N">{{ __('Inactive') }}</option>
                                             </select>
                                             <i></i>
+                                        </label>
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-md-2">
+                                        <label class="label">{{ __('Image') }} (600 x 600) <span style=" color: red;">*</span></label>
+                                        <label class="input">
+                                            <input type="file" class="form-control form-input" id="image" name="image" style="overflow: hidden;" required>
+                                        </label>
+                                    </section>
+                                    <section class="col col-md-2">
+                                        <img id="preview-image-before-upload" src="{{ asset('public/back/img/whitebg.jpg'); }}" alt="preview image" style="max-height: 250px;">
+                                    </section>
+                                    <section class="col col-md-2">
+                                        <label class="label">{{ __('Brochure') }} <span style=" color: red;">*</span></label>
+                                        <label class="input">
+                                            <input type="file" class="form-control form-input" id="brochure" name="brochure" style="overflow: hidden;" required>
+                                        </label>
+                                    </section>
+                                    <section class="col col-md-2">
+                                        <img id="preview-image-before-upload" src="{{ asset('public/back/img/whitebg.jpg'); }}" alt="preview image" style="max-height: 250px;">
+                                    </section>
+                                </div>
+                                <div class="row">
+                                    <section class="col col-md-11"  style="width: 100%;">
+                                        <label class="label">{{ __('Description') }}<span style=" color: red;">*</span> </label>
+                                        <label class="input">
+                                            <textarea class="form-control summernote" id="description" name="description" rows="2" required></textarea>
                                         </label>
                                     </section>
                                 </div>
@@ -132,10 +158,33 @@
         </div>
     </div>
     <x-slot name="script">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
         <script>
             $(function(){
                 //window.ParsleyValidator.setLocale('ta');
-                $('#sub-categories-form').parsley();
+                $('#products-form').parsley();
+            });
+
+            $(document).ready(function() {
+
+                $('.summernote').summernote({
+                    height: 200,
+                    toolbar: [
+                        ['style', ['style']],
+                        ['font', ['bold', 'italic', 'underline', 'clear', 'strikethrough']],
+                        ['fontname', ['fontname']],
+                        ['fontsize', ['fontsize']],
+                        ['color', ['color']],
+                        ['para', ['ul', 'ol', 'para']], // List options
+                        // ['para', ['paragraph']],
+                        ['height', ['height']],
+                        // ['table', ['table']],
+                        // ['insert', ['link', 'picture', 'hr']],
+                        // ['view', ['fullscreen', 'codeview', 'help']]
+                        ['view', ['codeview']]
+
+                    ],
+                });
             });
         </script>
 

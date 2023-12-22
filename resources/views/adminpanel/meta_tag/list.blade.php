@@ -1,4 +1,4 @@
-@section('title', 'Products List')
+@section('title', 'Meta Tags')
 
 <x-app-layout>
     <x-slot name="header">
@@ -63,14 +63,24 @@
             <div class="row">
             <div class="col-lg-12">
                     <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
-                        <a href="{{ route('products-create') }}">
-                            <button class="btn cms_top_btn top_btn_height ">{{ __('Add New') }}</button>
-                        </a>
-                        <a href="{{ route('products-list') }}">
+
+                        <a href="{{ route('meta-tag-list') }}">
                             <button class="btn cms_top_btn top_btn_height cms_top_btn_active">{{ __('View All') }}</button>
                         </a>
                     </div>
                 </div>
+                <!-- <div class="col-lg-8">
+                    <ul id="sparks" class="">
+                        <ul id="sparks" class="">
+                            <li class="sparks-info sparks-info_active" style="border: 1px solid #c5c5c5; padding-right: 0px; padding: 22px 15px; min-width: auto;">
+                                <a href="{{ route('meta-tag-list') }}">
+                                    <h5>{{ __('meta_tag.view_all') }}</h5>
+                                </a>
+
+                            </li>
+                        </ul>
+                    </ul>
+                </div> -->
             </div>
             @if ($message = Session::get('success'))
             <div class="alert alert-success">
@@ -90,7 +100,7 @@
                         <div class="jarviswidget jarviswidget-color-darken" id="user_types" data-widget-editbutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                <h2>{{ __('Products List') }}</h2>
+                                <h2>{{ __('Meta Tag List') }}</h2>
                             </header>
                             <!-- widget div-->
                             <div>
@@ -101,17 +111,14 @@
                                 <!-- end widget edit box -->
                                 <!-- widget content -->
                                 <div class="widget-body no-padding table-responsive">
-                                    <table class="table table-bordered data-table" width="100%" id="products-table">
+                                    <table class="table table-bordered data-table" width="100%" id="meta-tag-table">
                                         <thead>
                                             <tr>
-                                                <th style="width: 8%;">{{ __('No') }}</th>
-                                                <th style="width: 20%;">{{ __('Main Catgeory') }}</th>
-                                                <th style="width: 20%;">{{ __('Sub Category') }}</th>
-                                                <th style="width: 20%;">{{ __('Product') }}</th>
-                                                <th style="width: 8%;">{{ __('Order') }}</th>
-                                                <th style="width: 8%;">{{ __('Edit') }}</th>
-                                                <th style="width: 8%;">{{ __('Status') }}</th>
-                                                <th style="width: 8%;">{{ __('Delete') }}</th>
+                                                <th width="100px">{{ __('No') }}</th>
+                                                <th>{{ __('Page Name') }}</th>
+                                                <th width="100px">{{ __('Edit') }}</th>
+                                                <!-- <th width="100px">{{ __('Status') }}</th> -->
+                                                <!-- <th width="100px">{{ __('Delete') }}</th> -->
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -147,27 +154,15 @@
                 var table = $('.data-table').DataTable({
                     processing: true,
                     serverSide: true,
-                    ajax: "{{ route('products-list') }}",
-                    order: [ 4, 'asc' ],
+                    ajax: "{{ route('meta-tag-list') }}",
+                    order: [ 1, 'asc' ],
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'id'
                         },
                         {
-                            data: 'main_cat_heading',
-                            name: 'main_cat_heading'
-                        },
-                        {
-                            data: 'sub_cat_heading',
-                            name: 'sub_cat_heading'
-                        },
-                        {
-                            data: 'heading',
-                            name: 'heading'
-                        },
-                        {
-                            data: 'order',
-                            name: 'order'
+                            data: 'page_name',
+                            name: 'page_name'
                         },
                         {
                             data: 'edit',
@@ -175,38 +170,38 @@
                             orderable: false,
                             searchable: false
                         },
-                        {
-                            data: 'activation',
-                            name: 'activation',
-                            orderable: false,
-                            searchable: false
-                        },
-                        {
-                            data: 'blockproducts',
-                            name: 'blockproducts',
-                            orderable: false,
-                            searchable: false
-                        },
+                        // {
+                        //     data: 'activation',
+                        //     name: 'activation',
+                        //     orderable: false,
+                        //     searchable: false
+                        // },
+                        // {
+                        //     data: 'blockprovince',
+                        //     name: 'blockprovince',
+                        //     orderable: false,
+                        //     searchable: false
+                        // },
                     ]
                 });
 
             });
 
-            $('#products-table').on('click', '.btn-delete', function(e) {
-                event.preventDefault();
-                const url = $(this).attr('href');
-                var id = $(this).val();
-                swal({
-                    title: 'Are you sure?',
-                    text: 'This record will be permanantly deleted!',
-                    icon: 'warning',
-                    buttons: ["Cancel", "Yes"],
-                }).then(function(value) {
-                    if (value == true) {
-                        window.location.replace("blockproducts/" + id);
-                    }
-                });
-            });
+            // $('#meta-tag-table').on('click', '.btn-delete', function(e) {
+            //     event.preventDefault();
+            //     const url = $(this).attr('href');
+            //     var id = $(this).val();
+            //     swal({
+            //         title: 'Are you sure?',
+            //         text: 'This record will be permanantly deleted!',
+            //         icon: 'warning',
+            //         buttons: ["Cancel", "Yes"],
+            //     }).then(function(value) {
+            //         if (value == true) {
+            //             window.location.replace("blockprovince/" + id);
+            //         }
+            //     });
+            // });
         </script>
     </x-slot>
 </x-app-layout>

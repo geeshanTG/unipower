@@ -46,8 +46,8 @@ class ServiceController extends Controller
         if ($service->image_5) {
             $images[4] = $service->image_5;
         }
-        if ($service->image_5) {
-            $images[5] = $service->image_5;
+        if ($service->image_6) {
+            $images[5] = $service->image_6;
         }
         
       

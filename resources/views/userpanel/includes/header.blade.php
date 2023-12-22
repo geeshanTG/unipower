@@ -7,18 +7,60 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
-    <meta name="description" content="" />
+    <!-- Meta Tags -->
+    @php
+            if (HeaderHelper::activateMenu('HomeController') == 'active') {
+                $meta = HeaderHelper::getMeta('Home');
+            } elseif (HeaderHelper::activateMenu('ContactController') == 'active') {
+                $meta = HeaderHelper::getMeta('Contact Us');
+            } elseif (HeaderHelper::activateMenu('AboutController') == 'active') {
+                $meta = HeaderHelper::getMeta('About Us');
+            } elseif (HeaderHelper::activateMenu('NewsAndEventController') == 'active') {
+                $meta = HeaderHelper::getMeta('News And Event');
+            } elseif (HeaderHelper::activateMenu('ServiceController') == 'active') {
+                $meta = HeaderHelper::getMeta('Services');
+            }else {
+                $meta = HeaderHelper::getMeta('Home');
+            }
+            if (HeaderHelper::activateMenu('ProductController') == 'active') {
+                if (Request::segment(1)) {
+                    $meta = HeaderHelper::getMeta('Products');
+                }
+                if (Request::segment(2)) {
+                    $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
+                    $meta->description = str_replace('-', ' ', ucwords(Request::segment(2)));
+                    $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
+                    $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2)));
+                }
+
+                // if (Request::segment(3)) {
+                //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
+                //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
+                //     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
+                //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
+                // // }
+            }
+
+            // if (HeaderHelper::activateMenu('Product_frontContoller') == 'active') {
+            //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Unipower | Power to Grow';
+            //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
+            //     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Tyre Manufacturers Unipower | Power to Growin Sri Lanka';
+            //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
+            // }
+        @endphp
+
+    <meta name="description" content="{{ $meta->description }}" />
     <link rel="canonical" href="" />
     <meta property="og:locale" content="en_US" />
     <meta property="og:type" content="website" />
-    <meta property="og:title" content="" />
-    <meta property="og:description" content="" />
-    <meta property="og:url" content="" />
-    <meta property="og:site_name" content="" />
-    <meta name="og:image" content="" />
-    <meta name="twitter:card" content="" />
-    <meta name="twitter:description" content="" />
-    <meta name="twitter:title" content="" />
+    <meta property="og:title" content="{{ $meta->og_description }}" />
+    <meta property="og:description" content="{{ $meta->og_description }}" />
+    <meta property="og:url" content="{{ $meta->og_url }}" />
+    <meta property="og:site_name" content="{{ $meta->og_sitename }}" />
+    <meta name="og:image" content="{{ asset('storage/app/' . $meta->og_image) }}" />
+    <meta name="twitter:card" content="{{ $meta->twitter_card }}" />
+    <meta name="twitter:description" content="{{ $meta->twitter_description }}" />
+    <meta name="twitter:title" content="{{ $meta->twitter_title }}" />
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -62,6 +104,9 @@
     <!-- Timeline -->
     <link rel='stylesheet' href='{{ asset('public/frontend/timeline/style.css') }}'>
     <!-- Timeline -->
+    <!-- Image Gallery  -->
+    <link rel='stylesheet' href='{{ asset('public/frontend/gallery/baguetteBox.min.css') }}'>
+    <!-- Image Gallery  -->
 
 
     <!--scroll bar style-->
@@ -84,6 +129,11 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #00732E;
         }
+
+        .wrapWord {
+            display: inline-block;
+            max-width: min-content;
+        }
     </style>
     <!--scroll bar style-->
 
@@ -94,7 +144,7 @@
     <link rel='stylesheet' href='{{ asset('public/frontend/timeline/style.css') }}'>
     <!-- Timeline -->
 
-
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
 
 </head>
 
@@ -104,7 +154,7 @@
 
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="{{ route('/') }}">
                     <img src="{{asset("/storage/app/").'/'.$contactInfo->logo}}" alt="" class="d-block top_logo w-100">
                 </a>
                 <div class="position-relative">
@@ -122,22 +172,22 @@
                 <div class="collapse navbar-collapse flex-grow-1 text-right navbar_main" id="navbarNav">
                     <ul class="navbar-nav ms-auto main_nav_bar">
                         <li class="nav-item">
-                            <a class="nav-link active d-flex align-items-center" href="#">Home</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('/') ? 'active' : ''}}" href="{{ route('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">About us</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('about-us') ? 'active' : ''}}" href="{{ route('about-us') }}">About us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">Products</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('products') ? 'active' : ''}}" href="{{ route('products') }}">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">Services</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('services') || request()->is('service-detail') ? 'active' : ''}}" href="{{ route('services') }}">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">News & Events</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('news') || request()->is('news-detail') ? 'active' : ''}}" href="{{ route('news') }}">News & Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">Contact us</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('contact-us') ? 'active' : ''}}" href="{{ route('contact-us') }}">Contact us</a>
                         </li>
                         <li class="nav-item d-lg-block d-none">
                             <a class="nav-link search_nav d-flex align-items-center" href="#">
@@ -156,10 +206,12 @@
         <div id="search-wrap">
             <div class="close-btn"><span></span><span></span></div>
             <div class="search-area">
-                <form role="search" method="get" action="">
-                    <input type="text" value="" name="" id="search-text" placeholder="Search...">
+                <form role="search" method="post" id="form-submit" action="{{ route('search_result') }}">
+                    @csrf
+                    <input type="text" value="" name="text" id="search-text" placeholder="Search...">
                     <!-- <input type="submit" id="searchsubmit" value=""> -->
                 </form>
+
             </div>
         </div>
 

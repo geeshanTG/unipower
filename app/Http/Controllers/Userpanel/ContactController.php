@@ -6,6 +6,7 @@ use App\Models\Enquiry;
 use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Rules\ReCaptcha;
 
 class ContactController extends Controller
 {
@@ -18,14 +19,23 @@ class ContactController extends Controller
 
     public function store(Request $request)
     {
-        
-        $this->validate($request, [
+
+        $contactInfo = ContactInfo::first();
+
+        $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'phone' => 'required|min:10|max:10',
-            'subject'=>'required',
-            'message' => 'required'
-         ]);
+            'phone' => 'required',
+            'subject' => 'required',
+            'message' => 'required',
+            'g-recaptcha-response' => ['required', new ReCaptcha]
+        ],[
+            'name.required' => 'Name field is required.',
+            'email.required' => 'Email field is required.',
+            'phone.required' => 'Phone field is required.',
+            'subject.required' => 'Subject field is required.',
+            'message.required' => 'Message is required.'
+        ]);
 
         $data = new Enquiry();
         $data->name = $request->name;
@@ -36,8 +46,17 @@ class ContactController extends Controller
         $data->status = "Y";
         $data->save();
 
-        return redirect()->route('contact-us')
-        ->with('success', 'Your enquiry has been submitted successfully.');
+        \Mail::send('userpanel.mail.enquirymail',
+        ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function($message) use($contactInfo)
+        {
+            $message->from('info@unipower.com');
+            $message->to($contactInfo->email)->subject('Unipower - New Enquiry');
+        });
 
-}
+        return redirect()->back()->with('success', 'Your enquiry has been submitted successfully.');
+
+        // return redirect()->route('contact-us')
+        // ->with('success', 'Your enquiry has been submitted successfully.');
+
+    }
 }

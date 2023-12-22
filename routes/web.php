@@ -1,40 +1,46 @@
 <?php
 
-use App\Http\Controllers\Adminpanel\AboutUs\CeoMessageController;
-use App\Http\Controllers\Adminpanel\AboutUs\OurValuesController;
-use App\Http\Controllers\Adminpanel\AboutUs\VisionMissionController;
 use GuzzleHttp\Middleware;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\Adminpanel\DashboardController;
-use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
-use App\Http\Controllers\Adminpanel\AboutUs\AwardsController;
-use App\Http\Controllers\Adminpanel\AboutUs\OurStoryController;
-use App\Http\Controllers\Adminpanel\ServicesController;
-use App\Http\Controllers\Adminpanel\ContactUs\EnquiryController;
-use App\Http\Controllers\Adminpanel\Products\CategoryController;
-use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
-use App\Http\Controllers\Adminpanel\Home\BottomBannerController;
-use App\Http\Controllers\Adminpanel\Home\FaqController;
-use App\Http\Controllers\Adminpanel\Home\HomeAboutController;
-use App\Http\Controllers\Adminpanel\Home\IndustryInsightsController;
-use App\Http\Controllers\Adminpanel\News\FeaturedNewsController;
-use App\Http\Controllers\Adminpanel\Home\MainSliderController;
-use App\Http\Controllers\Adminpanel\Home\MiddleBannerController;
-use App\Http\Controllers\Adminpanel\Home\OurCoreProductsController;
-use App\Http\Controllers\Adminpanel\Home\OurServicesController;
-use App\Http\Controllers\Adminpanel\Home\OurTrustedPartnersController;
-use App\Http\Controllers\Adminpanel\News\NewsController;
-use App\Http\Controllers\Adminpanel\News\TopStoriesController;
-use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
-use App\Http\Controllers\Adminpanel\Products\ProductsController;
-use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
-use App\Http\Controllers\Userpanel\AboutController;
-use App\Http\Controllers\Userpanel\ContactController;
 use App\Http\Controllers\Userpanel\HomeController;
+use App\Http\Controllers\Userpanel\AboutController;
+use App\Http\Controllers\Userpanel\SearchController;
+use App\Http\Controllers\Userpanel\ContactController;
 use App\Http\Controllers\Userpanel\ProductController;
+use App\Http\Controllers\Userpanel\ServiceController;
+use App\Http\Controllers\Adminpanel\MetaTagController;
+use App\Http\Controllers\Adminpanel\Home\FaqController;
+use App\Http\Controllers\Adminpanel\ServicesController;
+use App\Http\Controllers\Adminpanel\DashboardController;
+use App\Http\Controllers\Adminpanel\News\NewsController;
+use App\Http\Controllers\Userpanel\NewsAndEventController;
+use App\Http\Controllers\Adminpanel\AboutUs\AwardsController;
+use App\Http\Controllers\Adminpanel\Home\HomeAboutController;
+use App\Http\Controllers\Adminpanel\AboutUs\AboutUsController;
+use App\Http\Controllers\Adminpanel\Home\MainSliderController;
+use App\Http\Controllers\Adminpanel\News\TopStoriesController;
+use App\Http\Controllers\Adminpanel\AboutUs\OurStoryController;
+use App\Http\Controllers\Adminpanel\Home\OurServicesController;
+use App\Http\Controllers\Adminpanel\AboutUs\OurValuesController;
+use App\Http\Controllers\Adminpanel\ContactUs\EnquiryController;
+use App\Http\Controllers\Adminpanel\Home\BottomBannerController;
+use App\Http\Controllers\Adminpanel\Home\MiddleBannerController;
+use App\Http\Controllers\Adminpanel\News\FeaturedNewsController;
+use App\Http\Controllers\Adminpanel\Products\CategoryController;
+use App\Http\Controllers\Adminpanel\Products\ProductsController;
+use App\Http\Controllers\Adminpanel\AboutUs\CeoMessageController;
+use App\Http\Controllers\Adminpanel\ContactUs\ContactUsController;
+use App\Http\Controllers\Adminpanel\Home\OurCoreProductsController;
+use App\Http\Controllers\Adminpanel\Products\SubCategoryController;
+use App\Http\Controllers\Adminpanel\AboutUs\VisionMissionController;
+use App\Http\Controllers\Adminpanel\Home\IndustryInsightsController;
+use App\Http\Controllers\Adminpanel\Products\MainCategoryController;
+use App\Http\Controllers\Adminpanel\Home\OurTrustedPartnersController;
+
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,15 +63,20 @@ Route::get('/admin', function () {
 //     //return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('about-us', [AboutController::class, 'index']);
-Route::get('products', [ProductController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('product-categories/{catName}', [ProductController::class, 'productCategories'])->name('product-categories');
+Route::get('about-us', [AboutController::class, 'index'])->name('about-us');
+Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::get('product-detail/{name}/{id}', [ProductController::class, 'productDetail'])->name('product-detail');
 Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWeb'])->name('getSubCategoriesWeb');
 Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
-
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
+Route::get('services', [ServiceController::class, 'index'])->name('services');
+Route::get('service/{name}/{id}', [ServiceController::class, 'service'])->name('service-detail');
+Route::get('news', [NewsAndEventController::class, 'index'])->name('news');
+Route::get('news-detail/{name}/{id}', [NewsAndEventController::class, 'details'])->name('news-detail');
+Route::match(['get', 'post'],'search_result', [SearchController::class, 'search'])->name('search_result');
 
 Route::group(['middleware' => 'auth'], function () {
     // Route::get('/dashboard', function () {
@@ -213,6 +224,10 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('save-subcategory', [SubCategoryController::class, 'store'])->name('save-subcategory');
     Route::get('/edit-subcategory/{id}', [SubCategoryController::class, 'edit'])->name('edit-subcategory');
     Route::get('/status-subcategory/{id}', [SubCategoryController::class, 'activation'])->name('status-subcategory');
+
+    Route::get('meta-tag-list', [MetaTagController::class, 'list'])->name('meta-tag-list');
+    Route::get('edit-meta-tag/{id}', [MetaTagController::class, 'edit'])->name('edit-meta-tag');
+    Route::put('adminpanel/save-meta-tag', [MetaTagController::class, 'update'])->name('save-meta-tag');
 });
 
 require __DIR__ . '/auth.php';

@@ -11,7 +11,15 @@
         <div id="content">
             <div class="row">
                 <div class="col-lg-12">
-                    <br><br>
+                    <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
+                        <a href="{{ route('main-categories-create') }}">
+                            <button class="btn cms_top_btn top_btn_height cms_top_btn_active">{{ __('Add New') }}</button>
+                        </a>
+
+                        <a href="{{ route('main-categories-list') }}">
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('View All') }}</button>
+                        </a>
+                    </div>
                 </div>
             </div>
             @if ($errors->any())

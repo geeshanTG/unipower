@@ -92,7 +92,7 @@
             <button type="button" data-bs-target="#carouselExampleCaptions_mob" class="@if($c == 0) {{'active'}} @endif carousel_indi" data-bs-slide-to="{{ $c }}" @if($c == 0) {{ 'aria-current=true' }} @endif aria-label="Slide {{ $c + 1 }}">
                 <div class="row mx-auto align-items-center px-3">
                     <div class="col-lg-3 col-md-3">
-                        <img src="images/potted-plant.png" style="width: 45px;" class="m-auto" alt="">
+                        <img src="{{ asset('storage/app').'/'.$slider->icon }}" style="width: 45px;" class="m-auto" alt="">
                     </div>
                     <div class="col-lg-9 col-md-9">
                         <div class="d-flex flex-column align-items-start text-start caro_indi_text">
@@ -124,68 +124,31 @@
             <!-- style="background-image: url(images/leaf_1.png); background-repeat: no-repeat; background-position: top right;" -->
             <div class="row">
                 <div class="col-lg-8 home_ab_img_1">
-                    <img style="width: 360px; height: 360px;" class="" src="images/about_img.png" alt="">
+                    <img style="width: 360px; height: 360px;" class="" src="storage/app/{{ $about->image_1 }}" alt="">
                 </div>
                 <div class="offset-lg-5 col-lg-7 offset-md-5 col-md-7 d-md-block d-none">
-                    <img style="width: 250px; height: 250px; margin-top: -220px;" class="" src="images/about_img_2.jpg"
+                    <img style="width: 250px; height: 250px; margin-top: -220px;" class="" src="storage/app/{{ $about->image_2 }}"
                         alt="">
                 </div>
             </div>
         </div>
         <div class="col-lg-6" data-aos="fade-down">
             <br>
-            <h1 class="mb-3">Unipower</h1>
-            <h5 style="color: #00732E;">Your Partner in Innovative Agriculture Solutions</h5>
-            <p>Unipower Private Limited, founded in April 1988 by a pioneering entrepreneur in the field of
-                agriculture, Mr. Jayantha Rajapakse, revolutionized and changed the landscape of agriculture in Sri
-                Lanka forever. This led to the introduction of a more effective and efficient alterative to
-                conventional fertilizers for root filling - Specialty Fertilizers rich in plant nutrients, for the
-                very first time.
-            </p>
-            <p>As the pioneering organization for Specialty Fertilizers, we have continually delivered on our
-                commitment to increasing the overall yield and
-                enhancing the quality of yleld in Sri Lanka, by providing local farmers and crop producers the very
-                best fertilizers from around the world.</p>
-            <button type="button" class="btn btn_main rounded-0">Explore More</button>
+            <h1 class="mb-3">{{ $about->heading }}</h1>
+            <h5 style="color: #00732E;">{{ $about->sub_heading }}</h5>
+            {!! $about->description !!}
+            <a class="btn btn_main rounded-0">Explore More</a>
 
             <div class="mt-3 overview_partner_slider">
                 <div class="slider">
                     <div class="owl-carousel first_client_slider">
+                        @foreach ($partners as $partner)
                         <div class="slider-card client_logos">
                             <div class="text-center">
-                                <img class="mx-auto" src="images/logo_1.jpg" alt="">
+                                <img class="mx-auto" src="{{ asset('storage/app/').'/'.$partner->image }}" alt="">
                             </div>
                         </div>
-                        <div class="slider-card client_logos">
-                            <div class="text-center">
-                                <img class="m-auto" src="images/logo_2.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-card client_logos">
-                            <div class="text-center">
-                                <img class="m-auto" src="images/logo_3.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-card client_logos">
-                            <div class="text-center">
-                                <img class="m-auto" src="images/logo_4.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-card client_logos">
-                            <div class="text-center">
-                                <img class="m-auto" src="images/logo_5.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-card client_logos">
-                            <div class="text-center">
-                                <img class="m-auto" src="images/logo_6.jpg" alt="">
-                            </div>
-                        </div>
-                        <div class="slider-card client_logos">
-                            <div class="text-center">
-                                <img class="m-auto" src="images/logo_7.jpg" alt="">
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -201,44 +164,40 @@
             <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up">
                 <div class="row align-items-center counters_sec">
                     <div class="col-lg-5 col-5 text-end counter_val">
-                        <p>106+</p>
+                        <p>{{ $middleBanner->count_1 }}+</p>
                     </div>
                     <div class="col-lg-7 col-7">
-                        <p class="fw-bold">Agriculture</p>
-                        <p class="fw-bold">Products</p>
+                        <p class="wrapWord fw-bold">{{ $middleBanner->heading_1 }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-6" data-aos="fade-down">
                 <div class="row align-items-center counters_sec">
                     <div class="col-lg-5 col-5 text-end counter_val">
-                        <p>408+</p>
+                        <p>{{ $middleBanner->count_2 }}+</p>
                     </div>
                     <div class="col-lg-7 col-7">
-                        <p class="fw-bold">Projects</p>
-                        <p class="fw-bold">Completed</p>
+                        <p class="wrapWord fw-bold">{{ $middleBanner->heading_2 }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-6" data-aos="fade-up">
                 <div class="row align-items-center counters_sec">
                     <div class="col-lg-5 col-5 text-end counter_val">
-                        <p>730+</p>
+                        <p>{{ $middleBanner->count_3 }}+</p>
                     </div>
                     <div class="col-lg-7 col-7">
-                        <p class="fw-bold">Satisfied</p>
-                        <p class="fw-bold">Customers</p>
+                        <p class="wrapWord fw-bold">{{ $middleBanner->heading_3 }}</p>
                     </div>
                 </div>
             </div>
             <div class="col-lg-3 col-md-6 col-6" data-aos="fade-down">
                 <div class="row align-items-center counters_sec">
                     <div class="col-lg-5 col-5 text-end counter_val">
-                        <p>200+</p>
+                        <p>{{ $middleBanner->count_4 }}+</p>
                     </div>
                     <div class="col-lg-7 col-7">
-                        <p class="fw-bold">Expert</p>
-                        <p class="fw-bold">Farmers</p>
+                        <p class="wrapWord fw-bold">{{ $middleBanner->heading_4 }}</p>
                     </div>
                 </div>
             </div>
@@ -253,53 +212,32 @@
     <h1 class="text-center">Our Core Products</h1>
     <br>
     <div class="row">
-        <div class="col-lg-3 col-md-6" data-aos="fade-up">
-            <a href="">
-                <div class="prod_card"
-                    style="background: linear-gradient(64deg, #C15233 0%, rgba(193, 82, 51, 0.96) 17%, rgba(193, 82, 51, 0) 58%), url(./images/prod_3.jpg)">
+        <?php
+            for($i=1; $i<=4; $i++) {
+                foreach($mainCategories as $mainCategory) {
+
+                    $columnName = 'main_category_id_' . $i;
+
+                    if($mainCategory->id == $coreProducts->$columnName) {
+
+                        $mainCatName = preg_replace('/\s+/', '-', $mainCategory->heading);
+                        $catName = strtolower($mainCatName);
+        ?>
+        <div class="col-lg-3 col-md-6" data-aos="<?php if($i == 1 || $i == 3) { echo 'fade-up'; } else if($i == 2 || $i == 4) { echo 'fade-down'; } ?>">
+            <?php if($i == 2) { echo '<br class="d-lg-block d-md-none">'; } else if($i == 3) { echo '<br class="d-lg-none d-md-block">'; } else if($i == 4) { echo '<br>'; } ?>
+            <a href="{{ url('product-categories').'/'.$catName }}">
+                <div class="prod_card" style="background: linear-gradient(64deg, #C15233 0%, rgba(193, 82, 51, 0.96) 17%, rgba(193, 82, 51, 0) 58%), url({{ asset('storage/app/').'/'.$mainCategory->image }})">
                     <div class="col-xxl-6 col-lg-9">
-                        <h3 class="text-white">Specialty Plant Nutrients</h3>
+                        <h3 class="text-white"> {{ $mainCategory->heading; }} </h3>
                     </div>
                 </div>
             </a>
         </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-down">
-            <br class="d-lg-block d-md-none">
-            <a href="">
-                <div class="prod_card"
-                    style="background: linear-gradient(64deg, #C15233 0%, rgba(193, 82, 51, 0.96) 17%, rgba(193, 82, 51, 0) 58%), url(./images/prod_2.jpg)">
-                    <div class="col-xxl-6 col-lg-9">
-                        <h3 class="text-white">Smart Cover Solutions</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-up">
-            <br class="d-lg-none d-md-block">
-            <a href="">
-                <div class="prod_card"
-                    style="background: linear-gradient(64deg, #C15233 0%, rgba(193, 82, 51, 0.96) 17%, rgba(193, 82, 51, 0) 58%), url(./images/prod_1.jpg)">
-                    <div class="col-xxl-6 col-lg-9">
-                        <h3 class="text-white">Growth Regulators</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
-        <div class="col-lg-3 col-md-6" data-aos="fade-down">
-            <br>
-            <a href="">
-                <div class="prod_card"
-                    style="background: linear-gradient(64deg, #C15233 0%, rgba(193, 82, 51, 0.96) 17%, rgba(193, 82, 51, 0) 58%), url(./images/prod_4.jpg)">
-                    <div class="col-xxl-6 col-lg-9">
-                        <h3 class="text-white">Growing Medias and Export Sector</h3>
-                    </div>
-                </div>
-            </a>
-        </div>
+        <?php } } } ?>
     </div>
     <br>
     <div class="text-end">
-        <a href="#" class="text_link">View All &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="{{ url('products') }}" class="text_link">View All &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
     </div>
 </div>
 <br>
@@ -311,106 +249,37 @@
     <div class="row">
         <div class="slider" data-aos="fade-up">
             <div class="owl-carousel serv_caro">
+                <?php
+                    for($i=1; $i<=4; $i++) {
+                        foreach($services as $service) {
+
+                            $columnName = 'service_id_' . $i;
+                            if($service->id == $ourServices->$columnName) {
+
+                                $serviceName = preg_replace('/\s+/', '-', $service->heading);
+                                $serName = strtolower($serviceName);
+                                $encryptedId = encrypt($service->id);
+                ?>
                 <div class="slider-card">
                     <div class="serv_img mb-2">
-                        <img src="images/serv_1.jpg" alt="">
+                        <img src="{{ asset('storage/app').'/'.$service->image_1 }}" alt="">
                     </div>
-                    <!-- <div class="serv_img mb-2">
-                  <div class="owl-carousel serv_img_caro">
-                    <div class="slider-card">
-                      <img src="images/serv_1.jpg" alt="">
-                    </div>
-                    <div class="slider-card">
-                      <img src="images/serv_6.jpg" alt="">
-                    </div>
-                  </div>
-                </div> -->
                     <div class="serv_detail_card text-center">
-                        <a class="" href="#">
-                            <h5>Farmer Training and Extension</h5>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. </p>
-                            <div class="go-corner" href="#">
-                                <div class="go-arrow">
-                                    →
-                                </div>
+                        <a class="" href="{{ url('service').'/'.$serName.'/'.$encryptedId }}">
+                            <h5>{{ $service->heading }}</h5>
+                            <p class="mb-0">{{ $service->short_description }} </p>
+                            <div class="go-corner" href="{{ url('service').'/'.$serName.'/'.$encryptedId }}">
+                                <div class="go-arrow">→</div>
                             </div>
                         </a>
                     </div>
                 </div>
-                <div class="slider-card">
-                    <div class="serv_img mb-2">
-                        <img src="images/serv_2.jpg" alt="">
-                    </div>
-                    <div class="serv_detail_card text-center">
-                        <a class="" href="#">
-                            <h5>Field Demonstrations</h5>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. </p>
-                            <div class="go-corner" href="#">
-                                <div class="go-arrow">
-                                    →
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="slider-card">
-                    <div class="serv_img mb-2">
-                        <img src="images/serv_3.jpg" alt="">
-                    </div>
-                    <div class="serv_detail_card text-center">
-                        <a class="" href="#">
-                            <h5>Nutrient Advice and Crop Clinics</h5>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. </p>
-                            <div class="go-corner" href="#">
-                                <div class="go-arrow">
-                                    →
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="slider-card">
-                    <div class="serv_img mb-2">
-                        <img src="images/serv_4.jpg" alt="">
-                    </div>
-                    <div class="serv_detail_card text-center">
-                        <a class="" href="#">
-                            <h5>Innovative Agri Technology</h5>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. </p>
-                            <div class="go-corner" href="#">
-                                <div class="go-arrow">
-                                    →
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
-                <div class="slider-card">
-                    <div class="serv_img mb-2">
-                        <img src="images/serv_5.jpg" alt="">
-                    </div>
-                    <div class="serv_detail_card text-center">
-                        <a class="" href="#">
-                            <h5>Laboratory Services</h5>
-                            <p class="mb-0">Lorem Ipsum is simply dummy text of the printing and typesetting
-                                industry. </p>
-                            <div class="go-corner" href="#">
-                                <div class="go-arrow">
-                                    →
-                                </div>
-                            </div>
-                        </a>
-                    </div>
-                </div>
+                <?php } } } ?>
             </div>
         </div>
     </div>
     <div class="text-end mt-2">
-        <a href="#" class="text_link">View All &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+        <a href="{{ route('services') }}" class="text_link">View All &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
     </div>
 </div>
 <br>
@@ -421,58 +290,35 @@
         <h1 class="text-center">Industry Insights and News</h1>
         <br>
         <div class="row">
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-up">
+            <?php
+                for($i=1; $i<=4; $i++) {
+                    foreach($news as $new) {
+                        $columnName = 'news_id_' . $i;
+                        if($new->id == $industryInsights->$columnName) {
+
+                            $newsName = preg_replace('/\s+/', '-', $new->heading);
+                            $newName = strtolower($newsName);
+                            $encryptedId = encrypt($new->id);
+
+            ?>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="@if($i==1 || $i == 3){{ 'fade-up' }}@else{{ 'fade-down' }} @endif">
                 <div class="card blog_card border-0 rounded-0">
-                    <img src="images/news_1.jpg" class="card-img-top rounded-0" alt="...">
+                    <img src="{{ asset('storage/app').'/'.$new->image_1 }}" class="card-img-top rounded-0" alt="...">
                     <div class="card-body bg-white">
-                        <h5 class="card-title">Lorem ipsum heading</h5>
-                        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been...</p>
-                        <a href="#" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                        <h5 class="card-title">{{ $new->heading }}</h5>
+                        <p class="card-text">{!! Str::limit($new->description, 100) !!} ...</p>
+                        <a href="{{ url('news_detail').'/'.$newName.'/'.$encryptedId }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-down">
-                <div class="card blog_card border-0 rounded-0">
-                    <img src="images/news_3.jpg" class="card-img-top rounded-0" alt="...">
-                    <div class="card-body bg-white">
-                        <h5 class="card-title">Lorem ipsum heading</h5>
-                        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been...</p>
-                        <a href="#" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
-                                aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-up">
-                <div class="card blog_card border-0 rounded-0">
-                    <img src="images/news_4.jpg" class="card-img-top rounded-0" alt="...">
-                    <div class="card-body bg-white">
-                        <h5 class="card-title">Lorem ipsum heading</h5>
-                        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been...</p>
-                        <a href="#" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
-                                aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6 col-sm-6 col-12" data-aos="fade-down">
-                <div class="card blog_card border-0 rounded-0">
-                    <img src="images/news_2.jpg" class="card-img-top rounded-0" alt="...">
-                    <div class="card-body bg-white">
-                        <h5 class="card-title">Lorem ipsum heading</h5>
-                        <p class="card-text">Lorem Ipsum is simply dummy text of the printing and typesetting
-                            industry. Lorem Ipsum has been...</p>
-                        <a href="#" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
-                                aria-hidden="true"></i></a>
-                    </div>
-                </div>
-            </div>
+            <?php
+                } } }
+            ?>
         </div>
         <br class="d-md-block d-none">
         <div class="text-end">
-            <a href="#" class="text_link">View All &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+            <a href="{{ route('news') }}" class="text_link">View All &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>
@@ -485,41 +331,13 @@
     <div class="row">
         <div class="slider" data-aos="fade-up">
             <div class="owl-carousel client_slider">
+                @foreach($partners as $partner)
                 <div class="slider-card client_logos">
                     <div class="text-center">
-                        <img class="mx-auto" src="images/logo_1.jpg" alt="">
+                        <img class="mx-auto" src="{{ asset('storage/app/').'/'.$partner->image }}" alt="">
                     </div>
                 </div>
-                <div class="slider-card client_logos">
-                    <div class="text-center">
-                        <img class="m-auto" src="images/logo_2.jpg" alt="">
-                    </div>
-                </div>
-                <div class="slider-card client_logos">
-                    <div class="text-center">
-                        <img class="m-auto" src="images/logo_3.jpg" alt="">
-                    </div>
-                </div>
-                <div class="slider-card client_logos">
-                    <div class="text-center">
-                        <img class="m-auto" src="images/logo_4.jpg" alt="">
-                    </div>
-                </div>
-                <div class="slider-card client_logos">
-                    <div class="text-center">
-                        <img class="m-auto" src="images/logo_5.jpg" alt="">
-                    </div>
-                </div>
-                <div class="slider-card client_logos">
-                    <div class="text-center">
-                        <img class="m-auto" src="images/logo_6.jpg" alt="">
-                    </div>
-                </div>
-                <div class="slider-card client_logos">
-                    <div class="text-center">
-                        <img class="m-auto" src="images/logo_7.jpg" alt="">
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </div>
@@ -527,19 +345,17 @@
 <br>
 
 <div class="container-fluid sec_padding"
-    style="background-image: url(images/invest_bg.png); background-repeat: no-repeat; background-size: cover;">
+    style="background-image: url({{ asset('public/frontend/images/invest_bg.png') }}); background-repeat: no-repeat; background-size: cover;">
     <div class="container" data-aos="fade-down">
-        <h1 class="text-center heading_main text-white mb-4">Invest in the Future of Agriculture</h1>
+        <h1 class="text-center heading_main text-white mb-4">{{ $bottomBanner->heading }}</h1>
         <div class="col-lg-8 offset-lg-2 text-center">
-            <p class="text-white">Join us in cultivating sustainable growth and innovation. We welcome partnerships
-                and investments from those who share our vision for a greener, more prosperous agriculture industry.
-                Please get in touch using the form below.</p>
+            <p class="text-white">{{ $bottomBanner->description }}</p>
         </div>
     </div>
 </div>
 
 <div class="container-fluid sec_padding faq_con_sec"
-    style="background-image: url(images/dark_bg.jpg); background-repeat: no-repeat; background-size: cover;">
+    style="background-image: url({{ asset('public/frontend/images/dark_bg.jpg') }}); background-repeat: no-repeat; background-size: cover;">
     <div class="container fluid_contain">
         <div class="row faq_con_row">
             <div class="col-lg-6 faq_sec">
@@ -547,74 +363,28 @@
                 <br>
                 <div data-aos="fade-up">
                     <div class="accordion" id="accordionExample">
+                        @php
+                            $c = 0;
+                        @endphp
+                        @foreach($faqs as $faq)
+                        @php
+                            $c++;
+                        @endphp
                         <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingOne">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                    Lorem ipsum is simply dummy text of the printing industry?
+                            <h2 class="accordion-header" id="heading_{{ $c }}">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapse_{{ $c }}" aria-expanded="@if($c==1){{ 'true' }}@else{{ 'false' }}@endif" aria-controls="collapse_{{ $c }}">
+                                    {{ $faq->heading }}
                                 </button>
                             </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
-                                data-bs-parent="#accordionExample">
+                            <div id="collapse_{{ $c }}" class="accordion-collapse collapse @if($c ==1){{ 'show' }}@endif" aria-labelledby="heading_{{ $c }}" data-bs-parent="#accordionExample">
                                 <div class="accordion-body">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to
-                                        make a type specimen book. </p>
+                                    <p>{{ $faq->description }} </p>
                                 </div>
                             </div>
                         </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingTwo">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                    Lorem ipsum is simply dummy text of the printing industry?
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to
-                                        make a type specimen book. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingThree">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                    Lorem ipsum is simply dummy text of the printing industry?
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to
-                                        make a type specimen book. </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header" id="headingFour">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                                    data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                    Lorem ipsum is simply dummy text of the printing industry?
-                                </button>
-                            </h2>
-                            <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour"
-                                data-bs-parent="#accordionExample">
-                                <div class="accordion-body">
-                                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                                        Lorem Ipsum has been the industry's standard dummy text ever since the
-                                        1500s, when an unknown printer took a galley of type and scrambled it to
-                                        make a type specimen book. </p>
-                                </div>
-                            </div>
-                        </div>
+                        @php
+                        @endphp
+                        @endforeach
                     </div>
                 </div>
             </div>
@@ -622,25 +392,46 @@
             <div class="col-lg-6 contact_sec">
                 <h1 class="text-white">Get in Touch</h1>
                 <br>
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Please submit again!</strong><br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
+                @if ($message = Session::get('success'))
+                <div class="alert alert-success">
+                    <p>{{ $message }}</p>
+                </div>
+                @endif
+                @if ($errors->has('token'))
+                <span class="text-danger">{{ $errors->first('token') }}</span>
+                @endif
+                <br>
                 <div class="contact_form" data-aos="fade-down">
-                    <form action="">
+                    <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}" enctype="multipart/form-data" method="post" class="smart-form inquiry_form">
+                        @csrf
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-12">
-                                <input type="text" class="form-control  mb-3" placeholder="Enter your name">
+                                <input type="text" class="form-control  mb-3" name="name" placeholder="Enter your name" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
-                                <input type="email" class="form-control  mb-3" placeholder="Enter your email">
+                                <input type="email" class="form-control  mb-3" name="email" placeholder="Enter your email" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
-                                <input type="tel" class="form-control  mb-3" placeholder="Enter your phone number">
+                                <input type="tel" class="form-control  mb-3" name="phone" placeholder="Enter your phone number" required>
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
-                                <input type="text" class="form-control  mb-3" placeholder="Type the subject">
+                                <input type="text" class="form-control  mb-3" name="subject" placeholder="Type the subject" required>
                             </div>
                             <div class="col-lg-12 col-12">
-                                <textarea placeholder="Type your message here..." class="form-control h-auto mb-3"
-                                    id="exampleFormControlTextarea1" rows="6"></textarea>
+                                <textarea placeholder="Type your message here..." class="form-control h-auto mb-3" name="message"
+                                    id="exampleFormControlTextarea1" rows="6" required></textarea>
                             </div>
+
                             <div class="text-start contact_submit">
                                 <button type="submit" class="btn btn_main rounded-0">Submit</button>
                             </div>
