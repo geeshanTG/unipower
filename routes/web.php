@@ -63,28 +63,20 @@ Route::get('/admin', function () {
 //     //return view('welcome');
 // });
 
-Route::get('/', [HomeController::class, 'index']);
-Route::get('about-us', [AboutController::class, 'index']);
-Route::get('products', [ProductController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('/');
+Route::get('product-categories/{catName}', [ProductController::class, 'productCategories'])->name('product-categories');
+Route::get('about-us', [AboutController::class, 'index'])->name('about-us');
+Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::get('product-detail/{name}/{id}', [ProductController::class, 'productDetail'])->name('product-detail');
 Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWeb'])->name('getSubCategoriesWeb');
 Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
 Route::get('services', [ServiceController::class, 'index'])->name('services');
-Route::get('service/{name}/{id}', [ServiceController::class, 'service'])->name('service');
-
+Route::get('service/{name}/{id}', [ServiceController::class, 'service'])->name('service-detail');
 Route::get('news', [NewsAndEventController::class, 'index'])->name('news');
-Route::get('news_detail/{name}/{id}', [NewsAndEventController::class, 'details'])->name('news_detail');
-
+Route::get('news-detail/{name}/{id}', [NewsAndEventController::class, 'details'])->name('news-detail');
 Route::match(['get', 'post'],'search_result', [SearchController::class, 'search'])->name('search_result');
-
-// Route::get('search_result', [SearchController::class, 'search'])->name('search_result');
-// 
-
-
-
-
-Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'App\Http\Controllers\LanguageController@switchLang']);
 
 Route::group(['middleware' => 'auth'], function () {
     // Route::get('/dashboard', function () {

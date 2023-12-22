@@ -148,7 +148,7 @@
                     processing: true,
                     serverSide: true,
                     ajax: "{{ route('products-list') }}",
-                    order: [ 3, 'asc' ],
+                    order: [ 4, 'asc' ],
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'id'
