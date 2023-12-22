@@ -32,7 +32,7 @@
                     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
                     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2)));
                 }
-    
+
                 // if (Request::segment(3)) {
                 //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
                 //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
@@ -40,7 +40,7 @@
                 //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
                 // // }
             }
-    
+
             // if (HeaderHelper::activateMenu('Product_frontContoller') == 'active') {
             //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Unipower | Power to Grow';
             //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
@@ -129,6 +129,11 @@
         ::-webkit-scrollbar-thumb:hover {
             background: #00732E;
         }
+
+        .wrapWord {
+            display: inline-block;
+            max-width: min-content;
+        }
     </style>
     <!--scroll bar style-->
 
@@ -139,7 +144,7 @@
     <link rel='stylesheet' href='{{ asset('public/frontend/timeline/style.css') }}'>
     <!-- Timeline -->
 
-
+    <script src="https://www.google.com/recaptcha/api.js?render={{ env('GOOGLE_RECAPTCHA_KEY') }}"></script>
 
 </head>
 
@@ -149,9 +154,8 @@
 
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
             <div class="container">
-                <a class="navbar-brand" href="index.html">
-                    <img src="{{ asset('/storage/app/') . '/' . $contactInfo->logo }}" alt=""
-                        class="d-block top_logo w-100">
+                <a class="navbar-brand" href="{{ route('/') }}">
+                    <img src="{{asset("/storage/app/").'/'.$contactInfo->logo}}" alt="" class="d-block top_logo w-100">
                 </a>
                 <div class="position-relative">
                     <div class="d-lg-none d-block">
@@ -168,22 +172,22 @@
                 <div class="collapse navbar-collapse flex-grow-1 text-right navbar_main" id="navbarNav">
                     <ul class="navbar-nav ms-auto main_nav_bar">
                         <li class="nav-item">
-                            <a class="nav-link active d-flex align-items-center" href="#">Home</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('/') ? 'active' : ''}}" href="{{ route('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">About us</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('about-us') ? 'active' : ''}}" href="{{ route('about-us') }}">About us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">Products</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('products') ? 'active' : ''}}" href="{{ route('products') }}">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">Services</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('services') || request()->is('service-detail') ? 'active' : ''}}" href="{{ route('services') }}">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">News & Events</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('news') || request()->is('news-detail') ? 'active' : ''}}" href="{{ route('news') }}">News & Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="#">Contact us</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('contact-us') ? 'active' : ''}}" href="{{ route('contact-us') }}">Contact us</a>
                         </li>
                         <li class="nav-item d-lg-block d-none">
                             <a class="nav-link search_nav d-flex align-items-center" href="#">

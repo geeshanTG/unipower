@@ -17,7 +17,7 @@ class ProductController extends Controller
 
         $mainCategories = MainCategory::where('status', 'Y')->where('is_delete', 0)->get();
         $subCategories = SubCategory::where('status', 'Y')->where('is_delete', 0)->orderBy('order', 'ASC')->get();
-        $products = Product::where('status', 'Y')->where('is_delete', 0)->orderBy('order', 'ASC')->paginate(1);
+        $products = Product::where('status', 'Y')->where('is_delete', 0)->orderBy('order', 'ASC')->paginate(12);
         $contactInfo = ContactInfo::first();
 
         return view('userpanel.products', compact('pageTitle','mainCategories','subCategories','products','contactInfo'));
@@ -37,6 +37,40 @@ class ProductController extends Controller
         $products = Product::where("main_category_id", $request->main_category_id)->where('sub_category_id', $request->sub_category_id)->get();
                             // dd($products);
         return response()->json($products);
+    }
+
+    public function productCategories(Request $request) {
+
+        $pageTitle = "All Products";
+
+        $mainCategories = MainCategory::where('status', 'Y')->where('is_delete', 0)->get();
+        $subCategories = SubCategory::where('status', 'Y')->where('is_delete', 0)->orderBy('order', 'ASC')->get();
+
+        $mainCatName = $request->segment(2);
+        $catName = str_replace('-', ' ',$mainCatName);
+
+        $products = Product::where('status', 'Y')->where('is_delete', 0)->orWhere('heading', 'like', '%'.$catName.'%')->orderBy('order', 'ASC')->paginate(1);
+        $contactInfo = ContactInfo::first();
+
+        return view('userpanel.products', compact('pageTitle','mainCategories','subCategories','products','contactInfo'));
+
+    }
+
+    public function productDetail(Request $request)
+    {
+
+
+        $productId = decrypt($request->segment(3));
+        $products = Product::where('id', $productId)->first();
+
+        $mainCatName = MainCategory::where('id', $products->main_category_id)->first();
+
+        $pageTitle = $mainCatName->heading;
+
+        $productList = Product::where('status', 'Y')->where('is_delete', 0)->where('id', '!=', $productId)->where('main_category_id', $products->main_catgeory_id)->limit(10)->get();
+        $contactInfo = ContactInfo::first();
+
+        return view('userpanel.productdetail', compact('pageTitle','products','productList','contactInfo'));
     }
 
 }

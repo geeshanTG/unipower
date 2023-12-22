@@ -6,8 +6,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
-                        <img src="{{ asset('/storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100"
-                            alt="">
+                        <img src="{{ asset('storage/app/').'/'.$contactInfo->logo }}" class="m-auto w-100" alt="">
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
@@ -29,7 +28,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
                 <div>
                     <h5 class="mb-3">What We Do</h5>
-                    <a href="#">
+                    <a href="{{ route('about-us') }}">
                         <p class="mb-1">Farmer Training and Extension</p>
                     </a>
                     <a href="#">
@@ -53,24 +52,24 @@
                     <h5 class="mb-3">Quick Links</h5>
                     <div class="row">
                         <div class="col-lg-6">
-                            <a href="#">
+                            <a href="{{ route('about-us') }}">
                                 <p class="mb-1">Home</p>
                             </a>
-                            <a href="#">
+                            <a href="{{ route('about-us') }}">
                                 <p class="mb-1">About us</p>
                             </a>
-                            <a href="#">
+                            <a href="{{ route('products') }}">
                                 <p class="mb-1">Products</p>
                             </a>
                         </div>
                         <div class="col-lg-6">
-                            <a href="#">
+                            <a href="{{ route('services') }}">
                                 <p class="mb-1">Services</p>
                             </a>
-                            <a href="#">
+                            <a href="{{ route('news') }}">
                                 <p class="mb-1">News & Events</p>
                             </a>
-                            <a href="#">
+                            <a href="{{ route('contact-us') }}">
                                 <p class="mb-1">Contact us</p>
                             </a>
                         </div>
@@ -292,6 +291,45 @@
 <script src="owl/owl_js.js"></script>
 <!-- owl carousel --> --}}
 
+<script type="text/javascript">
+    // $('#inquiry_form').submit(function(event) {
+    //     event.preventDefault();
+
+    //     grecaptcha.ready(function() {
+    //         grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {action: 'save_enquiry'}).then(function(token) {
+    //             $('#inquiry_form').prepend('<input type="hidden" name="token" value="' + token + '">');
+    //             $('#inquiry_form').unbind('submit').submit();
+    //         });;
+    //     });
+    // });
+
+//     $('.inquiry_form').submit(function(event) {
+//     event.preventDefault();
+
+//     grecaptcha.ready(function() {
+//         grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", { action: 'submit_inquiry' }).then(function(token) {
+//             // Dynamically set the form action before submitting
+//             $('#inquiry_form').attr('action', "{{ route('save-enquiry') }}");
+//             $('#inquiry_form').prepend('<input type="hidden" name="token" value="' + token + '">');
+//             $('#inquiry_form').unbind('submit').submit();
+//         });
+//     });
+// });
+
+$('.inquiry_form').submit(function (event) {
+    event.preventDefault();
+
+    grecaptcha.ready(function () {
+        grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", { action: 'submit_inquiry' }).then(function (token) {
+            // Add the reCAPTCHA response to the form data
+            $('#inquiry_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
+            $('#inquiry_form').unbind('submit').submit();
+        });
+    });
+});
+</script>
+
+
 
 <!-- owl carousel -->
 <script src="{{ asset('public/frontend/owl/owl.carousel.min.js') }}"></script>
@@ -359,9 +397,9 @@
     window.history.replaceState(null, null, window.location.href);
 
     }
-    
-   
-   
+
+
+
     // $(document).ready(function() {
         // prevent form submit on refresh or resubmit with back button
         // if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
@@ -373,6 +411,12 @@
 
 <!-- search bar -->
 
+ <!-- scroll top -->
+ <script>
+    setTimeout(function() {
+        $('.alert').fadeOut('fast');
+    }, 5000);
+ </script>
 
 </body>
 
