@@ -17,6 +17,11 @@ class NewsAndEventController extends Controller
     {
         $pageTitle = 'NEWS & EVENTS';
         $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+        ->where('status', 'Y')
+        ->where('is_delete', 0)
+        ->orderBy('id', 'ASC')
+        ->get();
 
         $topStoryId = TopStory::first();
         $topStory = [];
@@ -33,9 +38,9 @@ class NewsAndEventController extends Controller
             ->where('is_delete', 0)
             ->whereNotIn('id', [$topStoryId->top_story_news_1, $topStoryId->top_story_news_2, $featuredNewsId->featured_news_1, $featuredNewsId->featured_news_2, $featuredNewsId->featured_news_3])
             ->orderBy('news_date', 'ASC')
-            ->paginate(1);
+            ->paginate(4);
 
-        return view('userpanel.news', compact('contactInfo', 'pageTitle', 'topStory', 'featuredNews', 'news'));
+        return view('userpanel.news', compact('contactInfo', 'pageTitle', 'topStory', 'featuredNews', 'news','serviceList'));
     }
 
     public function details($name, $id)
@@ -43,6 +48,11 @@ class NewsAndEventController extends Controller
         $pageTitle = 'NEWS';
         $newsId = decrypt($id);
         $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+        ->where('status', 'Y')
+        ->where('is_delete', 0)
+        ->orderBy('id', 'ASC')
+        ->get();
         $news = News::where('id', $newsId)
             ->where('status', 'Y')
             ->where('is_delete', 0)
@@ -67,7 +77,7 @@ class NewsAndEventController extends Controller
             $images[3] = $news->image_4;
         }
 
-        return view('userpanel.newsdetail', compact('contactInfo', 'pageTitle', 'news', 'images', 'Allnews'));
+        return view('userpanel.newsdetail', compact('contactInfo', 'pageTitle', 'news', 'images', 'Allnews','serviceList'));
     }
      
 }

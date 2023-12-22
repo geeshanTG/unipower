@@ -6,7 +6,7 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
-                        <img src="{{ asset('storage/app/').'/'.$contactInfo->logo }}" class="m-auto w-100" alt="">
+                        <img src="{{ asset('storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100" alt="">
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
@@ -28,20 +28,14 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
                 <div>
                     <h5 class="mb-3">What We Do</h5>
-                    <a href="{{ route('about-us') }}">
-                        <p class="mb-1">Farmer Training and Extension</p>
-                    </a>
-                    <a href="#">
-                        <p class="mb-1">Field Demonstrations</p>
-                    </a>
-                    <a href="#">
-                        <p class="mb-1">Nutrient Advice and Crop Clinics</p>
-                    </a>
-                    <a href="#">
-                        <p class="mb-1">Innovative Agri Technology</p>
-                    </a>
+                    @foreach ($serviceList as $service)
+                        <a
+                            href="{{ route('service-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                            <p class="mb-1">{{ $service->heading }}</p>
+                        </a>
+                    @endforeach
                     <!-- <a href="#"><p class="mb-1">Laboratory Services</p></a> -->
-                    <a href="#">
+                    <a href="{{ route('services')}}">
                         <p class="mb-1">All Services</p>
                     </a>
                 </div>
@@ -94,9 +88,9 @@
                     <h5 class="mb-3">Join us on Social Media</h5>
                     <div>
                         <div class="social_links">
-                            <a href="#"><i class="fa fa-facebook p-2" aria-hidden="true"></i></a> &nbsp; &nbsp;
-                            <a href="#"><i class="fa fa-linkedin p-2" aria-hidden="true"></i></a> &nbsp; &nbsp;
-                            <a href="#"><i class="fa fa-twitter p-2" aria-hidden="true"></i></a>
+                            <a href="{{ $contactInfo->facebook_url }}"><i class="fa fa-facebook p-2" aria-hidden="true"></i></a> &nbsp; &nbsp;
+                            <a href="{{ $contactInfo->linkedin_url }}"><i class="fa fa-linkedin p-2" aria-hidden="true"></i></a> &nbsp; &nbsp;
+                            <a href="{{ $contactInfo->twitter_url }}"><i class="fa fa-twitter p-2" aria-hidden="true"></i></a>
                         </div>
                     </div>
                 </div>
@@ -303,30 +297,34 @@
     //     });
     // });
 
-//     $('.inquiry_form').submit(function(event) {
-//     event.preventDefault();
+    //     $('.inquiry_form').submit(function(event) {
+    //     event.preventDefault();
 
-//     grecaptcha.ready(function() {
-//         grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", { action: 'submit_inquiry' }).then(function(token) {
-//             // Dynamically set the form action before submitting
-//             $('#inquiry_form').attr('action', "{{ route('save-enquiry') }}");
-//             $('#inquiry_form').prepend('<input type="hidden" name="token" value="' + token + '">');
-//             $('#inquiry_form').unbind('submit').submit();
-//         });
-//     });
-// });
+    //     grecaptcha.ready(function() {
+    //         grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", { action: 'submit_inquiry' }).then(function(token) {
+    //             // Dynamically set the form action before submitting
+    //             $('#inquiry_form').attr('action', "{{ route('save-enquiry') }}");
+    //             $('#inquiry_form').prepend('<input type="hidden" name="token" value="' + token + '">');
+    //             $('#inquiry_form').unbind('submit').submit();
+    //         });
+    //     });
+    // });
 
-$('.inquiry_form').submit(function (event) {
-    event.preventDefault();
+    $('.inquiry_form').submit(function(event) {
+        event.preventDefault();
 
-    grecaptcha.ready(function () {
-        grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", { action: 'submit_inquiry' }).then(function (token) {
-            // Add the reCAPTCHA response to the form data
-            $('#inquiry_form').prepend('<input type="hidden" name="g-recaptcha-response" value="' + token + '">');
-            $('#inquiry_form').unbind('submit').submit();
+        grecaptcha.ready(function() {
+            grecaptcha.execute("{{ env('GOOGLE_RECAPTCHA_KEY') }}", {
+                action: 'submit_inquiry'
+            }).then(function(token) {
+                // Add the reCAPTCHA response to the form data
+                $('#inquiry_form').prepend(
+                    '<input type="hidden" name="g-recaptcha-response" value="' + token +
+                    '">');
+                $('#inquiry_form').unbind('submit').submit();
+            });
         });
     });
-});
 </script>
 
 
@@ -394,29 +392,26 @@ $('.inquiry_form').submit(function (event) {
         }
     });
     if (window.history.replaceState) {
-    window.history.replaceState(null, null, window.location.href);
+        window.history.replaceState(null, null, window.location.href);
 
     }
 
 
 
     // $(document).ready(function() {
-        // prevent form submit on refresh or resubmit with back button
-        // if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
+    // prevent form submit on refresh or resubmit with back button
+    // if (window.history.replaceState) window.history.replaceState(null, null, window.location.href);
     // });
-
-
-
 </script>
 
 <!-- search bar -->
 
- <!-- scroll top -->
- <script>
+<!-- scroll top -->
+<script>
     setTimeout(function() {
         $('.alert').fadeOut('fast');
     }, 5000);
- </script>
+</script>
 
 </body>
 

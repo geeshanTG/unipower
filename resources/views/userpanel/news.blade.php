@@ -25,7 +25,7 @@
                                     $limitedDescription = implode(' ', $limitedWords);
                                 @endphp
                                 <p class="card-text mb-1">{{ $limitedDescription }}...</p>
-                                <a href="{{ route('news_detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($topStory[$i]->heading)))), 'id' => encrypt($topStory[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                                <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($topStory[$i]->heading)))), 'id' => encrypt($topStory[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -55,7 +55,7 @@
                         @endphp
 
                         <p class="card-text mb-1 d-md-block d-none">{{ $limitedDescription }}...</p>
-                        <a href="{{ route('news_detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($featuredNews[$i]->heading)))), 'id' => encrypt($featuredNews[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                        <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($featuredNews[$i]->heading)))), 'id' => encrypt($featuredNews[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                     </div>
                 </div>
@@ -82,7 +82,7 @@
                             $limitedDescription = implode(' ', $limitedWords);
                         @endphp
                         <p class="card-text mb-1">{{ $limitedDescription }}...</p>
-                        <a href="{{ route('news_detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news[$i]->heading)))), 'id' => encrypt($news[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                        <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news[$i]->heading)))), 'id' => encrypt($news[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                     </div>
                 </div>

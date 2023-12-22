@@ -25,6 +25,7 @@
                             <p class="mb-0">{{ $service->short_description }}</p>
                             <div class="go-corner" href="#">
                                 <div class="go-arrow">
+                                    →
                                 </div>
                            </div>
 

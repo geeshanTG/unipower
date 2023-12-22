@@ -7,9 +7,16 @@
         @foreach ($data as $service)
             <div class="search_result">
                 <a
-                    href="{{ route('service', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                    href="{{ route('services', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
                     <h3>{{ $service->heading }}</h3>
-                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                    @php
+                        $description = strip_tags($service->description);
+                        $words = str_word_count($description, 1);
+                        $limitedWords = array_slice($words, 0, 16);
+                        $limitedDescription = implode(' ', $limitedWords);
+                    @endphp
+
+                    <p>{{ $limitedDescription }}</p>
                 </a>
                 <hr>
             </div>

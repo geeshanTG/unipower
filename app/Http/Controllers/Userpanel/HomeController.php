@@ -21,21 +21,39 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $mainSliders = MainSlider::where('status', 'Y')->where('is_delete', 0)->orderBy('order', 'ASC')->get();
+        $mainSliders = MainSlider::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('order', 'ASC')
+            ->get();
         $about = About::first();
-        $partners = OurTrustedPartner::where('status', 'Y')->where('is_delete', 0)->get();
+        $partners = OurTrustedPartner::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->get();
         $middleBanner = MiddleBannerContent::first();
-        $mainCategories = MainCategory::where('status', 'Y')->where('is_delete', 0)->get();
+        $mainCategories = MainCategory::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->get();
         $coreProducts = OurCoreProduct::first();
         $ourServices = OurService::first();
-        $services = Service::where('status', 'Y')->where('is_delete', 0)->orderBy('heading', 'ASC')->get();
+        $services = Service::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('heading', 'ASC')
+            ->get();
         $industryInsights = IndustryInsight::first();
-        $news = News::where('status', 'Y')->where('is_delete', 0)->get();
+        $news = News::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->get();
         $bottomBanner = BottomBannerContent::first();
-        $faqs = Faq::where('status', 'Y')->orderBy('order', 'ASC')->get();
+        $faqs = Faq::where('status', 'Y')
+            ->orderBy('order', 'ASC')
+            ->get();
         $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+            ->where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('id', 'ASC')
+            ->get();
 
-        return view('userpanel.home', compact('contactInfo','mainSliders','about','partners','middleBanner','coreProducts','ourServices','services','mainCategories','industryInsights','news','bottomBanner','faqs'));
+        return view('userpanel.home', compact('contactInfo', 'mainSliders', 'about', 'partners', 'middleBanner', 'coreProducts', 'ourServices', 'services', 'mainCategories', 'industryInsights', 'news', 'bottomBanner', 'faqs','serviceList'));
     }
-
 }
