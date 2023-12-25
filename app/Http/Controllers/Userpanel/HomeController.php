@@ -53,6 +53,7 @@ class HomeController extends Controller
             ->where('is_delete', 0)
             ->orderBy('id', 'ASC')
             ->get();
+          
 
         return view('userpanel.home', compact('contactInfo', 'mainSliders', 'about', 'partners', 'middleBanner', 'coreProducts', 'ourServices', 'services', 'mainCategories', 'industryInsights', 'news', 'bottomBanner', 'faqs','serviceList'));
     }

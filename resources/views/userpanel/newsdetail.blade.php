@@ -63,7 +63,7 @@
                                 @endphp
                                 <p class="card-text mb-1">{{ $limitedDescription }}...</p>
 
-                                <a href="{{ route('news_detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news->heading)))), 'id' => encrypt($news->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                                <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news->heading)))), 'id' => encrypt($news->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></a>
                             </div>
                         </div>

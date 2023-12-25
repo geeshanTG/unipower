@@ -18,11 +18,11 @@
             <div class="col-lg-12">
                     <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
                         <a href="{{ route('users.index') }}">
-                            <button class="btn cms_top_btn top_btn_height ">{{ __('user.add_new') }}</button>
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('Add New') }}</button>
                         </a>
 
                         <a href="{{ route('users-list') }}">
-                            <button class="btn cms_top_btn top_btn_height ">{{ __('user.view_all') }}</button>
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('View All') }}</button>
                         </a>
                     </div>
                 </div>
@@ -46,7 +46,7 @@
             <!-- Widget ID (each widget will need unique ID)-->
             <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
                 <header>
-                    <h2>{{ __('user.title') }}</h2>
+                    <h2>{{ __('User Edit') }}</h2>
                 </header>
                 <!-- widget div-->
                 <div>
@@ -63,21 +63,21 @@
                             <fieldset>
                                 <div class="row">
                                     <section class="col col-4">
-                                        <label class="label">{{ __('user.name') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Name') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="text" id="name" name="name" required value="{{ $user->name }}">
                                         </label>
                                     </section>
                                     <section class="col col-4">
-                                        <label class="label">{{ __('user.email') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Email') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="text" id="email" name="email" required value="{{ $user->email }}">
                                         </label>
                                     </section>
                                     <section class="col col-4">
-                                        <label class="label">{{ __('user.mobile_no') }} </label>
+                                        <label class="label">{{ __('Mobile Number') }} </label>
                                         <label class="input">
-                                            <input type="mobile_no" id="mobile_no" name="mobile_no" value="{{ $user->mobile_no }}" class="mobile_no">
+                                            <input type="text" id="mobile_no" name="mobile_no" value="{{ $user->mobile_no }}" class="mobile_no">
                                         </label>
                                     </section>
                                 </div>
@@ -92,7 +92,7 @@
                                     ?>
 
                                     <section class="col col-4">
-                                        <label class="label">{{ __('user.role') }} <span style=" color: red;">*</span></label>
+                                        <label class="label">{{ __('Role') }} <span style=" color: red;">*</span></label>
                                         {{-- <label class="select"> --}}
                                             <select id="roles" name="roles" class="select2" required>
                                                 <option value=""></option>
@@ -106,21 +106,21 @@
                                 </div>
                                 <div class="row">
                                     <section class="col-lg-12" style="margin-top: 2%; margin-left:16px;">
-                                        <label class="label">{{ __('user.change_password') }}
-                                        <button id="changepwyes" type="button" style="margin-left: 2%; width: 90px; background-color: #963c2c; color: #e7e7e7;" class="btn btn-default"> {{ __('action.yes') }} </button>
-                                        <button id="changepwno" type="button" style="margin-left: 2%; width: 90px; background-color: #963c2c; color: #e7e7e7;" class="btn btn-default"> {{ __('action.no') }} </button></label>
+                                        <label class="label">{{ __('Change Password') }}
+                                        <button id="changepwyes" type="button" style="margin-left: 2%; width: 90px; background-color: #963c2c; color: #e7e7e7;" class="btn btn-default"> {{ __('Yes') }} </button>
+                                        <button id="changepwno" type="button" style="margin-left: 2%; width: 90px; background-color: #963c2c; color: #e7e7e7;" class="btn btn-default"> {{ __('No') }} </button></label>
                                     </section>
                                 </div>
                                 <div class="row" id="changepassword" style="display: none;">
                                     <section class="col col-4">
-                                        <label class="label">{{ __('user.password') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Password') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="password" id="password" name="password" value="" minlength="6" class="password" disabled>
                                         </label>
                                     </section>
 
                                     <section class="col col-4">
-                                        <label class="label">{{ __('user.confirmpassword') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Confirm Password') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="password" id="confirm-password" name="confirm-password" value="" data-parsley-equalto="#password" class="confirmpassword" disabled>
                                         </label>
@@ -130,10 +130,10 @@
                             <footer>
                                 <input type="hidden" name="id" value="{{ $user->id }}">
                                 <button id="button1id" name="button1id" type="submit" class="btn btn-primary">
-                                    {{ __('user.submit') }}
+                                    {{ __('Submit') }}
                                 </button>
                                 <button type="button" class="btn btn-default" onclick="window.history.back();">
-                                    {{ __('user.back') }}
+                                    {{ __('Back') }}
                                 </button>
                             </footer>
                         </form>

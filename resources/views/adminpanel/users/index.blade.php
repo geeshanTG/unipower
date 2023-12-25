@@ -74,7 +74,7 @@
                   <section class="col col-4">
                     <label class="label">{{ __('Mobile Number') }} </label>
                     <label class="input">
-                        <input type="mobile_no" id="mobile_no" name="mobile_no" value="" class="mobile_no">
+                        <input type="text" id="mobile_no" name="mobile_no" value="" class="mobile_no">
                     </label>
                 </section>
                 </div>
@@ -180,11 +180,13 @@
                         success: function(data) {
                             if (data != "") {
 
-                                console.log(data);
+                                console.log('hello');
 
                                     $("#duplicatecheck-msg").show();
 
                             } else {
+
+                                console.log('data');
 
                                 $("#duplicatecheck-msg").hide();
 

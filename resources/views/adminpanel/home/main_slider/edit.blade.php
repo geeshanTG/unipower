@@ -71,7 +71,7 @@
                                     <section class="col col-md-4">
                                         <label class="label">{{ __('Order') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <input type="text" id="order" name="order" required value="{{ $data->order }}">
+                                            <input type="number" id="order" name="order" required value="{{ $data->order }}">
                                         </label>
                                     </section>
                                 </div>

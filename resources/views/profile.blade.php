@@ -49,7 +49,7 @@
             <!-- Widget ID (each widget will need unique ID)-->
             <div class="jarviswidget" id="wid-id-1" data-widget-colorbutton="false" data-widget-editbutton="false" data-widget-custombutton="false" role="widget">
                 <header>
-                    <h2>{{ __('user.title') }}</h2>
+                    <h2>{{ __('User Profile') }}</h2>
                 </header>
                 <!-- widget div-->
                 <div>
@@ -66,13 +66,13 @@
                             <fieldset>
                                 <div class="row">
                                     <section class="col col-6">
-                                        <label class="label">{{ __('user.name') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Name') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="text" id="name" name="name" required value="{{ auth()->user()->name }}">
                                         </label>
                                     </section>
                                     <section class="col col-6">
-                                        <label class="label">{{ __('user.email') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Email') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="text" id="email" name="email" required value="{{ auth()->user()->email }}">
                                         </label>
@@ -81,14 +81,14 @@
 
                                 <div class="row">
                                     <section class="col col-6">
-                                        <label class="label">{{ __('user.password') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Password') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="password" id="passward" name="password" autocomplete="new-password" required value="" minlength="6">
                                         </label>
                                     </section>
 
                                     <section class="col col-6">
-                                        <label class="label">{{ __('user.confirmpassword') }} <span style=" color: red;">*</span> </label>
+                                        <label class="label">{{ __('Confirm Password') }} <span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <input type="password" id="password_confirmation" name="password_confirmation" autocomplete="confirm-password" required value="">
                                         </label>

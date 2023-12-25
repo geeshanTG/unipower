@@ -6,7 +6,8 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
-                        <img src="{{ asset('storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100" alt="">
+                        <img src="{{ asset('storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100"
+                            alt="">
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
@@ -28,91 +29,96 @@
             <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-up">
                 <div>
                     <h5 class="mb-3">What We Do</h5>
-                    @foreach ($serviceList as $service)
-                        <a
-                            href="{{ route('service-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
-                            <p class="mb-1">{{ $service->heading }}</p>
-                        </a>
-                    @endforeach
-                    <!-- <a href="#"><p class="mb-1">Laboratory Services</p></a> -->
-                    <a href="{{ route('services')}}">
-                        <p class="mb-1">All Services</p>
+                    @foreach ($serviceList as $index => $service)
+                        @if ($index === 4)
+                        @break
+                    @endif
+                    <a
+                        href="{{ route('service-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                        <p class="mb-1">{{ $service->heading }}</p>
                     </a>
-                </div>
-                <br class="d-lg-none d-block">
+                @endforeach
+                <a href="{{ route('services') }}">
+                    <p class="mb-1">All Services</p>
+                </a>
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-down">
-                <div>
-                    <h5 class="mb-3">Quick Links</h5>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <a href="{{ route('about-us') }}">
-                                <p class="mb-1">Home</p>
-                            </a>
-                            <a href="{{ route('about-us') }}">
-                                <p class="mb-1">About us</p>
-                            </a>
-                            <a href="{{ route('products') }}">
-                                <p class="mb-1">Products</p>
-                            </a>
-                        </div>
-                        <div class="col-lg-6">
-                            <a href="{{ route('services') }}">
-                                <p class="mb-1">Services</p>
-                            </a>
-                            <a href="{{ route('news') }}">
-                                <p class="mb-1">News & Events</p>
-                            </a>
-                            <a href="{{ route('contact-us') }}">
-                                <p class="mb-1">Contact us</p>
-                            </a>
-                        </div>
+            <br class="d-lg-none d-block">
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6" data-aos="fade-down">
+            <div>
+                <h5 class="mb-3">Quick Links</h5>
+                <div class="row">
+                    <div class="col-lg-6">
+                        <a href="{{ route('about-us') }}">
+                            <p class="mb-1">Home</p>
+                        </a>
+                        <a href="{{ route('about-us') }}">
+                            <p class="mb-1">About us</p>
+                        </a>
+                        <a href="{{ route('products') }}">
+                            <p class="mb-1">Products</p>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <a href="{{ route('services') }}">
+                            <p class="mb-1">Services</p>
+                        </a>
+                        <a href="{{ route('news') }}">
+                            <p class="mb-1">News & Events</p>
+                        </a>
+                        <a href="{{ route('contact-us') }}">
+                            <p class="mb-1">Contact us</p>
+                        </a>
                     </div>
                 </div>
-                <br class="d-lg-none d-block">
             </div>
-            <div class="col-lg-3 col-md-6 col-sm-6">
-                <!-- <div data-aos="fade-up">
-            <h5 class="mb-3">Sign-up for our Newsletter</h5>
-            <div class="newsletter">
-              <form action="">
-                <div class="input-group mb-3">
-                  <input type="text" class="form-control" placeholder="Enter your email" aria-label="User's email" aria-describedby="button-addon2">
-                  <button class="btn" type="button" id="button-addon2"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                </div>
-              </form>
-            </div>
-          </div>
-          <br> -->
+            <br class="d-lg-none d-block">
+        </div>
+        <div class="col-lg-3 col-md-6 col-sm-6">
+            <!-- <div data-aos="fade-up">
+<h5 class="mb-3">Sign-up for our Newsletter</h5>
+<div class="newsletter">
+  <form action="">
+    <div class="input-group mb-3">
+      <input type="text" class="form-control" placeholder="Enter your email" aria-label="User's email" aria-describedby="button-addon2">
+      <button class="btn" type="button" id="button-addon2"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+    </div>
+  </form>
+</div>
+</div>
+<br> -->
+            <div>
+                <h5 class="mb-3">Join us on Social Media</h5>
                 <div>
-                    <h5 class="mb-3">Join us on Social Media</h5>
-                    <div>
-                        <div class="social_links">
-                            <a href="{{ $contactInfo->facebook_url }}"><i class="fa fa-facebook p-2" aria-hidden="true"></i></a> &nbsp; &nbsp;
-                            <a href="{{ $contactInfo->linkedin_url }}"><i class="fa fa-linkedin p-2" aria-hidden="true"></i></a> &nbsp; &nbsp;
-                            <a href="{{ $contactInfo->twitter_url }}"><i class="fa fa-twitter p-2" aria-hidden="true"></i></a>
-                        </div>
+                    <div class="social_links">
+                        <a href="{{ $contactInfo->facebook_url }}"><i class="fa fa-facebook p-2"
+                                aria-hidden="true"></i></a> &nbsp; &nbsp;
+                        <a href="{{ $contactInfo->linkedin_url }}"><i class="fa fa-linkedin p-2"
+                                aria-hidden="true"></i></a> &nbsp; &nbsp;
+                        <a href="{{ $contactInfo->twitter_url }}"><i class="fa fa-twitter p-2"
+                                aria-hidden="true"></i></a>
                     </div>
                 </div>
-                <br class="d-lg-none d-block">
             </div>
+            <br class="d-lg-none d-block">
         </div>
     </div>
 </div>
+</div>
 <div class="container-fluid footer_bottom py-2" style="border-top: 1px solid #333333;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 col-md-6 col-12">
-                <p>© Unipower 2023 All Rights Reserved.
-                    Solution by <a style="color: #F5DEB3;" href="https://www.tekgeeks.net/">TekGeeks</a></p>
-            </div>
-            <div class="col-lg-6 col-md-6 col-12 bottom_links">
-                <a href="#">
-                    <p class="mb-0">Privacy Policy</p>
-                </a>
-            </div>
+<div class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-12">
+            <p>© Unipower 2023 All Rights Reserved.
+                Solution by <a style="color: #F5DEB3;" href="https://www.tekgeeks.net/">TekGeeks</a></p>
+        </div>
+        <div class="col-lg-6 col-md-6 col-12 bottom_links">
+            <a href="#">
+                <p class="mb-0">Privacy Policy</p>
+            </a>
         </div>
     </div>
+</div>
 </div>
 
 <!-- ===============================FOOTER======================================== -->
