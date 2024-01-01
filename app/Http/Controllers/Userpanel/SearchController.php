@@ -19,6 +19,11 @@ class SearchController extends Controller
 
         $pageTitle = 'SEARCH RESULTS';
         $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+        ->where('status', 'Y')
+        ->where('is_delete', 0)
+        ->orderBy('id', 'ASC')
+        ->get();
         if (!empty($searchTerm)) {
             session()->put('searchTerm', $request->text);
         }
@@ -27,15 +32,15 @@ class SearchController extends Controller
             $searchTerm = session()->get('searchTerm');
         }
 
-        $newsResults = News::select('id', 'heading')
+        $newsResults = News::select('id', 'heading','description')
             ->where('heading', 'like', '%' . $searchTerm . '%')
             ->where('status', 'Y')
             ->where('is_delete', 0);
-        $productResults = Product::select('id', 'heading')
+        $productResults = Product::select('id', 'heading','description')
             ->where('heading', 'like', '%' . $searchTerm . '%')
             ->where('status', 'Y')
             ->where('is_delete', 0);
-        $data = Service::select('id', 'heading')
+        $data = Service::select('id', 'heading','long_description as description')
             ->where('heading', 'like', '%' . $searchTerm . '%')
             ->where('status', 'Y')
             ->where('is_delete', 0)
@@ -44,6 +49,6 @@ class SearchController extends Controller
             ->orderBy('heading')
             ->paginate(5);
 
-        return view('userpanel.search_result', compact('contactInfo', 'pageTitle', 'data'));
+        return view('userpanel.search_result', compact('contactInfo', 'pageTitle', 'data', 'serviceList'));
     }
 }

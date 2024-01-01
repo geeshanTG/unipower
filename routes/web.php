@@ -227,7 +227,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('meta-tag-list', [MetaTagController::class, 'list'])->name('meta-tag-list');
     Route::get('edit-meta-tag/{id}', [MetaTagController::class, 'edit'])->name('edit-meta-tag');
-    Route::put('adminpanel/save-meta-tag', [MetaTagController::class, 'update'])->name('save-meta-tag');
+    Route::put('save-meta-tag', [MetaTagController::class, 'update'])->name('save-meta-tag');
 });
 
 require __DIR__ . '/auth.php';

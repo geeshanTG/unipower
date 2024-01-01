@@ -19,10 +19,11 @@ class HeaderHelper
 
     public static function getMeta($page)
     {
-        // dd($page);
+      
     	$meta = MetaTag::where('status','Y')
                 ->where('page_name', $page)
                 ->where('is_delete', 0)
+                ->where('status', 'Y')
                 ->first();
 
                 // dd($meta);

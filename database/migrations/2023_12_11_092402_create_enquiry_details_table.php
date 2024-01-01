@@ -17,10 +17,10 @@ class CreateEnquiryDetailsTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('email');
-            $table->string('phone',20)->nullable(true);
+            $table->string('phone');
             $table->boolean('is_delete')->default(0);
-            $table->string('subject',500)->nullable(true);
-            $table->text('message')->nullable(true);
+            $table->string('subject',500);
+            $table->text('message',1000);
             $table->string('status',1);
             $table->timestamps();
         });

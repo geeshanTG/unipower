@@ -66,11 +66,11 @@
             <div class="col-lg-12">
                     <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
                         <a href="{{ route('users.index') }}">
-                            <button class="btn cms_top_btn top_btn_height ">{{ __('user.add_new') }}</button>
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('Add New') }}</button>
                         </a>
 
                         <a href="{{ route('users-list') }}">
-                            <button class="btn cms_top_btn top_btn_height cms_top_btn_active">{{ __('user.view_all') }}</button>
+                            <button class="btn cms_top_btn top_btn_height cms_top_btn_active">{{ __('View All') }}</button>
                         </a>
                     </div>
                 </div>
@@ -79,13 +79,13 @@
                         <ul id="sparks" class="">
                             <li class="sparks-info" style="border: 1px solid #c5c5c5; padding-right: 0px; padding: 22px 15px; min-width: auto;">
                                 <a href="{{ route('users.index') }}">
-                                    <h5>{{ __('user.add_new') }}</h5>
+                                    <h5>{{ __('Add New') }}</h5>
                                 </a>
 
                             </li>
                             <li class="sparks-info sparks-info_active" style="border: 1px solid #c5c5c5; padding-right: 0px; padding: 22px 15px; min-width: auto;">
                                 <a href="{{ route('users-list') }}">
-                                    <h5>{{ __('user.view_all') }}</h5>
+                                    <h5>{{ __('View All') }}</h5>
                                 </a>
 
                             </li>
@@ -111,7 +111,7 @@
                         <div class="jarviswidget jarviswidget-color-darken" id="user_types" data-widget-editbutton="false">
                             <header>
                                 <span class="widget-icon"> <i class="fa fa-table"></i> </span>
-                                <h2>{{ __('user.list_title') }}</h2>
+                                <h2>{{ __('User List') }}</h2>
                             </header>
                             <!-- widget div-->
                             <div>
@@ -125,13 +125,13 @@
                                     <table class="table table-bordered data-table" width="100%">
                                         <thead>
                                             <tr>
-                                                <th>{{ __('user.no') }}</th>
-                                                <th>{{ __('user.name') }}</th>
-                                                <th>{{ __('user.email') }}</th>
-                                                <th>{{ __('user.role') }}</th>
-                                                <th>{{ __('user.edit') }}</th>
-                                                <th width="100px">{{ __('user.status') }}</th>
-                                                <th width="100px">{{ __('user.is_delete') }}</th>
+                                                <th>{{ __('No') }}</th>
+                                                <th>{{ __('Name') }}</th>
+                                                <th>{{ __('Email') }}</th>
+                                                <th>{{ __('Role') }}</th>
+                                                <th>{{ __('Edit') }}</th>
+                                                <th width="100px">{{ __('Status') }}</th>
+                                                <th width="100px">{{ __('Delete') }}</th>
                                             </tr>
                                         </thead>
                                         <tbody>

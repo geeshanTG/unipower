@@ -261,7 +261,7 @@
                                 <button id="button1id" name="button1id" type="submit" class="btn btn-primary">
                                     Submit
                                 </button>
-                                <button type="button" class="btn btn-default" onclick="viewlist()">
+                                <button type="button" class="btn btn-default" onclick="window.history.back();">
                                     Back
                                 </button>
                             </footer>

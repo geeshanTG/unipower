@@ -19,6 +19,8 @@
                 $meta = HeaderHelper::getMeta('News And Event');
             } elseif (HeaderHelper::activateMenu('ServiceController') == 'active') {
                 $meta = HeaderHelper::getMeta('Services');
+            }elseif (HeaderHelper::activateMenu('SearchController') == 'active') {
+                $meta = HeaderHelper::getMeta('Search');
             }else {
                 $meta = HeaderHelper::getMeta('Home');
             }

@@ -14,18 +14,28 @@ class ServiceController extends Controller
     {
         $pageTitle = 'OUR SERVICES';
         $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+        ->where('status', 'Y')
+        ->where('is_delete', 0)
+        ->orderBy('id', 'ASC')
+        ->get();
         $pageContent = ServicePageContent::where('id', 1)->first();
         $services = Service::where('status', 'Y')
             ->where('is_delete', 0)
             ->get();
 
-        return view('userpanel.services', compact('contactInfo', 'pageTitle', 'pageContent', 'services'));
+        return view('userpanel.services', compact('contactInfo', 'pageTitle', 'pageContent', 'services', 'serviceList'));
     }
     public function service($name, $id)
     {
         $pageTitle = 'OUR SERVICES';
         $serviceId = decrypt($id);
         $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+        ->where('status', 'Y')
+        ->where('is_delete', 0)
+        ->orderBy('id', 'ASC')
+        ->get();
         $service = Service::where('id', $serviceId)
             ->where('status', 'Y')
             ->where('is_delete', 0)
@@ -54,6 +64,6 @@ class ServiceController extends Controller
     
       
 
-        return view('userpanel.servicedetail', compact('contactInfo', 'pageTitle', 'service', 'images'));
+        return view('userpanel.servicedetail', compact('contactInfo', 'pageTitle', 'service', 'images', 'serviceList'));
     }
 }

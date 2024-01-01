@@ -97,7 +97,7 @@
                                     <section class="col col-md-4">
                                         <label class="label">{{ __('Order') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <input type="text" id="order" name="order" required value="">
+                                            <input type="number" id="order" name="order" required value="">
                                         </label>
                                     </section>
                                     <section class="col col-md-4">

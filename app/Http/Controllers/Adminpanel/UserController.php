@@ -31,7 +31,6 @@ class UserController extends Controller
         return view('adminpanel.users.index', compact('roles'));
     }
 
-
     public function list(Request $request)
     {
         //echo "aaa";
@@ -41,28 +40,27 @@ class UserController extends Controller
             return Datatables::of($data)
                 ->addIndexColumn()
                 ->addColumn('edit', function ($row) {
-
-                   $edit_url = route('users.edit',encrypt($row->id));
+                    $edit_url = route('users.edit', encrypt($row->id));
                     $btn = '<a href="' . $edit_url . '"><i class="fa fa-edit"></i></a>';
                     return $btn;
                 })
                 ->addColumn('role', function ($row) {
-                    $v = "";
-                    if(!empty($row->getRoleNames())){
-                        foreach($row->getRoleNames() as $v){
+                    $v = '';
+                    if (!empty($row->getRoleNames())) {
+                        foreach ($row->getRoleNames() as $v) {
                             $v;
                         }
                     }
-                     return $v;
-                 })
-                ->addColumn('activation', function($row){
-                    if ( $row->status == "Y" )
-                        $status ='fa fa-check';
-                    else
-                        $status ='fa fa-remove';
+                    return $v;
+                })
+                ->addColumn('activation', function ($row) {
+                    if ($row->status == 'Y') {
+                        $status = 'fa fa-check';
+                    } else {
+                        $status = 'fa fa-remove';
+                    }
 
-
-                    $btn = '<a href="changestatus-user/'.$row->id.'/'.$row->cEnable.'"><i class="'.$status.'"></i></a>';
+                    $btn = '<a href="changestatus-user/' . $row->id . '/' . $row->cEnable . '"><i class="' . $status . '"></i></a>';
 
                     return $btn;
                 })
@@ -75,13 +73,12 @@ class UserController extends Controller
                 //     return $btn;
                 // })
                 ->addColumn('blockuser', 'adminpanel.users.actionsBlock')
-                ->rawColumns(['edit','role','activation','blockuser'])
+                ->rawColumns(['edit', 'role', 'activation', 'blockuser'])
                 ->make(true);
         }
 
-       return view('adminpanel.users.list');
+        return view('adminpanel.users.list');
     }
-
 
     /**
      * Show the form for creating a new resource.
@@ -102,11 +99,14 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
+
+      
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email',
             'password' => 'required|same:confirmpassword',
             'roles' => 'required',
+            'mobile_no'=> 'required|max:10|min:10',
         ]);
 
         $input = $request->all();
@@ -116,9 +116,10 @@ class UserController extends Controller
         $user = User::create($input);
         $user->assignRole($request->input('roles'));
 
-        \LogActivity::addToLog('New user '.$request->name.' added('.$user->id.').');
+        \LogActivity::addToLog('New user ' . $request->name . ' added(' . $user->id . ').');
 
-        return redirect()->route('users.index')
+        return redirect()
+            ->route('users.index')
             ->with('success', 'User created successfully');
     }
 
@@ -159,31 +160,35 @@ class UserController extends Controller
      */
     public function update(Request $request)
     {
-       $id = $request->id;
+        $id = $request->id;
         $this->validate($request, [
             'name' => 'required',
             'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
             'roles' => 'required',
+            'mobile_no'=> 'required|max:10|min:10',
         ]);
 
         $input = $request->all();
         if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
         } else {
-            $input = Arr::except($input, array('password'));
+            $input = Arr::except($input, ['password']);
         }
 
         $user = User::find($id);
         $user->update($input);
 
-        DB::table('model_has_roles')->where('model_id', $id)->delete();
+        DB::table('model_has_roles')
+            ->where('model_id', $id)
+            ->delete();
 
         $user->assignRole($request->input('roles'));
 
-        \LogActivity::addToLog('User record '.$request->name.' updated('.$id.').');
+        \LogActivity::addToLog('User record ' . $request->name . ' updated(' . $id . ').');
 
-        return redirect()->route('users-list')
+        return redirect()
+            ->route('users-list')
             ->with('success', 'User updated successfully');
     }
 
@@ -196,7 +201,8 @@ class UserController extends Controller
     public function destroy($id)
     {
         User::find($id)->delete();
-        return redirect()->route('users.index')
+        return redirect()
+            ->route('users.index')
             ->with('success', 'User deleted successfully');
     }
 
@@ -206,31 +212,29 @@ class UserController extends Controller
             // 'status' => 'required'
         ]);
 
-        $data =  User::find($request->id);
+        $data = User::find($request->id);
 
-        if ( $data->status == "Y" ) {
-
+        if ($data->status == 'Y') {
             $data->status = 'N';
             $data->save();
             $id = $data->id;
 
-            \LogActivity::addToLog('User record '.$data->name.' deactivated('.$id.').');
+            \LogActivity::addToLog('User record ' . $data->name . ' deactivated(' . $id . ').');
 
-            return redirect()->route('users-list')
-            ->with('success', 'Record deactivate successfully.');
-
+            return redirect()
+                ->route('users-list')
+                ->with('success', 'Record deactivate successfully.');
         } else {
-
-            $data->status = "Y";
+            $data->status = 'Y';
             $data->save();
             $id = $data->id;
 
-            \LogActivity::addToLog('User record '.$data->name.' activated('.$id.').');
+            \LogActivity::addToLog('User record ' . $data->name . ' activated(' . $id . ').');
 
-            return redirect()->route('users-list')
-            ->with('success', 'Record activate successfully.');
+            return redirect()
+                ->route('users-list')
+                ->with('success', 'Record activate successfully.');
         }
-
     }
 
     public function block(Request $request)
@@ -239,14 +243,15 @@ class UserController extends Controller
             // 'status' => 'required'
         ]);
 
-        $data =  User::find($request->id);
+        $data = User::find($request->id);
         $data->is_delete = 1;
         $data->save();
         $id = $data->id;
 
-        \LogActivity::addToLog('User record '.$data->name.' deleted('.$id.').');
+        \LogActivity::addToLog('User record ' . $data->name . ' deleted(' . $id . ').');
 
-        return redirect()->route('users-list')
+        return redirect()
+            ->route('users-list')
             ->with('success', 'Record deleted successfully.');
     }
 
@@ -255,11 +260,11 @@ class UserController extends Controller
         // echo $request->startTime;
         //   exit();
         // \DB::enableQueryLog();
-        $users = User::where("email", $request->email)
-                        ->get();
-                        // $events = \DB::getQueryLog();
-                        // print_r($events);
-                        // exit();
+        $users = User::where('is_delete', 0)->where('email', $request->email)->get();
+    
+        // $events = \DB::getQueryLog();
+        // print_r($events);
+        // exit();
 
         return response()->json($users);
     }
