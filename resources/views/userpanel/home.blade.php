@@ -137,7 +137,7 @@
             <h1 class="mb-3">{{ $about->heading }}</h1>
             <h5 style="color: #00732E;">{{ $about->sub_heading }}</h5>
             {!! $about->description !!}
-            <a class="btn btn_main rounded-0">Explore More</a>
+            <a class="btn btn_main rounded-0" href="{{ url('about-us')}}">Explore More</a>
 
             <div class="mt-3 overview_partner_slider">
                 <div class="slider">
@@ -307,7 +307,7 @@
                     <div class="card-body bg-white">
                         <h5 class="card-title">{{ $new->heading }}</h5>
                         <p class="card-text">{!! Str::limit($new->description, 100) !!} ...</p>
-                        <a href="{{ url('news_detail').'/'.$newName.'/'.$encryptedId }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                        <a href="{{ url('news-detail').'/'.$newName.'/'.$encryptedId }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
                     </div>
                 </div>
