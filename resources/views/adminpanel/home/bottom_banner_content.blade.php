@@ -57,7 +57,7 @@
                                     <section class="col col-md-6">
                                         <label class="label">{{ __('Description') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <textarea class="form-control" id="description" name="description" rows="3" maxlength="250" required>{{ $data->description }}</textarea>
+                                            <textarea class="form-control" id="description" name="description" rows="3"  required>{{ $data->description }}</textarea>
                                         </label>
                                     </section>
                                 </div>
