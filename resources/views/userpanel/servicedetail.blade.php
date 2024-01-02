@@ -6,7 +6,7 @@
     <h1>{{ $service->heading }}</h1>
     <br>
     <p>{!! $service->long_description !!}</p>
-    <button type="button" class="btn btn_main rounded-0">Inquire Now</button>
+    <button type="button" class="btn btn_main rounded-0" onclick="window.location.href='{{ url('contact-us') }}'">Inquire Now</button>
 </div>
 <br>
 <br>
