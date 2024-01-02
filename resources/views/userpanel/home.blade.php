@@ -24,6 +24,9 @@
                     </div>
                 </div>
             </div>
+          	@php
+          		$c++;
+          	@endphp
             @endforeach
         </div>
 

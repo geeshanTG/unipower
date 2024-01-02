@@ -47,6 +47,7 @@ class ProductController extends Controller
 
     public function getFilteredProducts(Request $request)
     {
+        dd($request);
         $products = Product::where('main_category_id', $request->main_category_id)
             ->where('sub_category_id', $request->sub_category_id)
             ->get();
