@@ -47,7 +47,7 @@
             @endif
             <br>
             <div class="contact_form" data-aos="fade-down">
-                <form action="{{ route('save-enquiry') }}" method="post">
+                <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}" method="post" class="inquiry_form">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">

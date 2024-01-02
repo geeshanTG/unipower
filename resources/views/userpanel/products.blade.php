@@ -141,9 +141,9 @@
                 },
                 success: function(res) {
 
-                    // console.log(res);
+                   
                     if (res) {
-                        // console.log(res);
+                       
                         $("#sub_category_id").empty();
                         $("#sub_category_id").append('<option disabled selected>Select Sub Category</option>');
                         $.each(res, function(key, value) {
@@ -154,6 +154,7 @@
                         });
 
                     } else {
+                       
 
                         $("#sub_category_id").empty();
                     }

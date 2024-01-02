@@ -59,11 +59,11 @@ class ContactController extends Controller
         $data->status = 'Y';
         $data->save();
 
-        dd($data);
+        //dd($data);
 
-        \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo) {
+        \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request) {
             $message->from('info@unipower.com');
-            $message->to($contactInfo->email)->subject('Unipower - New Enquiry');
+            $message->to($request->email,'ayodhya@tekgeeks.net')->subject('Unipower - New Enquiry');
         });
 
         return redirect()
