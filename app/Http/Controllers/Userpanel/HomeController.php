@@ -27,7 +27,7 @@ class HomeController extends Controller
             ->get();
         $about = About::first();
         $partners = OurTrustedPartner::where('status', 'Y')
-            ->where('is_delete', 0)
+            ->where('is_delete', 0)->orderBy('order', 'ASC')
             ->get();
         $middleBanner = MiddleBannerContent::first();
         $mainCategories = MainCategory::where('status', 'Y')
