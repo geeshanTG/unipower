@@ -9,6 +9,7 @@ use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
+
 class ContactController extends Controller
 {
     public function index()
@@ -20,23 +21,23 @@ class ContactController extends Controller
             ->where('is_delete', 0)
             ->orderBy('id', 'ASC')
             ->get();
-        return view('userpanel.contactus', compact('contactInfo', 'pageTitle','serviceList'));
+        return view('userpanel.contactus', compact('contactInfo', 'pageTitle', 'serviceList'));
     }
 
     public function store(Request $request)
     {
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
-        ->where('status', 'Y')
-        ->where('is_delete', 0)
-        ->orderBy('id', 'ASC')
-        ->get();
+            ->where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('id', 'ASC')
+            ->get();
 
         $request->validate(
             [
                 'name' => 'required',
                 'email' => 'required',
-                'phone' => 'required',
+                'phone' => 'required |max:10|min:10',
                 'subject' => 'required',
                 'message' => 'required',
                 'g-recaptcha-response' => ['required', new ReCaptcha()],
@@ -63,14 +64,11 @@ class ContactController extends Controller
 
         \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request) {
             $message->from('info@unipower.com');
-            $message->to($request->email,'ayodhya@tekgeeks.net')->subject('Unipower - New Enquiry');
+            $message->to($request->email, 'ayodhya@tekgeeks.net')->subject('Unipower - New Enquiry');
         });
 
-        return redirect()
-            ->back()
-            ->with('success', 'Your enquiry has been submitted successfully.');
-
-        // return redirect()->route('contact-us')
-        // ->with('success', 'Your enquiry has been submitted successfully.');
+        $url = '/#enquiry-success';
+        return redirect($url)->with('success', 'Your enquiry has been submitted successfully.');
+    
     }
 }
