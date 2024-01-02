@@ -20,10 +20,10 @@ class SearchController extends Controller
         $pageTitle = 'SEARCH RESULTS';
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
-        ->where('status', 'Y')
-        ->where('is_delete', 0)
-        ->orderBy('id', 'ASC')
-        ->get();
+            ->where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('id', 'ASC')
+            ->get();
         if (!empty($searchTerm)) {
             session()->put('searchTerm', $request->text);
         }
@@ -32,15 +32,18 @@ class SearchController extends Controller
             $searchTerm = session()->get('searchTerm');
         }
 
-        $newsResults = News::select('id', 'heading','description')
+        $newsResults = News::select('id', 'heading', 'description')
+            ->addSelect(DB::raw("'News' AS name"))
             ->where('heading', 'like', '%' . $searchTerm . '%')
             ->where('status', 'Y')
             ->where('is_delete', 0);
-        $productResults = Product::select('id', 'heading','description')
+        $productResults = Product::select('id', 'heading', 'description')
+            ->addSelect(DB::raw("'Product' AS name"))
             ->where('heading', 'like', '%' . $searchTerm . '%')
             ->where('status', 'Y')
             ->where('is_delete', 0);
-        $data = Service::select('id', 'heading','long_description as description')
+        $data = Service::select('id', 'heading', 'long_description as description')
+            ->addSelect(DB::raw("'Service' AS name"))
             ->where('heading', 'like', '%' . $searchTerm . '%')
             ->where('status', 'Y')
             ->where('is_delete', 0)

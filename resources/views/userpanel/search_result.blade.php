@@ -4,22 +4,59 @@
 <div class="container" data-aos="fade-up">
     <!-- Search Result  -->
     @if (count($data) > 0)
-        @foreach ($data as $service)
-            <div class="search_result">
-                <a
-                    href="{{ route('services', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
-                    <h3>{{ $service->heading }}</h3>
-                    @php
-                        $description = strip_tags($service->description);
-                        $words = str_word_count($description, 1);
-                        $limitedWords = array_slice($words, 0, 16);
-                        $limitedDescription = implode(' ', $limitedWords);
-                    @endphp
 
-                    <p>{{ $limitedDescription }}</p>
-                </a>
-                <hr>
-            </div>
+        @foreach ($data as $service)
+            @if ($service->name == 'Service')
+                <div class="search_result">
+                    <a
+                        href="{{ route('service-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                        <h3>{{ $service->heading }}</h3>
+                        @php
+                            $description = strip_tags($service->description);
+                            $words = str_word_count($description, 1);
+                            $limitedWords = array_slice($words, 0, 16);
+                            $limitedDescription = implode(' ', $limitedWords);
+                        @endphp
+
+                        <p>{{ $limitedDescription }}</p>
+                    </a>
+                    <hr>
+                </div>
+            @endif
+            @if ($service->name == 'News')
+                <div class="search_result">
+                    <a
+                        href="{{ route('news-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                        <h3>{{ $service->heading }}</h3>
+                        @php
+                            $description = strip_tags($service->description);
+                            $words = str_word_count($description, 1);
+                            $limitedWords = array_slice($words, 0, 16);
+                            $limitedDescription = implode(' ', $limitedWords);
+                        @endphp
+
+                        <p>{{ $limitedDescription }}</p>
+                    </a>
+                    <hr>
+                </div>
+            @endif
+            @if ($service->name == 'Product')
+                <div class="search_result">
+                    <a
+                        href="{{ route('product-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                        <h3>{{ $service->heading }}</h3>
+                        @php
+                            $description = strip_tags($service->description);
+                            $words = str_word_count($description, 1);
+                            $limitedWords = array_slice($words, 0, 16);
+                            $limitedDescription = implode(' ', $limitedWords);
+                        @endphp
+
+                        <p>{{ $limitedDescription }}</p>
+                    </a>
+                    <hr>
+                </div>
+            @endif
         @endforeach
     @else
         <div class="search_result">

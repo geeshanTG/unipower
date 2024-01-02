@@ -73,7 +73,7 @@ Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProduct
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
 Route::get('services', [ServiceController::class, 'index'])->name('services');
-Route::get('service/{name}/{id}', [ServiceController::class, 'service'])->name('service-detail');
+Route::get('service-detail/{name}/{id}', [ServiceController::class, 'service'])->name('service-detail');
 Route::get('news', [NewsAndEventController::class, 'index'])->name('news');
 Route::get('news-detail/{name}/{id}', [NewsAndEventController::class, 'details'])->name('news-detail');
 Route::match(['get', 'post'],'search_result', [SearchController::class, 'search'])->name('search_result');
