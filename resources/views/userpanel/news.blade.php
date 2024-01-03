@@ -17,7 +17,7 @@
                             <img src="{{ asset('/storage/app/') . '/' . $topStory[$i]->image_1 }}"
                                 class="card-img-top rounded-0" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">{{ $topStory[$i]->heading }}</h5>
+                                <h5 class="card-title">{{ Str::limit($topStory[$i]->heading, 50) }}</h5>
                                 @php
                                     $description = strip_tags($topStory[$i]->description);
                                     $words = str_word_count($description, 1);
@@ -46,7 +46,7 @@
                             class="w-100 m-auto">
                     </div>
                     <div class="col-lg-8 col-md-8 col-8">
-                        <h5 class="card-title">{{ $featuredNews[$i]->heading }}</h5>
+                        <h5 class="card-title">{{ Str::limit($featuredNews[$i]->heading, 70) }}</h5>
                         @php
                             $description = strip_tags($featuredNews[$i]->description);
                             $words = str_word_count($description, 1);
@@ -74,7 +74,7 @@
                     <img src="{{ asset('/storage/app/') . '/' . $news[$i]->image_1 }}" class="card-img-top rounded-0"
                         alt="{{ $news[$i]->heading }}">
                     <div class="card-body">
-                        <h5 class="card-title" alt="{{ $news[$i]->heading }}">{{ $news[$i]->heading }}</h5>
+                        <h5 class="card-title" >{{ Str::limit($news[$i]->heading, 50) }}</h5>
                         @php
                             $description = strip_tags($news[$i]->description);
                             $words = str_word_count($description, 1);
