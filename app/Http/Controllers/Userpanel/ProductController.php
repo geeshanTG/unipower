@@ -9,10 +9,11 @@ use App\Models\SubCategory;
 use App\Models\MainCategory;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class ProductController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
         $pageTitle = 'All Products';
 
@@ -23,10 +24,25 @@ class ProductController extends Controller
             ->where('is_delete', 0)
             ->orderBy('order', 'ASC')
             ->get();
-        $products = Product::where('status', 'Y')
-            ->where('is_delete', 0)
-            ->orderBy('order', 'ASC')
-            ->paginate(12);
+
+// dd($request->main_category_id);
+            if (!empty($request->main_category_id) && !empty($request->sub_category_id)) {
+                $mainCat = $request->main_category_id;
+                $subCat = $request->sub_category_id;
+                // dd($request->main_category_id);
+                $products = Product::where('main_category_id', $request->main_category_id)
+                ->where('sub_category_id', $request->sub_category_id)
+                ->paginate(12);
+            } else {
+                // dd('test');
+                $mainCat = '';
+                $subCat = '';
+                $products = Product::where('status', 'Y')
+                ->where('is_delete', 0)
+                ->orderBy('order', 'ASC')
+                ->paginate(12);
+            }
+
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
             ->where('status', 'Y')
@@ -34,7 +50,7 @@ class ProductController extends Controller
             ->orderBy('id', 'ASC')
             ->get();
 
-        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList'));
+        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList','mainCat','subCat'));
     }
 
     public function getSubCategoriesWeb(Request $request)
@@ -47,12 +63,31 @@ class ProductController extends Controller
 
     public function getFilteredProducts(Request $request)
     {
-        dd($request);
+        // \DB::enableQueryLog();
+
+            // dd(\DB::getQueryLog());
+        // dd($products);
+
+        $pageTitle = 'All Products';
+
+        $mainCategories = MainCategory::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->get();
+        $subCategories = SubCategory::where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('order', 'ASC')
+            ->get();
         $products = Product::where('main_category_id', $request->main_category_id)
             ->where('sub_category_id', $request->sub_category_id)
+            ->paginate(12);
+        $contactInfo = ContactInfo::first();
+        $serviceList = Service::select('id', 'heading')
+            ->where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('id', 'ASC')
             ->get();
-        // dd($products);
-        return response()->json($products);
+            dd($products);
+        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList'));
     }
 
     public function productCategories(Request $request)

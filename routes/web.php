@@ -66,10 +66,10 @@ Route::get('/admin', function () {
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('product-categories/{catName}', [ProductController::class, 'productCategories'])->name('product-categories');
 Route::get('about-us', [AboutController::class, 'index'])->name('about-us');
-Route::get('products', [ProductController::class, 'index'])->name('products');
+Route::match(['get', 'post'],'products', [ProductController::class, 'index'])->name('products');
 Route::get('product-detail/{name}/{id}', [ProductController::class, 'productDetail'])->name('product-detail');
 Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWeb'])->name('getSubCategoriesWeb');
-Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
+// Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
 Route::post('save-enquiry', [ContactController::class, 'store'])->name('save-enquiry');
 Route::get('services', [ServiceController::class, 'index'])->name('services');
