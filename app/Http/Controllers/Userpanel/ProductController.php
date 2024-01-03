@@ -104,12 +104,12 @@ class ProductController extends Controller
 
         $mainCatName = $request->segment(2);
         $catName = str_replace('-', ' ', $mainCatName);
-
-        $products = Product::where('status', 'Y')
+        $mainCatId = MainCategory::where('heading', 'like', '%' . $catName . '%')->first();
+        $products = Product::select('*')->where('status', 'Y')
             ->where('is_delete', 0)
-            ->orWhere('heading', 'like', '%' . $catName . '%')
+            ->where('main_category_id', $mainCatId->id)
             ->orderBy('order', 'ASC')
-            ->paginate(1);
+            ->paginate(12);
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
         ->where('status', 'Y')
@@ -117,7 +117,10 @@ class ProductController extends Controller
         ->orderBy('id', 'ASC')
         ->get();
 
-        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList'));
+        $mainCat = '';
+        $subCat = '';
+
+        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList','mainCat','subCat'));
     }
 
     public function productDetail(Request $request)
