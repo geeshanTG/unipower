@@ -12,10 +12,12 @@
         <div class="col-lg-6 text-lg-end text-center" data-aos="fade-down">
             <div class="row">
                 <div class="col-lg-8 home_ab_img_1">
-                    <img style="width: 360px; height: 360px;" class="" src="storage/app/{{ $whoWeAre->image_1 }}" alt="">
+                    <img style="width: 360px; height: 360px;" class="" src="storage/app/{{ $whoWeAre->image_1 }}"
+                        alt="">
                 </div>
                 <div class="offset-lg-5 col-lg-7 offset-md-5 col-md-7 d-md-block d-none">
-                    <img style="width: 250px; height: 250px; margin-top: -220px;" class="" src="storage/app/{{ $whoWeAre->image_2 }}" alt="">
+                    <img style="width: 250px; height: 250px; margin-top: -220px;" class=""
+                        src="storage/app/{{ $whoWeAre->image_2 }}" alt="">
                 </div>
             </div>
         </div>
@@ -24,7 +26,8 @@
 <br>
 <br class="d-lg-block d-none">
 
-<div class="container" style="background-image: url({{ asset('public/frontend/images/leaf_2.png')}}); background-repeat: no-repeat; background-position: bottom right;">
+<div class="container"
+    style="background-image: url({{ asset('public/frontend/images/leaf_2.png') }}); background-repeat: no-repeat; background-position: bottom right;">
     <div class="row align-items-center">
         <div class="col-lg-6 who_we_are d-lg-block d-none" data-aos="fade-down">
             <img class="w-100 m-auto" src="storage/app/{{ $whoWeAre->image_3 }}" alt="">
@@ -60,7 +63,7 @@
 <br>
 <br>
 
-<div class="container">
+{{-- <div class="container">
     <h1>A Message from the Managing Director</h1>
     <br>
     <div class="row">
@@ -80,7 +83,7 @@
     </div>
 </div>
 <br>
-<br>
+<br> --}}
 
 <div class="container-fluid light_bg_sec">
     <div class="container" data-aos="fade-up">
@@ -88,13 +91,13 @@
         <br>
         <div class="row">
             @foreach ($ourValues as $values)
-            <div class="col-lg-3 col-md-6">
-                <div class="text-center bg-white shadow p-4 value_card">
-                    <img src="storage/app/{{ $values->icon }}" style="width: 50px;" alt="">
-                    <h5 class="my-2" style="text-transform: uppercase">{{ $values->heading }}</h5>
-                    <p>{!! $values->description !!}</p>
+                <div class="col-lg-3 col-md-6">
+                    <div class="text-center bg-white shadow p-4 value_card">
+                        <img src="storage/app/{{ $values->icon }}" style="width: 50px;" alt="">
+                        <h5 class="my-2" style="text-transform: uppercase">{{ $values->heading }}</h5>
+                        <p>{!! $values->description !!}</p>
+                    </div>
                 </div>
-            </div>
             @endforeach
         </div>
     </div>
@@ -109,6 +112,7 @@
     <!-- partial:index.partial.html -->
     <section class="h--timeline js-h--timeline">
         <div class="h--timeline-container">
+
             <div class="h--timeline-dates">
                 <div class="h--timeline-line">
                     <ol>
@@ -116,10 +120,13 @@
                             $c = 0;
                         @endphp
                         @foreach ($ourStories as $ourStory)
-                        <li><a href="#0" data-date="{{ \Carbon\Carbon::parse($ourStory->year)->format('d/m/Y') }}" class="h--timeline-date @if($c == 0) {{ 'h--timeline-date--selected' }} @endif">{{ \Carbon\Carbon::parse($ourStory->year)->format('Y') }}</a></li>
-                        @php
-                            $c++;
-                        @endphp
+                            <li><a href="#0"
+                                    data-date="{{ \Carbon\Carbon::parse($ourStory->year)->format('d/m/Y') }}"
+                                    class="h--timeline-date @if ($c == 0) {{ 'h--timeline-date--selected' }} @endif">{{ \Carbon\Carbon::parse($ourStory->year)->format('Y') }}</a>
+                            </li>
+                            @php
+                                $c++;
+                            @endphp
                         @endforeach
                     </ol>
 
@@ -132,7 +139,8 @@
                     <li><a href="#0"
                             class="text-replace h--timeline-navigation h--timeline-navigation--prev h--timeline-navigation--inactive">Prev</a>
                     </li>
-                    <li><a href="#0" class="text-replace h--timeline-navigation h--timeline-navigation--next">Next</a>
+                    <li><a href="#0"
+                            class="text-replace h--timeline-navigation h--timeline-navigation--next">Next</a>
                     </li>
                 </ul>
             </nav>
@@ -144,37 +152,39 @@
                     $c = 0;
                 @endphp
                 @foreach ($ourStories as $ourStory)
-                <li class="h--timeline-event text-component @if($c ==0) {{ 'h--timeline-event--selected' }} @endif">
-                    <div class="row">
-                        <div class="offset-lg-1 col-lg-10">
-                            <div class="story_card">
-                                <div class="row align-items-center ">
-                                    <div class="col-lg-8 col-md-7">
-                                        <h3 class="text-dark mb-3">{{ $ourStory->heading }}</h3>
-                                        <p>{{ $ourStory->description }}</p>
-                                    </div>
-                                    <div class="col-lg-4 col-md-5">
-                                        <img src="storage/app/{{ $ourStory->image }}" alt="" class="w-100 m-auto">
+                    <li
+                        class="h--timeline-event text-component @if ($c == 0) {{ 'h--timeline-event--selected' }} @endif">
+                        <div class="row">
+                            <div class="offset-lg-1 col-lg-10">
+                                <div class="story_card">
+                                    <div class="row align-items-center ">
+                                        <div class="col-lg-8 col-md-7">
+                                            <h3 class="text-dark mb-3">{{ $ourStory->heading }}</h3>
+                                            <p>{{ $ourStory->description }}</p>
+                                        </div>
+                                        <div class="col-lg-4 col-md-5">
+                                            <img src="storage/app/{{ $ourStory->image }}" alt=""
+                                                class="w-100 m-auto">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                </li>
-                @php
-                    $c++;
-                @endphp
+                    </li>
+                    @php
+                        $c++;
+                    @endphp
                 @endforeach
             </ol>
         </div> <!-- .h--timeline-events -->
     </section>
     <!-- partial -->
     <!-- Timeline section End  -->
+
 </div>
 
 <br class="d-lg-block d-none">
 <br>
-
 <div class="container">
     <div class="row align-items-center" data-aos="fade-up">
         <div class="col-lg-6 col-md-6">
@@ -188,13 +198,14 @@
                         <p class="fw-bold">{{ $awards->award_name_1 }}</p>
                     </div>
                 </div>
-                @if(!empty($awards->award_image_2))
-                <div class="col-lg-6 col-md-6 col-6 text-center">
-                    <div class="p-3">
-                        <img src="storage/app/{{ $awards->award_image_2 }}" alt="" class="m-auto mb-2 w-100">
-                        <p class="fw-bold">{{ $awards->award_name_2 }}</p>
+                @if (!empty($awards->award_image_2))
+                    <div class="col-lg-6 col-md-6 col-6 text-center">
+                        <div class="p-3">
+                            <img src="storage/app/{{ $awards->award_image_2 }}" alt=""
+                                class="m-auto mb-2 w-100">
+                            <p class="fw-bold">{{ $awards->award_name_2 }}</p>
+                        </div>
                     </div>
-                </div>
                 @endif
             </div>
         </div>

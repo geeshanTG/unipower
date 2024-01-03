@@ -6,7 +6,7 @@
         <div class="col-lg-4 col-md-5 contact_info_sec">
             <h1>{{ $contactInfo->heading_title }}</h1>
             <br>
-            <p>{!! $contactInfo->description !!}</p>
+            {{-- <p>{!! $contactInfo->description !!}</p> --}}
             <div class="row align-items-center">
                 <div class="col-lg-2 col-2">
                     <img src="{{ asset('public/frontend/images/placeholder.png') }}" class="w-100 m-auto" alt="">
