@@ -338,8 +338,8 @@
                         <h5 class="card-title">{{ $new->heading }}</h5>
                         <p class="card-text">{!! Str::limit($new->description, 100) !!} ...</p>
                         <a href="{{ url('news-detail') . '/' . $newName . '/' . $encryptedId }}"
-                            class="text_link">Read More
-                            &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                            class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -387,12 +387,12 @@
     </div>
 </div>
 
-<div class="container-fluid sec_padding faq_con_sec" 
+<div class="container-fluid sec_padding faq_con_sec"
     style="background-image: url({{ asset('public/frontend/images/dark_bg.jpg') }}); background-repeat: no-repeat; background-size: cover;">
-    <div class="container fluid_contain" >
-        <div class="row faq_con_row" id="enquiry-success">
-            
-            
+    <div class="container fluid_contain">
+        <div class="row faq_con_row" id="home-enquiry">
+
+
             <div class="col-lg-6 faq_sec">
                 <h1 class="">FAQ’s</h1>
                 <br>
@@ -429,7 +429,7 @@
                 </div>
             </div>
 
-            <div class="col-lg-6 contact_sec" >
+            <div class="col-lg-6 contact_sec">
                 <h1 class="text-white">Get in Touch</h1>
                 <br>
                 @if ($errors->any())
@@ -442,18 +442,17 @@
                         </ul>
                     </div>
                 @endif
-              
+
                 @if (Session::has('success'))
                     <div id="success-message" class="alert alert-success text-center">
                         {{ Session::get('success') }}
                     </div>
-
                 @endif
                 @if ($errors->has('token'))
                     <span class="text-danger">{{ $errors->first('token') }}</span>
                 @endif
                 <br>
-                <div class="contact_form" data-aos="fade-down"  id="my-form">
+                <div class="contact_form" data-aos="fade-down" id="my-form">
                     <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}"
                         enctype="multipart/form-data" method="post" class="smart-form inquiry_form">
                         @csrf
@@ -470,9 +469,7 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    <script>
-                                        document.getElementById('my-form').scrollIntoView({ behavior: 'smooth' });
-                                    </script>
+                                   
                                 @enderror
                             </div>
                             <div class="col-lg-6 col-md-6 col-12">
@@ -482,8 +479,10 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                     <script>
-                                        document.getElementById('my-form').scrollIntoView({ behavior: 'smooth' });
+                                    <script>
+                                        document.getElementById('my-form').scrollIntoView({
+                                            behavior: 'smooth'
+                                        });
                                     </script>
                                 @enderror
                             </div>
@@ -495,12 +494,10 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    <script>
-                                        document.getElementById('my-form').scrollIntoView({ behavior: 'smooth' });
-                                    </script>
+                                  
                                 @enderror
                             </div>
-                            <div class="col-lg-12 col-12" >
+                            <div class="col-lg-12 col-12">
                                 <textarea placeholder="Type your message here..."
                                     class="form-control h-auto mb-3 @error('message') is-invalid @enderror" name="message"
                                     id="exampleFormControlTextarea1" rows="6" required></textarea>
@@ -508,13 +505,12 @@
                                     <span class="invalid-feedback" role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
-                                    <script>
-                                        document.getElementById('my-form').scrollIntoView({ behavior: 'smooth' });
-                                    </script>
+                                  
                                 @enderror
                             </div>
 
                             <div class="text-start contact_submit">
+                                <input type="hidden" name="segment" value="home">
                                 <button type="submit" class="btn btn_main rounded-0">Submit</button>
                             </div>
                         </div>
@@ -524,6 +520,7 @@
         </div>
     </div>
 </div>
+
 @include('userpanel.includes.footer')
 <script>
     $(document).ready(function() {
@@ -531,5 +528,5 @@
             $('#success-message').fadeOut('slow');
         }, 5000); // 5000 milliseconds = 5 seconds
     });
-   
 </script>
+
