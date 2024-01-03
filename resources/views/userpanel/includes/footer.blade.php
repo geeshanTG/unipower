@@ -368,6 +368,10 @@
 <script src="{{ asset('public/frontend/jarallax/jarallax_js.js') }}"></script>
 <!--jarallax js-->
 
+<!-- Timeline  -->
+<script src="{{ asset('public/frontend/timeline/script.js') }}"></script>
+<!-- Timeline  -->
+
 <!--jarallax-->
 <script type="text/javascript">
     /* init Jarallax */
