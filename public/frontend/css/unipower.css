@@ -588,9 +588,9 @@ a{
 }
 
 .pro_pagination .disabled .page-link{
-    border: 1px solid #C15233;
-    background-color: #C15233;
-    color: #ffffff;
+    border: 1px solid #c7c7c7;
+    background-color: #ffffff;
+    color: #c7c7c7;
 }
 
 .page-item:first-child .page-link, .page-item:last-child .page-link {
