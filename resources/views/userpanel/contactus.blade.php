@@ -38,7 +38,7 @@
             </div>
             <br>
         </div>
-        <div class="col-lg-8 col-md-7 mt-md-0 mt-3">
+        <div class="col-lg-8 col-md-7 mt-md-0 mt-3"  id="contact-us-enquiry" >
             <h1>Get in Touch</h1>
             @if (Session::has('success'))
                 <div id="success-message" class="alert alert-success text-center">
@@ -97,6 +97,7 @@
                             @enderror
                         </div>
                         <div class="text-start contact_submit">
+                            <input type="hidden" name="segment" value="contact-us">
                             <button type="submit" class="btn btn_main rounded-0">Send Message</button>
                         </div>
                     </div>
