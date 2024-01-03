@@ -292,7 +292,7 @@
                         <img src="{{ asset('storage/app') . '/' . $service->image_1 }}" alt="">
                     </div>
                     <div class="serv_detail_card text-center">
-                        <a class="" href="{{ url('service') . '/' . $serName . '/' . $encryptedId }}">
+                        <a class="" href="{{ url('service-detail') . '/' . $serName . '/' . $encryptedId }}">
                             <h5>{{ $service->heading }}</h5>
                             <p class="mb-0">{{ $service->short_description }} </p>
                             <div class="go-corner" href="{{ url('service') . '/' . $serName . '/' . $encryptedId }}">
