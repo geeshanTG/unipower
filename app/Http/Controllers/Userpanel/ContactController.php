@@ -9,7 +9,6 @@ use App\Models\ContactInfo;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-
 class ContactController extends Controller
 {
     public function index()
@@ -67,8 +66,13 @@ class ContactController extends Controller
             $message->to($request->email, 'ayodhya@tekgeeks.net')->subject('Unipower - New Enquiry');
         });
 
-        $url = '/#enquiry-success';
+        if ($request->segment === 'contact-us') {
+            return redirect()
+                ->back()
+                ->with('success', 'Your enquiry has been submitted successfully.');
+        }
+
+        $url = '/#home-enquiry';
         return redirect($url)->with('success', 'Your enquiry has been submitted successfully.');
-    
     }
 }
