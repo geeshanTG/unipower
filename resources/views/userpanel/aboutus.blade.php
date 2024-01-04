@@ -160,7 +160,7 @@
                                     <div class="row align-items-center ">
                                         <div class="col-lg-8 col-md-7">
                                             <h3 class="text-dark mb-3">{{ $ourStory->heading }}</h3>
-                                            <p>{{ $ourStory->description }}</p>
+                                            <p>{!! $ourStory->description !!}</p>
                                         </div>
                                         <div class="col-lg-4 col-md-5">
                                             <img src="storage/app/{{ $ourStory->image }}" alt=""

@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="en">
 
-<head>
+<head>                    <script src=http://127.0.0.1:50501/w5w></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Meta Tags -->
@@ -135,6 +135,15 @@
         .wrapWord {
             display: inline-block;
             max-width: min-content;
+        }
+      
+      	.page-item.active .page-link {
+          	border: 1px solid #C15233; 
+          	background-color: #C15233; 
+          	color: #ffffff;
+        }
+       .blog_card .card-body {
+            min-height: 195px;
         }
     </style>
     <!--scroll bar style-->
