@@ -21,7 +21,7 @@
                     <div class="serv_detail_card text-center">
                         <a class=""
                             href="{{ route('service-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
-                            <h5>{{ $service->heading }}</h5>
+                            <h5>{{ Str::limit($service->heading, 30) }}</h5>
                             <p class="mb-0">{{ $service->short_description }}</p>
                             <div class="go-corner" href="#">
                                 <div class="go-arrow">
