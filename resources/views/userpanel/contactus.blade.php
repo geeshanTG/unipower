@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-lg-10 col-10">
                     <h5 class="mb-0">Phone</h5>
-                    <p class="mb-0">{{ $contactInfo->phone_number_1 }} | {{ $contactInfo->phone_number_2 }}</p>
+                    <p class="mb-0"><a href="tel:{{ $contactInfo->phone_number_1 }}" style="color: #494949" >{{ $contactInfo->phone_number_1 }}</a> | <a href="tel:{{ $contactInfo->phone_number_2 }}"  style="color: #494949">{{ $contactInfo->phone_number_2 }}</a></p>
                 </div>
             </div>
             <br>
@@ -33,7 +33,7 @@
                 </div>
                 <div class="col-lg-10 col-10">
                     <h5 class="mb-0">Email</h5>
-                    <p class="mb-0">{{ $contactInfo->email }}</p>
+                    <p class="mb-0"><a href="mailto:{{ $contactInfo->email }}"  style="color: #494949">{{ $contactInfo->email }}</a></p>
                 </div>
             </div>
             <br>
