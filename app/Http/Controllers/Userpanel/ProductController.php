@@ -31,7 +31,7 @@ class ProductController extends Controller
                 $subCat = $request->sub_category_id;
                 // dd($request->main_category_id);
                 $products = Product::where('main_category_id', $request->main_category_id)
-                ->where('sub_category_id', $request->sub_category_id)->where('is_delete', 0)
+                ->where('sub_category_id', $request->sub_category_id)->where('is_delete', 0)->where('status', 'Y')
                 ->paginate(12);
             } else {
                 // dd('test');

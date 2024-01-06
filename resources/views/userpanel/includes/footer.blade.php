@@ -19,7 +19,7 @@
                         </a>
                         <p class="mb-1"><b>Tel:</b> <a href="tel:{{ $contactInfo->phone_number_1 }}"
                                 style="color: #616161;">{{ $contactInfo->phone_number_1 }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
-                                href="tel:{{ $contactInfo->phone_number_2 }}0112-302347"
+                                href="tel:{{ $contactInfo->phone_number_2 }}"
                                 style="color: #616161;">{{ $contactInfo->phone_number_2 }}</a></p>
                         <p class="mb-1"><b>Fax:</b> {{ $contactInfo->fax }}</p>
                     </div>
