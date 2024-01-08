@@ -163,11 +163,14 @@ class ProductsController extends Controller
 
         }
 
+        $slug = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->heading))));
+
         $data =  Product::find($request->id);
         $data->main_category_id = $request->main_category_id;
         $data->sub_category_id = $request->sub_category_id;
         $data->heading = $request->heading;
         $data->sub_heading = $request->sub_heading;
+        $data->slug = $slug;
         $data->description = $request->description;
         if(!empty($pathimage)) {
             $data->image = $pathimage;

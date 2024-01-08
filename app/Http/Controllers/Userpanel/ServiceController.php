@@ -26,17 +26,19 @@ class ServiceController extends Controller
 
         return view('userpanel.services', compact('contactInfo', 'pageTitle', 'pageContent', 'services', 'serviceList'));
     }
-    public function service($name, $id)
+    public function service(Request $request)
     {
+
+        $slug = $request->segment(2);
         $pageTitle = 'OUR SERVICES';
-        $serviceId = decrypt($id);
+      
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
         ->where('status', 'Y')
         ->where('is_delete', 0)
         ->orderBy('id', 'ASC')
         ->get();
-        $service = Service::where('id', $serviceId)
+        $service = Service::where('slug', $slug) ->distinct()
             ->where('status', 'Y')
             ->where('is_delete', 0)
             ->first();

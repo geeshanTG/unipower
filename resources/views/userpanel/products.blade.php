@@ -57,7 +57,7 @@
                            
                             // $encryptedId = encrypt($product->id);
                         @endphp
-                        <a href="{{ url('product-detail').'/'.$productName}}" class="btn_main">view details</a>
+                        <a href="{{ url('service-detail').'/'.$productName}}" class="btn_main">view details</a>
                     </div>
                 </div>
             </div>

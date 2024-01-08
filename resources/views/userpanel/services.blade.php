@@ -19,8 +19,10 @@
                         <img src="{{ asset("/storage/app/").'/'.$service->image_1 }}" alt="" class="m-auto w-100">
                     </div>
                     <div class="serv_detail_card text-center">
-                        <a class=""
-                            href="{{ route('service-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading)))), 'id' => encrypt($service->id)]) }}">
+                        @php
+                        $serviceName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading ))));
+                    @endphp
+                         <a href="{{ url('service-detail').'/'.$serviceName}}" class="btn_main">
                             <h5>{{ Str::limit($service->heading, 30) }}</h5>
                             <p class="mb-0">{{ $service->short_description }}</p>
                             <div class="go-corner" href="#">
