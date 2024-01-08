@@ -11,8 +11,9 @@ use App\Http\Controllers\Userpanel\SearchController;
 use App\Http\Controllers\Userpanel\ContactController;
 use App\Http\Controllers\Userpanel\ProductController;
 use App\Http\Controllers\Userpanel\ServiceController;
+use App\Http\Controllers\Userpanel\FaqsController;
 use App\Http\Controllers\Adminpanel\MetaTagController;
-use App\Http\Controllers\Adminpanel\Home\FaqController;
+use App\Http\Controllers\Adminpanel\Faq\FaqController;
 use App\Http\Controllers\Adminpanel\ServicesController;
 use App\Http\Controllers\Adminpanel\DashboardController;
 use App\Http\Controllers\Adminpanel\News\NewsController;
@@ -66,6 +67,7 @@ Route::get('/admin', function () {
 Route::get('/', [HomeController::class, 'index'])->name('/');
 Route::get('product-categories/{catName}', [ProductController::class, 'productCategories'])->name('product-categories');
 Route::get('about-us', [AboutController::class, 'index'])->name('about-us');
+Route::get('faq', [FaqsController::class, 'index'])->name('faq');
 Route::match(['get', 'post'],'products', [ProductController::class, 'index'])->name('products');
 Route::get('product-detail/{name}/{id}', [ProductController::class, 'productDetail'])->name('product-detail');
 Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWeb'])->name('getSubCategoriesWeb');
@@ -122,10 +124,13 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('bottom-banner-edit', [BottomBannerController::class, 'index'])->name('bottom-banner-edit');
     Route::put('save-bottom-banner-content', [BottomBannerController::class, 'update'])->name('save-bottom-banner-content');
 
+    Route::get('faq-create', [FaqController::class, 'index'])->name('faq-create');
     Route::get('faq-list', [FaqController::class, 'list'])->name('faq-list');
+    Route::post('new-faq', [FaqController::class, 'store'])->name('new-faq');
     Route::get('/edit-faq/{id}', [FaqController::class, 'edit'])->name('edit-faq');
     Route::put('save-faq', [FaqController::class, 'update'])->name('save-faq');
     Route::get('changestatus-faq/{id}', [FaqController::class, 'activation'])->name('changestatus-faq');
+   
 
     Route::get('who-we-are-edit', [AboutUsController::class, 'index'])->name('who-we-are-edit');
     Route::put('save-who-we-are', [AboutUsController::class, 'update'])->name('save-who-we-are');

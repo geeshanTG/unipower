@@ -63,6 +63,10 @@
             <div class="row">
             <div class="col-lg-12">
                     <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
+                        
+                        <a href="{{ route('faq-create') }}">
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('Add New') }}</button>
+                        </a>
                         <a href="{{ route('faq-list') }}">
                             <button class="btn cms_top_btn top_btn_height cms_top_btn_active">{{ __('View All') }}</button>
                         </a>
@@ -106,6 +110,7 @@
                                                 <th style="width: 25%;">{{ __('Order') }}</th>
                                                 <th style="width: 10%;">{{ __('Edit') }}</th>
                                                 <th style="width: 10%;">{{ __('Status') }}</th>
+                                             
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -167,6 +172,7 @@
                             orderable: false,
                             searchable: false
                         }
+                       
                     ]
                 });
 
