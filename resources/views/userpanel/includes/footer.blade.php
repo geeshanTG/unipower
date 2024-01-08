@@ -6,8 +6,10 @@
             <div class="col-lg-3 col-md-6 col-sm-6">
                 <div>
                     <div class="top_logo" data-aos="fade-up">
+                        <a href="{{ route('/') }}">
                         <img src="{{ asset('storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100"
                             alt="">
+                        </a>
                     </div>
                     <br>
                     <!-- <p data-aos="fade-down">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p> -->
