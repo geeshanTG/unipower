@@ -60,8 +60,11 @@ class ProductsController extends Controller
             $pathbrochure = "";
         }
 
+        $slug = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->heading))));
+
         $product = new Product();
         $product->main_category_id = $request->main_category_id;
+        $product->slug = $slug;
         $product->sub_category_id = $request->sub_category_id;
         $product->heading = $request->heading;
         $product->sub_heading = $request->sub_heading;

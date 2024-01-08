@@ -13,7 +13,7 @@
       <div class="col-lg-9 col-md-8 col-12 mt-md-0 mt-4">
         <h4>{{ $products->heading }}</h4>
         <h5 style="color: #00732E;">{{ $products->sub_heading }}</h5>
-        <p>{{ $products->description }}</p>
+        <p>{!! $products->description !!}</p>
         @if(!empty($products->brochure))<a href="{{ asset('storage/app/').'/'.$products->brochure }}" class="text_link">Download Brochure &nbsp;<i class="fa fa-download" aria-hidden="true"></i></a>@endif
       </div>
     </div>

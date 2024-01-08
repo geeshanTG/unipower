@@ -17,13 +17,26 @@ class CreateProductsTable extends Migration
             $table->id()->unique();
             $table->unsignedBigInteger('main_category_id');
             $table->index('main_category_id');
-            $table->foreign('main_category_id')->references('id')->on('main_categories')->onDelete('cascade');
+            $table
+                ->foreign('main_category_id')
+                ->references('id')
+                ->on('main_categories')
+                ->onDelete('cascade');
             $table->unsignedBigInteger('sub_category_id');
             $table->index('sub_category_id');
-            $table->foreign('sub_category_id')->references('id')->on('sub_categories')->onDelete('cascade');
+            $table
+                ->foreign('sub_category_id')
+                ->references('id')
+                ->on('sub_categories')
+                ->onDelete('cascade');
             $table->string('heading');
             $table->tinyInteger('order');
             $table->char('status', 0);
+            $table->string('slug');
+            $table->string('image');
+            $table->longText('description');
+            $table->string('sub_heading');
+            $table->string('brochure');
             $table->tinyInteger('is_delete')->default(0);
             $table->timestamps();
         });

@@ -69,7 +69,7 @@ Route::get('product-categories/{catName}', [ProductController::class, 'productCa
 Route::get('about-us', [AboutController::class, 'index'])->name('about-us');
 Route::get('faq', [FaqsController::class, 'index'])->name('faq');
 Route::match(['get', 'post'],'products', [ProductController::class, 'index'])->name('products');
-Route::get('product-detail/{name}/{id}', [ProductController::class, 'productDetail'])->name('product-detail');
+Route::get('product-detail/{name}', [ProductController::class, 'productDetail'])->name('product-detail');
 Route::get('getSubCategoriesWeb', [ProductController::class, 'getSubCategoriesWeb'])->name('getSubCategoriesWeb');
 // Route::get('getFilteredProducts', [ProductController::class, 'getFilteredProducts'])->name('getFilteredProducts');
 Route::get('contact-us', [ContactController::class, 'index'])->name('contact-us');
