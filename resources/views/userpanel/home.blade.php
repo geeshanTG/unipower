@@ -75,7 +75,10 @@
                 $c = 0;
             @endphp
             @foreach ($mainSliders as $slider)
-                <div class="carousel-item @if ($c == 0) {{ 'active' }} @endif">
+                @php
+                    $c++;
+                @endphp
+                <div class="carousel-item @if ($c == 1) {{ 'active' }} @endif">
                     <div class="bg_img_fill"
                         style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(storage/app/{{ $slider->desktop_image }}); height: 600px;">
                     </div>
@@ -401,124 +404,129 @@
                         @php
                             $c = 0;
                         @endphp
-                        @foreach ($faqs as $faq)
+                        @foreach ($faqs as $index => $faq)
                             @php
                                 $c++;
                             @endphp
-                            <div class="accordion-item">
-                                <h2 class="accordion-header" id="heading_{{ $c }}">
-                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
-                                        data-bs-target="#collapse_{{ $c }}"
-                                        aria-expanded="@if ($c == 1) {{ 'true' }}@else{{ 'false' }} @endif"
-                                        aria-controls="collapse_{{ $c }}">
-                                        {{ $faq->heading }}
-                                    </button>
-                                </h2>
-                                <div id="collapse_{{ $c }}"
-                                    class="accordion-collapse collapse @if ($c == 1) {{ 'show' }} @endif"
-                                    aria-labelledby="heading_{{ $c }}" data-bs-parent="#accordionExample">
-                                    <div class="accordion-body">
-                                        <p>{{ $faq->description }} </p>
-                                    </div>
+                            @if ($index === 4)
+                            @break
+                            @endif
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="heading_{{ $c }}">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#collapse_{{ $c }}"
+                                    aria-expanded="@if ($c == 1) {{ 'true' }}@else{{ 'false' }} @endif"
+                                    aria-controls="collapse_{{ $c }}">
+                                    {{ $faq->heading }}
+                                </button>
+                            </h2>
+                            <div id="collapse_{{ $c }}"
+                                class="accordion-collapse collapse @if ($c == 1) {{ 'show' }} @endif"
+                                aria-labelledby="heading_{{ $c }}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    <p>{{ $faq->description }}</p>
                                 </div>
                             </div>
-                            @php
-                            @endphp
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-lg-6 contact_sec">
-                <h1 class="text-white">Get in Touch</h1>
-                <br>
-                @if ($errors->any())
-                    <div class="alert alert-danger">
-                        <strong>Please submit again!</strong><br><br>
-                        <ul>
-                            @foreach ($errors->all() as $error)
-                                <li>{{ $error }}</li>
-                            @endforeach
-                        </ul>
-                    </div>
-                @endif
-
-                @if (Session::has('success'))
-                    <div id="success-message" class="alert alert-success text-center">
-                        {{ Session::get('success') }}
-                    </div>
-                @endif
-                @if ($errors->has('token'))
-                    <span class="text-danger">{{ $errors->first('token') }}</span>
-                @endif
-                <br>
-                <div class="contact_form" data-aos="fade-down" id="my-form">
-                    <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}"
-                        enctype="multipart/form-data" method="post" class="smart-form inquiry_form">
-                        @csrf
-                        <div class="row">
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <input type="text" class="form-control  mb-3" name="name"
-                                    placeholder="Enter your name" required>
-
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <input type="email" class="form-control  mb-3 @error('email') is-invalid @enderror"
-                                    name="email" placeholder="Enter your email" required>
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                   
-                                @enderror
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <input type="tel" class="form-control  mb-3 @error('phone') is-invalid @enderror"
-                                    name="phone" placeholder="Enter your phone number" required>
-                                @error('phone')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    <script>
-                                        document.getElementById('my-form').scrollIntoView({
-                                            behavior: 'smooth'
-                                        });
-                                    </script>
-                                @enderror
-                            </div>
-                            <div class="col-lg-6 col-md-6 col-12">
-                                <input type="text"
-                                    class="form-control  mb-3 @error('subject') is-invalid @enderror" name="subject"
-                                    placeholder="Type the subject" required>
-                                @error('subject')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                  
-                                @enderror
-                            </div>
-                            <div class="col-lg-12 col-12">
-                                <textarea placeholder="Type your message here..."
-                                    class="form-control h-auto mb-3 @error('message') is-invalid @enderror" name="message"
-                                    id="exampleFormControlTextarea1" rows="6" required></textarea>
-                                @error('message')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                  
-                                @enderror
-                            </div>
-
-                            <div class="text-start contact_submit">
-                                <input type="hidden" name="segment" value="home">
-                                <button type="submit" class="btn btn_main rounded-0">Submit</button>
-                            </div>
                         </div>
-                    </form>
+
+                        @php
+                        @endphp
+                    @endforeach
+                </div>
+                <div class="text-end mt-3">
+                    <a href="{{ url('faq') }}" class="text_link">View All <i class="fa fa-arrow-right"
+                            aria-hidden="true"></i></a>
                 </div>
             </div>
         </div>
+
+        <div class="col-lg-6 contact_sec">
+            <h1 class="text-white">Get in Touch</h1>
+            <br>
+            @if ($errors->any())
+                <div class="alert alert-danger">
+                    <strong>Please submit again!</strong><br><br>
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
+            @if (Session::has('success'))
+                <div id="success-message" class="alert alert-success text-center">
+                    {{ Session::get('success') }}
+                </div>
+            @endif
+            @if ($errors->has('token'))
+                <span class="text-danger">{{ $errors->first('token') }}</span>
+            @endif
+            <br>
+            <div class="contact_form" data-aos="fade-down" id="my-form">
+                <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}"
+                    enctype="multipart/form-data" method="post" class="smart-form inquiry_form">
+                    @csrf
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="text" class="form-control  mb-3" name="name"
+                                placeholder="Enter your name" required>
+
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="email" class="form-control  mb-3 @error('email') is-invalid @enderror"
+                                name="email" placeholder="Enter your email" required>
+                            @error('email')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="tel" class="form-control  mb-3 @error('phone') is-invalid @enderror"
+                                name="phone" placeholder="Enter your phone number" required>
+                            @error('phone')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                                <script>
+                                    document.getElementById('my-form').scrollIntoView({
+                                        behavior: 'smooth'
+                                    });
+                                </script>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-12">
+                            <input type="text"
+                                class="form-control  mb-3 @error('subject') is-invalid @enderror" name="subject"
+                                placeholder="Type the subject" required>
+                            @error('subject')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+                        <div class="col-lg-12 col-12">
+                            <textarea placeholder="Type your message here..."
+                                class="form-control h-auto mb-3 @error('message') is-invalid @enderror" name="message"
+                                id="exampleFormControlTextarea1" rows="6" required></textarea>
+                            @error('message')
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $message }}</strong>
+                                </span>
+                            @enderror
+                        </div>
+
+                        <div class="text-start contact_submit">
+                            <input type="hidden" name="segment" value="home">
+                            <button type="submit" class="btn btn_main rounded-0">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+</div>
 </div>
 
 @include('userpanel.includes.footer')
@@ -529,4 +537,3 @@
         }, 5000); // 5000 milliseconds = 5 seconds
     });
 </script>
-

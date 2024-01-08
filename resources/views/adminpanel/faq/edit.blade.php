@@ -12,6 +12,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
+                        <a href="{{ route('faq-create') }}">
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('Add New') }}</button>
+                        </a>
                         <a href="{{ route('faq-list') }}">
                             <button class="btn cms_top_btn top_btn_height ">{{ __('View All') }}</button>
                         </a>
@@ -79,7 +82,7 @@
                                     <section class="col col-md-6">
                                         <label class="label">{{ __('Description') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <textarea class="form-control" id="description" name="description" rows="4" maxlength="300" required>{{ $data->description }}</textarea>
+                                            <textarea class="form-control" id="description" name="description" rows="3"  required>{{ $data->description }}</textarea>
                                         </label>
                                     </section>
                                 </div>

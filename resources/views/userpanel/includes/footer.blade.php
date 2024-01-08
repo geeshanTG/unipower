@@ -49,7 +49,7 @@
                 <h5 class="mb-3">Quick Links</h5>
                 <div class="row">
                     <div class="col-lg-6">
-                        <a href="{{ route('about-us') }}">
+                        <a href="{{ route('/') }}">
                             <p class="mb-1">Home</p>
                         </a>
                         <a href="{{ route('about-us') }}">
