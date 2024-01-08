@@ -24,6 +24,7 @@ class Product extends Model
         'order',
         'status',
         'is_delete',
+        'slug',
     ];
 
 }

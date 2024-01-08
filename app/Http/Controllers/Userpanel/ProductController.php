@@ -25,23 +25,25 @@ class ProductController extends Controller
             ->orderBy('order', 'ASC')
             ->get();
 
-// dd($request->main_category_id);
-            if (!empty($request->main_category_id) && !empty($request->sub_category_id)) {
-                $mainCat = $request->main_category_id;
-                $subCat = $request->sub_category_id;
-                // dd($request->main_category_id);
-                $products = Product::where('main_category_id', $request->main_category_id)
-                ->where('sub_category_id', $request->sub_category_id)->where('is_delete', 0)->where('status', 'Y')
+        // dd($request->main_category_id);
+        if (!empty($request->main_category_id) && !empty($request->sub_category_id)) {
+            $mainCat = $request->main_category_id;
+            $subCat = $request->sub_category_id;
+            // dd($request->main_category_id);
+            $products = Product::where('main_category_id', $request->main_category_id)
+                ->where('sub_category_id', $request->sub_category_id)
+                ->where('is_delete', 0)
+                ->where('status', 'Y')
                 ->paginate(12);
-            } else {
-                // dd('test');
-                $mainCat = '';
-                $subCat = '';
-                $products = Product::where('status', 'Y')
+        } else {
+            // dd('test');
+            $mainCat = '';
+            $subCat = '';
+            $products = Product::where('status', 'Y')
                 ->where('is_delete', 0)
                 ->orderBy('order', 'ASC')
                 ->paginate(12);
-            }
+        }
 
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
@@ -50,7 +52,7 @@ class ProductController extends Controller
             ->orderBy('id', 'ASC')
             ->get();
 
-        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList','mainCat','subCat'));
+        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo', 'serviceList', 'mainCat', 'subCat'));
     }
 
     public function getSubCategoriesWeb(Request $request)
@@ -65,7 +67,7 @@ class ProductController extends Controller
     {
         // \DB::enableQueryLog();
 
-            // dd(\DB::getQueryLog());
+        // dd(\DB::getQueryLog());
         // dd($products);
 
         $pageTitle = 'All Products';
@@ -86,8 +88,8 @@ class ProductController extends Controller
             ->where('is_delete', 0)
             ->orderBy('id', 'ASC')
             ->get();
-            dd($products);
-        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList'));
+        dd($products);
+        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo', 'serviceList'));
     }
 
     public function productCategories(Request $request)
@@ -105,33 +107,35 @@ class ProductController extends Controller
         $mainCatName = $request->segment(2);
         $catName = str_replace('-', ' ', $mainCatName);
         $mainCatId = MainCategory::where('heading', 'like', '%' . $catName . '%')->first();
-        $products = Product::select('*')->where('status', 'Y')
+        $products = Product::select('*')
+            ->where('status', 'Y')
             ->where('is_delete', 0)
             ->where('main_category_id', $mainCatId->id)
             ->orderBy('order', 'ASC')
             ->paginate(12);
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
-        ->where('status', 'Y')
-        ->where('is_delete', 0)
-        ->orderBy('id', 'ASC')
-        ->get();
+            ->where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('id', 'ASC')
+            ->get();
 
         $mainCat = '';
         $subCat = '';
 
-        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo','serviceList','mainCat','subCat'));
+        return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo', 'serviceList', 'mainCat', 'subCat'));
     }
 
     public function productDetail(Request $request)
     {
-        $productId = decrypt($request->segment(3));
-        $products = Product::where('id', $productId)->first();
+        $slug = $request->segment(2);
 
+        $products = Product::where('slug', $slug)
+            ->distinct()
+            ->first();
+        $productId = $products->id;
         $mainCatName = MainCategory::where('id', $products->main_category_id)->first();
-
         $pageTitle = $mainCatName->heading;
-
         $productList = Product::where('status', 'Y')
             ->where('is_delete', 0)
             ->where('id', '!=', $productId)
@@ -140,11 +144,11 @@ class ProductController extends Controller
             ->get();
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
-        ->where('status', 'Y')
-        ->where('is_delete', 0)
-        ->orderBy('id', 'ASC')
-        ->get();
+            ->where('status', 'Y')
+            ->where('is_delete', 0)
+            ->orderBy('id', 'ASC')
+            ->get();
 
-        return view('userpanel.productdetail', compact('pageTitle', 'products', 'productList', 'contactInfo','serviceList'));
+        return view('userpanel.productdetail', compact('pageTitle', 'products', 'productList', 'contactInfo', 'serviceList'));
     }
 }

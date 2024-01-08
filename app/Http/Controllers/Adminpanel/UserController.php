@@ -260,7 +260,7 @@ class UserController extends Controller
         // echo $request->startTime;
         //   exit();
         // \DB::enableQueryLog();
-        $users = User::where('is_delete', 0)->where('email', $request->email)->get();
+        $users = User::where('email', $request->email)->get();
     
         // $events = \DB::getQueryLog();
         // print_r($events);

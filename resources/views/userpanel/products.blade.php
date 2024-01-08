@@ -49,14 +49,15 @@
                     <div class="pro_img_text">
                         <img src="{{ asset('storage/app').'/'.$product->image }}" class="w-100 m-auto" alt="">
                         <p class="fw-bold text-dark mt-2 mb-0">{{ $product->heading }}</p>
+                        
                     </div>
                     <div class="pro_view_btn position-absolute top-50">
                         @php
-                            $productName = preg_replace('/\s+/', '-', $product->heading);
-                            $proName = strtolower($productName);
-                            $encryptedId = encrypt($product->id);
+                            $productName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($product->heading ))));
+                           
+                            // $encryptedId = encrypt($product->id);
                         @endphp
-                        <a href="{{ url('product-detail').'/'.$proName.'/'.$encryptedId }}" class="btn_main">view details</a>
+                        <a href="{{ url('product-detail').'/'.$productName}}" class="btn_main">view details</a>
                     </div>
                 </div>
             </div>
