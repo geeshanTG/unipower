@@ -22,8 +22,8 @@
                         @php
                         $serviceName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading ))));
                     @endphp
-                         <a href="{{ url('service-detail').'/'.$serviceName}}" class="btn_main">
-                            <h5>{{ Str::limit($service->heading, 30) }}</h5>
+                         <a href="{{ url('service-detail').'/'.$serviceName}}">
+                            <h5>{{ $service->heading }}</h5>
                             <p class="mb-0">{{ $service->short_description }}</p>
                             <div class="go-corner" href="#">
                                 <div class="go-arrow">

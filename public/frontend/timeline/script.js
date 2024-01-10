@@ -321,8 +321,29 @@ Math.easeInOutQuad = function (t, b, c, d) {
 		this.contentWrapper = this.element.getElementsByClassName('h--timeline-events')[0];
 		this.content = this.contentWrapper.getElementsByClassName('h--timeline-event');
 
-		this.eventsMinDistance = 80; // min distance between two consecutive events (in px)
-		this.eventsMaxDistance = 160; // max distance between two consecutive events (in px)
+		// this.eventsMinDistance = 250; // min distance between two consecutive events (in px)
+		// this.eventsMaxDistance = 250; // max distance between two consecutive events (in px)
+		this.eventsMinDistance = 230; // min distance between two consecutive events (in px)
+        this.eventsMaxDistance = 230; // max distance between two consecutive events (in px)
+
+        // Define a media query
+        const smallScreenMediaQuery = window.matchMedia('(max-width: 600px)');
+        const largeScreenMediaQuery  = window.matchMedia('(max-width: 1536px)');
+
+        // Check if the media query matches
+        if (smallScreenMediaQuery.matches) {
+            // Execute code for smaller screens
+            this.eventsMinDistance = 160; // Adjust the min distance for smaller screens
+            this.eventsMaxDistance = 160;
+        } else if (largeScreenMediaQuery.matches) {
+            // Execute code for medium screens
+            this.eventsMinDistance = 230; // Adjust the min distance for medium screens
+            this.eventsMaxDistance = 230;
+        } else {
+            // Execute code for larger screens
+            this.eventsMinDistance = 230; // Keep the default min distance for larger screens
+            this.eventsMaxDistance = 230;
+        }
 		this.translate = 0; // this will be used to store the translate value of this.line
 		this.lineLength = 0; //total length of this.line
 

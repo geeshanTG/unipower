@@ -286,19 +286,19 @@
                             $columnName = 'service_id_' . $i;
                             if($service->id == $ourServices->$columnName) {
 
-                                $serviceName = preg_replace('/\s+/', '-', $service->heading);
-                                $serName = strtolower($serviceName);
-                                $encryptedId = encrypt($service->id);
+                                $serviceName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading ))));
+                                // $encryptedId = encrypt($service->id);
                 ?>
                 <div class="slider-card">
                     <div class="serv_img mb-2">
                         <img src="{{ asset('storage/app') . '/' . $service->image_1 }}" alt="">
                     </div>
                     <div class="serv_detail_card text-center">
-                        <a class="" href="{{ url('service-detail') . '/' . $serName . '/' . $encryptedId }}">
+                       
+                        <a class="" href="{{ url('service-detail').'/'.$serviceName }}">
                             <h5>{{ $service->heading }}</h5>
                             <p class="mb-0">{{ $service->short_description }} </p>
-                            <div class="go-corner" href="{{ url('service') . '/' . $serName . '/' . $encryptedId }}">
+                            <div class="go-corner" href="{{ url('service-detail').'/'.$serviceName }}">
                                 <div class="go-arrow">→</div>
                             </div>
                         </a>

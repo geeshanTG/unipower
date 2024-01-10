@@ -349,6 +349,7 @@ a{
     z-index: 0;
     overflow: hidden;
     margin-bottom: 6px;
+    min-height: 157px;
 }
 
 .serv_detail_card a:before {
@@ -618,7 +619,7 @@ a{
 }
 
 .services_archive .serv_detail_card a{
-    min-height: auto !important;
+    min-height: 134px;
 }
 
 .services_archive .serv_detail_card a:hover:before {

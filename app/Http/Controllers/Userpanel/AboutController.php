@@ -21,7 +21,7 @@ class AboutController extends Controller
         $visionMission = VisionMission::first();
         $ceoMessage = CeoMessage::first();
         $ourValues = OurValue::get();
-        $ourStories = OurStory::where('status', 'Y')->where('is_delete', 0)->orderBy('year', 'DESC')->get();
+        $ourStories = OurStory::where('status', 'Y')->where('is_delete', 0)->orderBy('year', 'asc')->get();
         $awards = Award::first();
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id','heading')->where('status', 'Y')->where('is_delete', 0)->orderBy('id', 'ASC')->get();
