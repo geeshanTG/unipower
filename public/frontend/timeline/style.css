@@ -78,6 +78,8 @@
   transition: -webkit-transform 0.4s;
   transition: transform 0.4s;
   transition: transform 0.4s, -webkit-transform 0.4s;
+  /* width: 100% !important; */
+  
 }
 
 .h--timeline-filling-line {
@@ -415,5 +417,11 @@
 .h--timeline-line li:nth-child(odd) .h--timeline-date--selected::before {
   bottom: -5px;
 }
+
+/* @media only screen and (max-width : 991px) {
+  .h--timeline-line {
+    width: 720px !important;
+  }
+} */
 
 /**/
