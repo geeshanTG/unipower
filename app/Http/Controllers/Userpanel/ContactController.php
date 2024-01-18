@@ -59,7 +59,7 @@ class ContactController extends Controller
         $data->status = 'Y';
         $data->save();
 
-        $cc_email = array(
+        $bcc_email = array(
           'geeshan@tekgeeks.net'
         );
 
@@ -68,7 +68,7 @@ class ContactController extends Controller
         \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request,$cc_email)  {
             $message->from('info@unipower.com');
           
-            $message->to($request->email)->cc($cc_email)->subject('Unipower - New Enquiry');
+            $message->to($request->email)->bcc($bcc_email)->subject('Unipower - New Enquiry');
         });
 
         if ($request->segment === 'contact-us') {
