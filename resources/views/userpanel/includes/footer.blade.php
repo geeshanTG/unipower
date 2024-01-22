@@ -114,11 +114,11 @@
             <p>© Unipower 2023 All Rights Reserved.
                 Solution by <a style="color: #F5DEB3;" href="https://www.tekgeeks.net/">TekGeeks</a></p>
         </div>
-        <div class="col-lg-6 col-md-6 col-12 bottom_links">
+        {{-- <div class="col-lg-6 col-md-6 col-12 bottom_links">
             <a href="#">
                 <p class="mb-0">Privacy Policy</p>
             </a>
-        </div>
+        </div> --}}
     </div>
 </div>
 </div>

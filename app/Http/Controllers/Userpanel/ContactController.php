@@ -65,7 +65,7 @@ class ContactController extends Controller
 
         //dd($data);
 
-        \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request,$cc_email)  {
+        \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request, $bcc_email)  {
             $message->from('info@unipower.com');
           
             $message->to($request->email)->bcc($bcc_email)->subject('Unipower - New Enquiry');

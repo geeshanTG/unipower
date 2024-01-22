@@ -294,11 +294,11 @@
                         <img src="{{ asset('storage/app') . '/' . $service->image_1 }}" alt="">
                     </div>
                     <div class="serv_detail_card text-center">
-                       
-                        <a class="" href="{{ url('service-detail').'/'.$serviceName }}">
+
+                        <a class="" href="{{ url('service-detail') . '/' . $serviceName }}">
                             <h5>{{ $service->heading }}</h5>
                             <p class="mb-0">{{ $service->short_description }} </p>
-                            <div class="go-corner" href="{{ url('service-detail').'/'.$serviceName }}">
+                            <div class="go-corner" href="{{ url('service-detail') . '/' . $serviceName }}">
                                 <div class="go-arrow">→</div>
                             </div>
                         </a>
@@ -394,8 +394,6 @@
     style="background-image: url({{ asset('public/frontend/images/dark_bg.jpg') }}); background-repeat: no-repeat; background-size: cover;">
     <div class="container fluid_contain">
         <div class="row faq_con_row" id="home-enquiry">
-
-
             <div class="col-lg-6 faq_sec">
                 <h1 class="">FAQ’s</h1>
                 <br>
@@ -407,15 +405,18 @@
                         @foreach ($faqs as $index => $faq)
                             @php
                                 $c++;
+
                             @endphp
                             @if ($index === 4)
                             @break
-                            @endif
+                        @endif
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading_{{ $c }}">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                <button
+                                    class="accordion-button @if ($c != 1) {{ 'collapsed' }} @endif"
+                                    type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse_{{ $c }}"
-                                    aria-expanded="@if ($c == 1) {{ 'true' }}@else{{ 'false' }} @endif"
+                                    aria-expanded="@if ($c == 1) {{ 'false' }}@else{{ 'true' }} @endif"
                                     aria-controls="collapse_{{ $c }}">
                                     {{ $faq->heading }}
                                 </button>
@@ -428,14 +429,12 @@
                                 </div>
                             </div>
                         </div>
-
-                        @php
-                        @endphp
                     @endforeach
                 </div>
                 <div class="text-end mt-3">
                     <a href="{{ url('faq') }}" class="text_link">View All <i class="fa fa-arrow-right"
                             aria-hidden="true"></i></a>
+
                 </div>
             </div>
         </div>
