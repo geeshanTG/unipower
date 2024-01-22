@@ -31,6 +31,7 @@ class OurServicesController extends Controller
             'service_id_2' => 'required',
             'service_id_3' => 'required',
             'service_id_4' => 'required',
+            'service_id_5' => 'required',
         ]);
 
         $data =  OurService::find($request->id);
@@ -38,6 +39,7 @@ class OurServicesController extends Controller
         $data->service_id_2 = $request->service_id_2;
         $data->service_id_3 = $request->service_id_3;
         $data->service_id_4 = $request->service_id_4;
+        $data->service_id_5 = $request->service_id_5;
         $data->save();
 
         \LogActivity::addToLog('Our service updated.');

@@ -280,7 +280,7 @@
         <div class="slider" data-aos="fade-up">
             <div class="owl-carousel serv_caro">
                 <?php
-                    for($i=1; $i<=4; $i++) {
+                    for($i=1; $i<=5; $i++) {
                         foreach($services as $service) {
 
                             $columnName = 'service_id_' . $i;
@@ -339,7 +339,7 @@
                         alt="...">
                     <div class="card-body bg-white">
                         <h5 class="card-title">{{ $new->heading }}</h5>
-                        <p class="card-text">{!! Str::limit($new->description, 100) !!} ...</p>
+                        <p class="card-text">{!! Str::limit($new->description, 100) !!}</p>
                         <a href="{{ url('news-detail') . '/' . $newName . '/' . $encryptedId }}"
                             class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                 aria-hidden="true"></i></a>
