@@ -95,6 +95,20 @@
                                         </label>
                                     </section>
                                 </div>
+                                <div class="row">
+                                    <section class="col col-6">
+                                        <label class="label">{{ __('Service 5') }} <span style=" color: red;">*</span></label>
+                                        <label class="select">
+                                            <select name="service_id_5" id="service_id_5 " required>
+                                                @foreach ($services as $service)
+                                                <option value="{{ $service->id }}" {{$data->service_id_5 == $service->id ? 'selected' : ''}}>{{ $service->heading }}</option>
+                                                @endforeach
+                                            </select>
+                                            <i></i>
+                                        </label>
+                                    </section>
+                                    
+                                </div>
                             </fieldset>
                             <footer>
                                 <input type="hidden" name="id" value="{{ $data->id }}>">

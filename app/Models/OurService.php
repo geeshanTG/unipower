@@ -17,7 +17,8 @@ class OurService extends Model
         'service_id_1',
         'service_id_2',
         'service_id_3',
-        'service_id_4'
+        'service_id_4',
+        'service_id_5'
     ];
 
 }

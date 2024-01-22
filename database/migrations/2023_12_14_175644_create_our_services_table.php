@@ -27,6 +27,9 @@ class CreateOurServicesTable extends Migration
             $table->unsignedBigInteger('service_id_4');
             $table->index('service_id_4');
             $table->foreign('service_id_4')->references('id')->on('services')->onDelete('cascade');
+            $table->unsignedBigInteger('service_id_5');
+            $table->index('service_id_5');
+            $table->foreign('service_id_5')->references('id')->on('services')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -53,6 +56,9 @@ class CreateOurServicesTable extends Migration
             $table->dropForeign('our_services_service_id_4_foreign');
             $table->dropIndex('our_services_service_id_4_index');
             $table->dropColumn('service_id_4');
+            $table->dropForeign('our_services_service_id_5_foreign');
+            $table->dropIndex('our_services_service_id_5_index');
+            $table->dropColumn('service_id_5');
         });
     }
 }
