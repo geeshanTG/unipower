@@ -15,6 +15,7 @@ class ProductController extends Controller
 {
     public function index(Request $request)
     {
+       
         $pageTitle = 'All Products';
 
         $mainCategories = MainCategory::where('status', 'Y')
@@ -30,12 +31,30 @@ class ProductController extends Controller
             $mainCat = $request->main_category_id;
             $subCat = $request->sub_category_id;
             // dd($request->main_category_id);
-            $products = Product::where('main_category_id', $request->main_category_id)
-                ->where('sub_category_id', $request->sub_category_id)
+            $products = Product::where('main_category_id',$request->main_category_id)
+                ->where('sub_category_id',$request->sub_category_id)
                 ->where('is_delete', 0)
                 ->where('status', 'Y')
                 ->paginate(12);
-        } else {
+        }elseif(!empty($request->main_category_id)) {
+            $mainCat = $request->main_category_id;
+            $subCat = '';
+            $products = Product::where('main_category_id',$request->main_category_id)
+                ->where('is_delete', 0)
+                ->where('status', 'Y')
+                ->paginate(12);
+
+        }elseif(!empty($request->sub_category_id)){
+            $mainCat = '';
+            $subCat = $request->sub_category_id;
+            $products = Product::where('sub_category_id',$request->sub_category_id)
+                ->where('is_delete', 0)
+                ->where('status', 'Y')
+                ->paginate(12);
+
+        }
+        
+        else {
             // dd('test');
             $mainCat = '';
             $subCat = '';
@@ -68,7 +87,7 @@ class ProductController extends Controller
         // \DB::enableQueryLog();
 
         // dd(\DB::getQueryLog());
-        // dd($products);
+     
 
         $pageTitle = 'All Products';
 
@@ -80,7 +99,7 @@ class ProductController extends Controller
             ->orderBy('order', 'ASC')
             ->get();
         $products = Product::where('main_category_id', $request->main_category_id)
-            ->where('sub_category_id', $request->sub_category_id)
+            ->orWhere('sub_category_id', $request->sub_category_id)
             ->paginate(12);
         $contactInfo = ContactInfo::first();
         $serviceList = Service::select('id', 'heading')
