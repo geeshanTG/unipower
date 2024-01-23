@@ -66,6 +66,18 @@
     <meta name="twitter:description" content="{{ $meta->twitter_description }}" />
     <meta name="twitter:title" content="{{ $meta->twitter_title }}" />
 
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-T843FD4EN4"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-T843FD4EN4');
+    </script>
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -148,7 +160,8 @@
         .blog_card .card-body {
             min-height: 195px;
         }
-/* 
+
+        /*
         @media only screen and (max-width: 950px) {
             .services_archive .serv_detail_card a {
                 min-height: 220px;
