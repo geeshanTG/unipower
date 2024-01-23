@@ -7,8 +7,8 @@
                 <div>
                     <div class="top_logo" data-aos="fade-up">
                         <a href="{{ route('/') }}">
-                        <img src="{{ asset('storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100"
-                            alt="">
+                            <img src="{{ asset('storage/app/') . '/' . $contactInfo->logo }}" class="m-auto w-100"
+                                alt="">
                         </a>
                     </div>
                     <br>
@@ -80,12 +80,12 @@
             <!-- <div data-aos="fade-up">
 <h5 class="mb-3">Sign-up for our Newsletter</h5>
 <div class="newsletter">
-  <form action="">
-    <div class="input-group mb-3">
-      <input type="text" class="form-control" placeholder="Enter your email" aria-label="User's email" aria-describedby="button-addon2">
-      <button class="btn" type="button" id="button-addon2"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-    </div>
-  </form>
+<form action="">
+<div class="input-group mb-3">
+<input type="text" class="form-control" placeholder="Enter your email" aria-label="User's email" aria-describedby="button-addon2">
+<button class="btn" type="button" id="button-addon2"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+</div>
+</form>
 </div>
 </div>
 <br> -->
@@ -423,6 +423,20 @@
     setTimeout(function() {
         $('.alert').fadeOut('fast');
     }, 5000);
+
+
+    var currentUrl = window.location.href;
+    var path = window.location.pathname;
+    var pathSegments = window.location.pathname.split('/');
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var parameterValue = urlParams.get('page');
+    
+    if (pathSegments[2] == 'news' && parameterValue !== null) {
+        currentUrl += '#news';
+        window.location.href = currentUrl
+    }
+    // console.log(currentUrl);
 </script>
 
 </body>
