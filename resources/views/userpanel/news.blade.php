@@ -75,7 +75,7 @@
                     <img src="{{ asset('/storage/app/') . '/' . $news[$i]->image_1 }}" class="card-img-top rounded-0"
                         alt="{{ $news[$i]->heading }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ Str::limit($news[$i]->heading, 40) }}</h5>
+                        <h5 class="card-title">{{ Str::limit($news[$i]->heading, 50) }}</h5>
                         @php
                             $description = strip_tags($news[$i]->description);
                             $words = str_word_count($description, 1);
