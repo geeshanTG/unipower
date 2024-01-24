@@ -12,7 +12,6 @@ class ContactUsController extends Controller
     function __construct()
     {
         $this->middleware('permission:contact-info-edit', ['only' => ['index, update']]);
-
     }
     public function index()
     {
@@ -24,7 +23,6 @@ class ContactUsController extends Controller
     {
         $request->validate([
             'heading' => 'required',
-            'description' => 'required',
             'address' => 'required',
             'phone1' => 'required|min:10',
             'phone2' => 'required|min:10',
@@ -36,7 +34,6 @@ class ContactUsController extends Controller
         ]);
 
         if ($request->hasFile('logo')) {
-
             $request->validate([
                 'logo' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
             ]);
@@ -44,12 +41,11 @@ class ContactUsController extends Controller
             $Image = $request->file('logo')->getClientOriginalName();
 
             $pathImage = $request->file('logo')->store('public/contactusimages');
-
         }
 
         $data = ContactInfo::find($request->id);
         $data->heading_title = $request->heading;
-        $data->description = $request->description;
+        $data->description = '';
         $data->address = $request->address;
         $data->phone_number_1 = $request->phone1;
         $data->phone_number_2 = $request->phone2;
@@ -58,7 +54,7 @@ class ContactUsController extends Controller
         $data->facebook_url = $request->facebook_url;
         $data->linkedin_url = $request->linkedin_url;
         $data->twitter_url = $request->twitter_url;
-        if(!empty($pathImage)) {
+        if (!empty($pathImage)) {
             $data->logo = $pathImage;
         }
         $data->save();

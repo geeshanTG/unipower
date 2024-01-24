@@ -55,12 +55,12 @@
                                             <input type="text" id="heading" name="heading" required value="{{ $data->heading_title }}">
                                         </label>
                                     </section>
-                                    <section class="col col-md-4">
+                                    {{-- <section class="col col-md-4">
                                         <label class="label">{{ __('Description') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
                                             <textarea class="form-control" id="description" name="description" rows="4" maxlength="300" required>{{ $data->description }}</textarea>
                                         </label>
-                                    </section>
+                                    </section> --}}
                                     <section class="col col-4">
                                         <label class="label">{{ __('Address') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
