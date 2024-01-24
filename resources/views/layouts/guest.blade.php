@@ -73,7 +73,7 @@
             padding-bottom: 0px;
             min-height: 500px;
             position: relative;
-            background-image: url('https://cms.tekgeeks.net/public/back/img/bg_img.jpg') !important;
+            background-image: url('https://projects80.tekgeeks.net/unipower/public/back/img/bg_img.jpg') !important;
             background-repeat: no-repeat !important;
             background-size: cover !important;
             background-position: bottom center !important;
@@ -89,7 +89,7 @@
         .login_form_div {
             position: relative;
             height: 100vh;
-            background-color: #3b2c46;
+            background-color: rgb(255 255 255 / 80%);
         }
 
         .well {
@@ -107,14 +107,14 @@
             margin: 0;
             border-bottom-style: solid;
             border-bottom-color: transparent;
-            background: #3b2c46;
+            background: transparent;
         }
 
         .smart-form fieldset {
             display: block;
             padding: 25px 14px 5px;
             border: none;
-            background: #3b2c46;
+            background: transparent;
             position: relative;
         }
 
@@ -122,7 +122,7 @@
             display: block;
             padding: 7px 14px 15px;
             border-top: transparent;
-            background: #3b2c46 !important;
+            background: transparent !important;
         }
 
         .smart-form .input input,
@@ -165,7 +165,7 @@
             line-height: 19px;
             font-weight: 900;
             font-size: 13px;
-            color: #ffffff;
+            color: #333333;
             text-align: left;
             white-space: normal;
         }
@@ -255,10 +255,11 @@
         }
 
         .save_btn {
-            background-color: #963c2c !important;
+            background-color: #C15233 !important;
             color: #fff !important;
             font-weight: 900 !important;
             padding: 12px 30px !important;
+          	border: none !important;
             -webkit-transition: all 0.5s ease-in-out;
             -moz-transition: all 0.5s ease-in-out;
             -ms-transition: all 0.5s ease-in-out;
@@ -267,8 +268,8 @@
         }
 
         .save_btn:hover {
-            color: #000000 !important;
-            background-color: #fee73d !important;
+            color: #ffffff !important;
+            background-color: #00732E !important;
         }
 
 

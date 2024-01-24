@@ -137,6 +137,7 @@ a{
 
 .top_logo {
     height: 50px !important;
+	width: auto !important;
 }
 
 .search_nav{
@@ -619,7 +620,8 @@ a{
 }
 
 .services_archive .serv_detail_card a{
-    min-height: 134px;
+       min-height: 134px;
+
 }
 
 .services_archive .serv_detail_card a:hover:before {
