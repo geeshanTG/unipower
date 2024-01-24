@@ -338,7 +338,7 @@
                     <img src="{{ asset('storage/app') . '/' . $new->image_1 }}" class="card-img-top rounded-0"
                         alt="...">
                     <div class="card-body bg-white">
-                        <h5 class="card-title">{{ $new->heading }}</h5>
+                        <h5 class="card-title">{{ Str::limit($new->heading, 70) }}</h5>
                         <p class="card-text">{!! Str::limit($new->description, 100) !!}</p>
                         <a href="{{ url('news-detail') . '/' . $newName . '/' . $encryptedId }}"
                             class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
