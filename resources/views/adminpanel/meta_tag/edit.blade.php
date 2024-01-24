@@ -124,7 +124,7 @@
                                 </div>
                                 <div class="row">
                                     <section class="col col-4">
-                                    <img id="preview-image-before-upload" src="../../storage/app/{{ $data->og_image }}" alt="preview image" style="max-height: 250px;">
+                                    <img id="preview-image-before-upload" src="../storage/app/{{ $data->og_image }}" alt="preview image" style="max-height: 250px;">
                                     </section>
                                 </div>
                                 <div class="row">
