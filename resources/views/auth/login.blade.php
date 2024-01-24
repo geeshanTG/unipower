@@ -10,9 +10,9 @@
         <div id="content" class="container">
 
             <div class="row">
-                <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm" style="padding-top: 6%;">
+                <!-- <div class="col-xs-12 col-sm-12 col-md-7 col-lg-8 hidden-xs hidden-sm" style="padding-top: 6%;"> -->
                     <!--<h1 class="txt-color-red login-header-big">WELCOME</h1>-->
-                    <div class="hero" style="background-image: none; margin-top: 25%;">
+                    <!-- <div class="hero" style="background-image: none; margin-top: 25%;">
 
                         <h1 style="font-weight: 900; color: #3b2c46; font-size: 35px;">{{ __('Content Management System') }}</h1>
 
@@ -21,13 +21,13 @@
                     </div>
 
 
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-5 col-lg-4 login_form_div">
+                  </div> -->
+                <div class="col-xs-12 col-sm-12 col-md-offset-4 col-md-4 col-lg-offset-4 col-lg-4 login_form_div">
 
                     <div class="well no-padding" style="box-shadow: none; background-color: transparent;">
 
 
-                        <img src="{{ asset('public/back/img/unipower-logo.png') }}" alt="" class="img-responsive labor_logo center-block" style="padding-left: 15px; padding-right: 15px; margin-bottom: 30px;">
+                        <img src="{{ asset('public/back/img/unipower-logo.png') }}" alt="" class="img-responsive labor_logo center-block" style="padding-left: 15px; padding-right: 15px; margin-bottom:40px; width: 290px;">
 
                         <!-- <div class="mx-auto logo_col no_padding">
                             <div class="logo_col">
@@ -42,7 +42,7 @@
                         <form method="POST" action="{{ route('login') }}" class="smart-form client-form">
                             @csrf
                             <header style="background-color: trnsparent; border:none; padding-bottom: 0px;">
-                                <b style="color: #fee73d;"> {{ __('SIGN IN') }}</b>
+                                <h1 class="text-center" style="font-weight: 900; color: #00732E; font-size: 26px;">{{ __('Content Management System') }}</h1>
                             </header>
                             <!-- Email Address -->
                             <fieldset>
