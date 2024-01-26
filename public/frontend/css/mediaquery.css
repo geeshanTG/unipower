@@ -24,6 +24,10 @@ min-height: 333px;
 min-height: 276px;
 }
 
+.blog_card .card-text{
+min-height:82px;
+}
+
 }
 
 /* Large Devices, Wide Screens */
@@ -53,7 +57,14 @@ min-height: 396px;
 min-height: 186px;
 }
 .services_archive .serv_detail_card a {
-  min-height: 157px;
+min-height: 157px;
+}
+.blog_card .card-title{
+min-height: 64px;
+}
+
+.blog_card .card-text{
+min-height: 105px;
 }
 
 }
@@ -159,6 +170,14 @@ width: 75%;
 }
 .services_archive .serv_detail_card a {
 min-height: 199px;
+}
+
+.blog_card .card-title{
+min-height: auto;
+}
+
+.blog_card .card-text{
+min-height: auto;
 }
 
 }
