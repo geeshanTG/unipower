@@ -49,13 +49,13 @@
         <div class="offset-lg-1 col-lg-5">
             <div class="vision_card text-center">
                 <h1 class="mb-3 text-white">{{ $visionMission->vision_heading }}</h1>
-                <p class="mb-0 text-white">{{ $visionMission->vision_description }}</p>
+                <p class="mb-0 text-white text_justify">{{ $visionMission->vision_description }}</p>
             </div>
         </div>
         <div class="col-lg-5">
             <div class="vision_card text-center">
                 <h1 class="mb-3 text-white">{{ $visionMission->mission_heading }}</h1>
-                <p class="mb-0 text-white">{{ $visionMission->mission_description }}</p>
+                <p class="mb-0 text-white text_justify">{{ $visionMission->mission_description }}</p>
             </div>
         </div>
     </div>

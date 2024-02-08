@@ -12,7 +12,7 @@
             @foreach ($mainSliders as $slider)
                 <div class="carousel-item @if ($c == 0) {{ 'active' }} @endif">
                     <div class="bg_img_fill"
-                        style="background-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0.45) 100%), url(storage/app/{{ $slider->desktop_image }}); height: 600px;">
+                        style="background-image: url(storage/app/{{ $slider->desktop_image }}); height: 600px;">
                     </div>
                     <div class="container carousel-caption">
                         <div class="slider_image_caption">
