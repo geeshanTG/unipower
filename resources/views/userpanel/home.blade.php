@@ -156,8 +156,8 @@
             {!! $about->description !!}
             <a class="btn btn_main rounded-0" href="{{ url('about-us') }}">Explore More</a>
 
-            <div class="mt-3 overview_partner_slider">
-                <div class="slider">
+            <div class="my-3 overview_partner_slider p-2 bg-light rounded">
+                <div class="slider mb-0">
                     <div class="owl-carousel first_client_slider">
                         @foreach ($partners as $partner)
                             <div class="slider-card client_logos">
@@ -280,25 +280,23 @@
         <div class="slider" data-aos="fade-up">
             <div class="owl-carousel serv_caro">
                 <?php
-                    for($i=1; $i<=5; $i++) {
+                     for($i=1; $i<=5; $i++) {
                         foreach($services as $service) {
 
                             $columnName = 'service_id_' . $i;
                             if($service->id == $ourServices->$columnName) {
 
-                                $serviceName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading ))));
-                                // $encryptedId = encrypt($service->id);
+                                 $serviceName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading ))));
                 ?>
                 <div class="slider-card">
                     <div class="serv_img mb-2">
                         <img src="{{ asset('storage/app') . '/' . $service->image_1 }}" alt="">
                     </div>
                     <div class="serv_detail_card text-center">
-
-                        <a class="" href="{{ url('service-detail') . '/' . $serviceName }}">
+                          <a class="" href="{{ url('service-detail').'/'.$serviceName }}">
                             <h5>{{ $service->heading }}</h5>
                             <p class="mb-0">{{ $service->short_description }} </p>
-                            <div class="go-corner" href="{{ url('service-detail') . '/' . $serviceName }}">
+                            <div class="go-corner" href="{{ url('service-detail').'/'.$serviceName }}">
                                 <div class="go-arrow">→</div>
                             </div>
                         </a>
@@ -338,7 +336,7 @@
                     <img src="{{ asset('storage/app') . '/' . $new->image_1 }}" class="card-img-top rounded-0"
                         alt="...">
                     <div class="card-body bg-white">
-                        <h5 class="card-title">{{ Str::limit($new->heading, 70) }}</h5>
+                        <h5 class="card-title">{{ Str::limit($new->heading, 50) }}</h5>
                         <p class="card-text">{!! Str::limit($new->description, 100) !!}</p>
                         <a href="{{ url('news-detail') . '/' . $newName . '/' . $encryptedId }}"
                             class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
@@ -394,6 +392,8 @@
     style="background-image: url({{ asset('public/frontend/images/dark_bg.jpg') }}); background-repeat: no-repeat; background-size: cover;">
     <div class="container fluid_contain">
         <div class="row faq_con_row" id="home-enquiry">
+
+
             <div class="col-lg-6 faq_sec">
                 <h1 class="">FAQ’s</h1>
                 <br>
@@ -405,18 +405,15 @@
                         @foreach ($faqs as $index => $faq)
                             @php
                                 $c++;
-
                             @endphp
                             @if ($index === 4)
                             @break
-                        @endif
+                            @endif
                         <div class="accordion-item">
                             <h2 class="accordion-header" id="heading_{{ $c }}">
-                                <button
-                                    class="accordion-button @if ($c != 1) {{ 'collapsed' }} @endif"
-                                    type="button" data-bs-toggle="collapse"
+                                <button class="accordion-button @if ($c != 1) {{ 'collapsed' }} @endif" type="button" data-bs-toggle="collapse"
                                     data-bs-target="#collapse_{{ $c }}"
-                                    aria-expanded="@if ($c == 1) {{ 'false' }}@else{{ 'true' }} @endif"
+                                    aria-expanded="@if ($c == 1) {{ 'true' }}@else{{ 'false' }} @endif"
                                     aria-controls="collapse_{{ $c }}">
                                     {{ $faq->heading }}
                                 </button>
@@ -429,12 +426,14 @@
                                 </div>
                             </div>
                         </div>
+
+                        @php
+                        @endphp
                     @endforeach
                 </div>
                 <div class="text-end mt-3">
                     <a href="{{ url('faq') }}" class="text_link">View All <i class="fa fa-arrow-right"
                             aria-hidden="true"></i></a>
-
                 </div>
             </div>
         </div>

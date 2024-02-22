@@ -143,11 +143,10 @@
 
 
                 var table = $('.data-table').DataTable({
-                    order: [ 2, 'asc' ],
                     processing: true,
                     serverSide: true,
-                    searching: true,
                     ajax: "{{ route('our-trusted-partners-list') }}",
+                    order: [ 2, 'asc' ],
                     columns: [{
                             data: 'DT_RowIndex',
                             name: 'id'

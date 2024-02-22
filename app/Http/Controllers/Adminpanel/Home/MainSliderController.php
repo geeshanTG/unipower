@@ -27,7 +27,7 @@ class MainSliderController extends Controller
     {
         $request->validate([
             'heading' => 'required',
-            'sub_heading' => 'required|max:60',
+             'sub_heading' => 'required|max:60',
             'order' => 'required',
             'status' => 'required',
             'icon' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
@@ -121,7 +121,7 @@ class MainSliderController extends Controller
     {
         $request->validate([
             'heading' => 'required',
-            'sub_heading' => 'required|max:60',
+             'sub_heading' => 'required|max:60',
             'order' => 'required',
             'status' => 'required',
         ]);

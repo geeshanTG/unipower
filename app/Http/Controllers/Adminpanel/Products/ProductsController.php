@@ -37,7 +37,7 @@ class ProductsController extends Controller
             'sub_heading' => 'required',
             'description' => 'required',
             'image' => 'image|mimes:jpg,png,jpeg,gif,svg|max:2048',
-            'brochure' => 'required|mimes:pdf,docx',
+          
             'order' => 'required',
             'status' => 'required',
         ]);
@@ -52,24 +52,29 @@ class ProductsController extends Controller
         }
 
         if (!$request->file('brochure') == "") {
-
+ 				$request->validate([
+          
+           
+            'brochure' => 'mimes:pdf,docx',
+          
+       			 ]);
             $brochure = $request->file('brochure')->getClientOriginalName();
 
             $pathbrochure = $request->file('brochure')->store('public/productimages');
         } else {
             $pathbrochure = "";
         }
-
-        $slug = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->heading))));
-
+    	$slug = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->heading))));
+      
         $product = new Product();
         $product->main_category_id = $request->main_category_id;
-        $product->slug = $slug;
         $product->sub_category_id = $request->sub_category_id;
         $product->heading = $request->heading;
         $product->sub_heading = $request->sub_heading;
         $product->description = $request->description;
         $product->image = $pathimage;
+       	$product->slug = $slug;
+     
         $product->brochure = $pathbrochure;
         $product->order = $request->order;
         $product->status = $request->status;
@@ -154,7 +159,7 @@ class ProductsController extends Controller
         if ($request->hasFile('brochure')) {
 
             $request->validate([
-                'brochure' => 'required|mimes:pdf,docx',
+                'brochure' => 'mimes:pdf,docx',
             ]);
 
             $brochure = $request->file('brochure')->getClientOriginalName();
@@ -162,15 +167,14 @@ class ProductsController extends Controller
             $pathbrochure = $request->file('brochure')->store('public/productimages');
 
         }
-
-        $slug = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->heading))));
+      	$slug = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($request->heading))));
 
         $data =  Product::find($request->id);
         $data->main_category_id = $request->main_category_id;
         $data->sub_category_id = $request->sub_category_id;
         $data->heading = $request->heading;
+       	$data->slug = $slug;
         $data->sub_heading = $request->sub_heading;
-        $data->slug = $slug;
         $data->description = $request->description;
         if(!empty($pathimage)) {
             $data->image = $pathimage;

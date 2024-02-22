@@ -19,9 +19,10 @@
                         <img src="{{ asset("/storage/app/").'/'.$service->image_1 }}" alt="" class="m-auto w-100">
                     </div>
                     <div class="serv_detail_card text-center">
+                      
                         @php
                         $serviceName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($service->heading ))));
-                    @endphp
+                    	@endphp
                          <a href="{{ url('service-detail').'/'.$serviceName}}">
                             <h5>{{ $service->heading }}</h5>
                             <p class="mb-0">{{ $service->short_description }}</p>

@@ -25,7 +25,7 @@ class Service extends Model
         'image_6',
         'status',
         'is_delete',
-        'slug',
+       	'slug',
     ];
 
 }

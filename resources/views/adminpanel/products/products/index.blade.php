@@ -122,9 +122,9 @@
                                         <img id="preview-image-before-upload" src="{{ asset('public/back/img/whitebg.jpg'); }}" alt="preview image" style="max-height: 250px;">
                                     </section>
                                     <section class="col col-md-2">
-                                        <label class="label">{{ __('Brochure') }} <span style=" color: red;">*</span></label>
+                                        <label class="label">{{ __('Brochure') }}</label>
                                         <label class="input">
-                                            <input type="file" class="form-control form-input" id="brochure" name="brochure" style="overflow: hidden;" required>
+                                            <input type="file" class="form-control form-input" id="brochure" name="brochure" style="overflow: hidden;">
                                         </label>
                                     </section>
                                     <section class="col col-md-2">

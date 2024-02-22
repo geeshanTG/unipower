@@ -45,10 +45,6 @@ class MetaTagController extends Controller
     {
         $request->validate([
             'page_title' => 'required',
-            'description' => 'required',
-            'og_title' => 'required',
-            'og_image' => 'required',
-            
         ]);
 
         if ($request->hasFile('og_image')) {

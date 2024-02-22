@@ -76,7 +76,7 @@
                                 </div>
                                 <div class="row">
                                     <section class="col col-12"  style="width: 100%;">
-                                        <label class="label">{{ __('Description') }}<span style=" color: red;">*</span></label>
+                                        <label class="label">{{ __('Description') }}</label>
                                         <label class="input">
                                             <input type="text" id="description" name="description" value="{{ $data->description }}" >
                                         </label>
@@ -92,7 +92,7 @@
                                 </div>
                                 <div class="row">
                                     <section class="col col-12"  style="width: 100%;">
-                                        <label class="label">{{ __('OG Title') }}<span style=" color: red;">*</span></label>
+                                        <label class="label">{{ __('OG Title') }}</label>
                                         <label class="input">
                                             <input type="text" id="og_title" name="og_title" value="{{ $data->og_title }}" >
                                         </label>
@@ -116,7 +116,7 @@
                                 </div>
                                 <div class="row">
                                     <section class="col col-12" style="width: 100%;">
-                                        <label class="label">{{ __('OG Image') }}<span style=" color: red;">*</span></label>
+                                        <label class="label">{{ __('OG Image') }}</label>
                                         <label class="input">
                                             <input type="file" class="form-control form-input" id="og_image" name="og_image" style="overflow: hidden;">
                                         </label>

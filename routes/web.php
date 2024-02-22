@@ -59,6 +59,8 @@ Route::get('/admin', function () {
     //return view('welcome');
 });
 
+Route::get('home', [HomeController::class, 'index'])->name('home');
+
 // Route::get('/', function () {
 //     return view('customerportal.index');
 //     //return view('welcome');

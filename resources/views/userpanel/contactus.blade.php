@@ -6,7 +6,7 @@
         <div class="col-lg-4 col-md-5 contact_info_sec">
             <h1>{{ $contactInfo->heading_title }}</h1>
             <br>
-            {{-- <p>{!! $contactInfo->description !!}</p> --}}
+             
             <div class="row align-items-center">
                 <div class="col-lg-2 col-2">
                     <img src="{{ asset('public/frontend/images/placeholder.png') }}" class="w-100 m-auto" alt="">
@@ -23,7 +23,7 @@
                 </div>
                 <div class="col-lg-10 col-10">
                     <h5 class="mb-0">Phone</h5>
-                    <p class="mb-1"><a href="tel:{{ $contactInfo->phone_number_1 }}"
+                       <p class="mb-1"><a href="tel:{{ $contactInfo->phone_number_1 }}"
                         style="color: #616161;">{{ $contactInfo->phone_number_1 }}</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a
                         href="tel:{{ $contactInfo->phone_number_2 }}"
                         style="color: #616161;">{{ $contactInfo->phone_number_2 }}</a></p>
@@ -36,14 +36,14 @@
                 </div>
                 <div class="col-lg-10 col-10">
                     <h5 class="mb-0">Email</h5>
-                    <a href="mailto:{{ $contactInfo->email }}">
+                     <a href="mailto:{{ $contactInfo->email }}">
                         <p class="mb-1">{{ $contactInfo->email }}</p>
                     </a>
                 </div>
             </div>
             <br>
         </div>
-        <div class="col-lg-8 col-md-7 mt-md-0 mt-3"  id="contact-us-enquiry" >
+        <div class="col-lg-8 col-md-7 mt-md-0 mt-3" id="contact-us-enquiry">
             <h1>Get in Touch</h1>
             @if (Session::has('success'))
                 <div id="success-message" class="alert alert-success text-center">
@@ -52,7 +52,8 @@
             @endif
             <br>
             <div class="contact_form" data-aos="fade-down">
-                <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}" method="post" class="inquiry_form">
+                <form id="inquiry_form" name="inquiry_form" action="{{ route('save-enquiry') }}" method="post"
+                    class="inquiry_form">
                     @csrf
                     <div class="row">
                         <div class="col-lg-6 col-md-6 col-12">
@@ -120,5 +121,4 @@
             $('#success-message').fadeOut('slow');
         }, 5000); // 5000 milliseconds = 5 seconds
     });
-    
 </script>

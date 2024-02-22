@@ -28,7 +28,7 @@ class ServiceController extends Controller
     }
     public function service(Request $request)
     {
-
+      
         $slug = $request->segment(2);
         $pageTitle = 'OUR SERVICES';
       

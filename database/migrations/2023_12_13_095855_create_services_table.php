@@ -24,8 +24,8 @@ class CreateServicesTable extends Migration
             $table->string('image_4')->nullable();
             $table->string('image_5')->nullable();
             $table->string('image_6')->nullable();
-            $table->char('status', 1);
             $table->string('slug');
+            $table->char('status', 1);
             $table->tinyInteger('is_delete')->default(0);
             $table->timestamps();
         });

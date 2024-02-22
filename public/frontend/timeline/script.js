@@ -321,8 +321,6 @@ Math.easeInOutQuad = function (t, b, c, d) {
 		this.contentWrapper = this.element.getElementsByClassName('h--timeline-events')[0];
 		this.content = this.contentWrapper.getElementsByClassName('h--timeline-event');
 
-		// this.eventsMinDistance = 250; // min distance between two consecutive events (in px)
-		// this.eventsMaxDistance = 250; // max distance between two consecutive events (in px)
 		this.eventsMinDistance = 230; // min distance between two consecutive events (in px)
         this.eventsMaxDistance = 230; // max distance between two consecutive events (in px)
 
@@ -344,6 +342,7 @@ Math.easeInOutQuad = function (t, b, c, d) {
             this.eventsMinDistance = 230; // Keep the default min distance for larger screens
             this.eventsMaxDistance = 230;
         }
+
 		this.translate = 0; // this will be used to store the translate value of this.line
 		this.lineLength = 0; //total length of this.line
 

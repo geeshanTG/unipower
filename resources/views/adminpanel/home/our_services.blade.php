@@ -95,7 +95,7 @@
                                         </label>
                                     </section>
                                 </div>
-                                <div class="row">
+                               <div class="row">
                                     <section class="col col-6">
                                         <label class="label">{{ __('Service 5') }} <span style=" color: red;">*</span></label>
                                         <label class="select">

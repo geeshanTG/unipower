@@ -17,7 +17,7 @@
                             <img src="{{ asset('/storage/app/') . '/' . $topStory[$i]->image_1 }}"
                                 class="card-img-top rounded-0" alt="...">
                             <div class="card-body">
-                                <h5 class="card-title">{{ Str::limit($topStory[$i]->heading, 50) }}</h5>
+                               <h5 class="card-title">{{ Str::limit($topStory[$i]->heading, 50) }}</h5>
                                 @php
                                     $description = strip_tags($topStory[$i]->description);
                                     $words = str_word_count($description, 1);
@@ -25,8 +25,7 @@
                                     $limitedDescription = implode(' ', $limitedWords);
                                 @endphp
                                 <p class="card-text mb-1">{{ $limitedDescription }}...</p>
-                                <a href="{{ route('news-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($topStory[$i]->heading)))), 'id' => encrypt($topStory[$i]->id)]) }}"
-                                    class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                                <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($topStory[$i]->heading)))), 'id' => encrypt($topStory[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></a>
                             </div>
                         </div>
@@ -56,14 +55,14 @@
                         @endphp
 
                         <p class="card-text mb-1 d-md-block d-none">{{ $limitedDescription }}...</p>
-                        <a href="{{ route('news-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($featuredNews[$i]->heading)))), 'id' => encrypt($featuredNews[$i]->id)]) }}"
-                            class="text_link">Read More &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($featuredNews[$i]->heading)))), 'id' => encrypt($featuredNews[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></a>
                     </div>
                 </div>
             @endfor
         </div>
     </div>
-    <div id="news"></div>
+	 <div id="news"></div>
     <hr>
     <br>
 
@@ -75,24 +74,24 @@
                     <img src="{{ asset('/storage/app/') . '/' . $news[$i]->image_1 }}" class="card-img-top rounded-0"
                         alt="{{ $news[$i]->heading }}">
                     <div class="card-body">
-                        <h5 class="card-title">{{ Str::limit($news[$i]->heading, 50) }}</h5>
-                        @php
+                         <h5 class="card-title" >{{ Str::limit($news[$i]->heading, 50) }}</h5>
+                       @php
                             $description = strip_tags($news[$i]->description);
                             $words = str_word_count($description, 1);
-                            $limitedWords = array_slice($words, 0, 10);
+                            $limitedWords = array_slice($words, 0, 13);
                             $limitedDescription = implode(' ', $limitedWords);
                         @endphp
 
                         <p class="card-text mb-1">{{ Str::limit($limitedDescription, 60) }}...</p>
-                        <a href="{{ route('news-detail', ['name' => preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news[$i]->heading)))), 'id' => encrypt($news[$i]->id)]) }}"
-                            class="text_link">Read More &nbsp;<i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+                        <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news[$i]->heading)))), 'id' => encrypt($news[$i]->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
+                                aria-hidden="true"></i></a>
                     </div>
                 </div>
 
             </div>
         @endfor
     </div>
-
+  	
     <br>
     <!-- Pagination Start -->
     <nav aria-label="Page navigation example">

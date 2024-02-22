@@ -24,7 +24,7 @@ class AboutController extends Controller
         $ourStories = OurStory::where('status', 'Y')->where('is_delete', 0)->orderBy('year', 'asc')->get();
         $awards = Award::first();
         $contactInfo = ContactInfo::first();
-        $serviceList = Service::select('id','heading')->where('status', 'Y')->where('is_delete', 0)->orderBy('id', 'ASC')->get();
+        $serviceList = Service::select('id','heading')->where('status', 'Y')->where('is_delete', 0)->orderBy('id', 'DESC')->get();
     
 
         return view('userpanel.aboutus', compact('pageTitle','whoWeAre','visionMission','ceoMessage','ourValues','ourStories','awards','contactInfo','serviceList'));

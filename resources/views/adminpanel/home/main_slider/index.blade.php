@@ -12,9 +12,9 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="row cms_top_btn_row" style="margin-left:auto;margin-right:auto;">
-                        {{-- <a href="{{ route('main-slider-create') }}">
-                            <button class="btn cms_top_btn top_btn_height cms_top_btn_active">{{ __('Add New') }}</button>
-                        </a> --}}
+                       <!-- <a href="{{ route('main-slider-create') }}">
+                            <button class="btn cms_top_btn top_btn_height ">{{ __('Add New') }}</button>
+                        </a>-->
 
                         <a href="{{ route('main-slider-list') }}">
                             <button class="btn cms_top_btn top_btn_height ">{{ __('View All') }}</button>

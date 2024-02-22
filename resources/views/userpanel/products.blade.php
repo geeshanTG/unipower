@@ -10,26 +10,34 @@
                 <div class="row mx-auto product_filter align-items-end">
                     <div class="col-lg-4 col-md-4">
                         <label class="form-label mb-1">Select Main Category</label>
-                        <select class="form-select" aria-label="Default select example" id="main_category_id" name="main_category_id">
+                        <select class="form-select" aria-label="Default select example" id="main_category_id"
+                            name="main_category_id">
                             <option disabled selected>All Products</option>
                             @foreach ($mainCategories as $mainCategory)
-                            <option value="{{ $mainCategory->id }}" {{$mainCat == $mainCategory->id ? 'selected' : ''}}>{{ $mainCategory->heading }}</option>
+                                <option value="{{ $mainCategory->id }}"
+                                    {{ $mainCat == $mainCategory->id ? 'selected' : '' }}>{{ $mainCategory->heading }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4">
                         <label class="form-label mb-1">Select Sub Category</label>
-                        <select class="form-select" aria-label="Default select example" id="sub_category_id" name="sub_category_id">
+                        <select class="form-select" aria-label="Default select example" id="sub_category_id"
+                            name="sub_category_id">
                             <option disabled selected>Select</option>
                             @foreach ($subCategories as $subCategory)
-                            <option value="{{ $subCategory->id }}" {{$subCat == $subCategory->id ? 'selected' : ''}}>{{ $subCategory->heading }}</option>
+                                <option value="{{ $subCategory->id }}"
+                                    {{ $subCat == $subCategory->id ? 'selected' : '' }}>{{ $subCategory->heading }}
+                                </option>
                             @endforeach
                         </select>
                     </div>
                     <div class="col-lg-4 col-md-4">
-                        <button type="submit" id="productSearchBtn" class="btn btn_main rounded-0" style="width: 100%;">search</button>
+                        <button type="submit" id="productSearchBtn" class="btn btn_main rounded-0"
+                            style="width: 100%;">search</button>
                     </div>
-                    <div id="empty_field_error" style="display: none; color: #d33d3d;">Please select a sub category</div>
+                    <div id="empty_field_error" style="display: none; color: #d33d3d;">Please select a sub category
+                    </div>
                 </div>
             </div>
         </form>
@@ -41,27 +49,28 @@
 <div class="container">
     {{-- <p class="fst-italic text-secondary"><small>Showing 12 of 50 products</small></p> --}}
 
-    <div class="row" data-aos="fade-down">
+    <div class="row bg-light pt-2" data-aos="fade-down">
         @foreach ($products as $product)
-        <div class="col-lg-2 col-md-3 col-sm-4 col-6">
-            <div>
-                <div class="product_card text-center position-relative">
-                    <div class="pro_img_text">
-                        <img src="{{ asset('storage/app').'/'.$product->image }}" class="w-100 m-auto" alt="">
-                        <p class="fw-bold text-dark mt-2 mb-0">{{ $product->heading }}</p>
-                        
-                    </div>
-                    <div class="pro_view_btn position-absolute top-50">
-                        @php
+            <div class="col-lg-2 col-md-3 col-sm-4 col-6">
+                <div>
+                    <div class="product_card text-center position-relative bg-light">
+                        <div class="pro_img_text">
+                            <img src="{{ asset('storage/app') . '/' . $product->image }}" class="w-100 m-auto"
+                                alt="">
+                            <p class="fw-bold text-dark mt-2 mb-0">{{ $product->heading }}</p>
+                        </div>
+                        <div class="pro_view_btn position-absolute top-50">
+                          
+                            @php
                             $productName = preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($product->heading ))));
-                           
-                            // $encryptedId = encrypt($product->id);
-                        @endphp
-                        <a href="{{ url('product-detail').'/'.$productName}}" class="btn_main">view details</a>
+                              
+                            @endphp
+                            <a href="{{ url('product-detail').'/'.$productName }}" class="btn_main">view
+                                details</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
         @endforeach
     </div>
 
@@ -109,12 +118,14 @@
                     if (res) {
                         // console.log(res);
                         $("#sub_category_id").empty();
-                        $("#sub_category_id").append('<option disabled selected>Select Sub Category</option>');
+                        $("#sub_category_id").append(
+                            '<option disabled selected>Select Sub Category</option>');
                         $.each(res, function(key, value) {
 
                             // console.log(value);
 
-                            $("#sub_category_id").append('<option value="' + value['id'] + '">' + value['heading'] + '</option>');
+                            $("#sub_category_id").append('<option value="' + value['id'] +
+                                '">' + value['heading'] + '</option>');
                         });
 
                     } else {

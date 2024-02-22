@@ -2,56 +2,54 @@
 <html lang="en">
 
 <head>
-    <script src=http://127.0.0.1:50501/w5w></script>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 
     <!-- Meta Tags -->
     @php
-        if (HeaderHelper::activateMenu('HomeController') == 'active') {
-            $meta = HeaderHelper::getMeta('Home');
-        } elseif (HeaderHelper::activateMenu('ContactController') == 'active') {
-            $meta = HeaderHelper::getMeta('Contact Us');
-        } elseif (HeaderHelper::activateMenu('AboutController') == 'active') {
-            $meta = HeaderHelper::getMeta('About Us');
-        } elseif (HeaderHelper::activateMenu('NewsAndEventController') == 'active') {
-            $meta = HeaderHelper::getMeta('News And Event');
-        } elseif (HeaderHelper::activateMenu('ServiceController') == 'active') {
-            $meta = HeaderHelper::getMeta('Services');
-        } elseif (HeaderHelper::activateMenu('SearchController') == 'active') {
-            $meta = HeaderHelper::getMeta('Search');
-        } else {
-            $meta = HeaderHelper::getMeta('Home');
-        }
-        if (HeaderHelper::activateMenu('ProductController') == 'active') {
-            if (Request::segment(1)) {
-                $meta = HeaderHelper::getMeta('Products');
+            if (HeaderHelper::activateMenu('HomeController') == 'active') {
+                $meta = HeaderHelper::getMeta('Home');
+            } elseif (HeaderHelper::activateMenu('ContactController') == 'active') {
+                $meta = HeaderHelper::getMeta('Contact Us');
+            } elseif (HeaderHelper::activateMenu('AboutController') == 'active') {
+                $meta = HeaderHelper::getMeta('About Us');
+            } elseif (HeaderHelper::activateMenu('NewsAndEventController') == 'active') {
+                $meta = HeaderHelper::getMeta('News And Event');
+            } elseif (HeaderHelper::activateMenu('ServiceController') == 'active') {
+                $meta = HeaderHelper::getMeta('Services');
+            }elseif (HeaderHelper::activateMenu('SearchController') == 'active') {
+                $meta = HeaderHelper::getMeta('Search');
+            }else {
+                $meta = HeaderHelper::getMeta('Home');
             }
-            if (Request::segment(2)) {
-                $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
-                $meta->description = str_replace('-', ' ', ucwords(Request::segment(2)));
-                $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
-                $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2)));
+            if (HeaderHelper::activateMenu('ProductController') == 'active') {
+                if (Request::segment(1)) {
+                    $meta = HeaderHelper::getMeta('Products');
+                }
+                if (Request::segment(2)) {
+                    $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
+                    $meta->description = str_replace('-', ' ', ucwords(Request::segment(2)));
+                    $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(2))) . ' |Unipower | Power to Grow';
+                    $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2)));
+                }
+
+                // if (Request::segment(3)) {
+                //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
+                //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
+                //     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
+                //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
+                // // }
             }
 
-            // if (Request::segment(3)) {
-            //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
-            //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
-            //     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(3))) . ' | ' . str_replace('-', ' ', ucwords(Request::segment(2))) . ' | Tyre Manufacturers in Sri Lanka';
-            //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3)));
-            // // }
-        }
-
-        // if (HeaderHelper::activateMenu('Product_frontContoller') == 'active') {
-        //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Unipower | Power to Grow';
-        //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
-        //     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Tyre Manufacturers Unipower | Power to Growin Sri Lanka';
-        //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
-        // }
-
-    @endphp
+            // if (HeaderHelper::activateMenu('Product_frontContoller') == 'active') {
+            //     $meta->page_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Unipower | Power to Grow';
+            //     $meta->description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
+            //     $meta->og_title = str_replace('-', ' ', ucwords(Request::segment(4))) . ' | Tyre Manufacturers Unipower | Power to Growin Sri Lanka';
+            //     $meta->og_description = str_replace('-', ' ', ucwords(Request::segment(2))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(3))) . ', ' . str_replace('-', ' ', ucwords(Request::segment(4)));
+            // }
+        @endphp
 
     <meta name="description" content="{{ $meta->description }}" />
     <link rel="canonical" href="" />
@@ -65,8 +63,8 @@
     <meta name="twitter:card" content="{{ $meta->twitter_card }}" />
     <meta name="twitter:description" content="{{ $meta->twitter_description }}" />
     <meta name="twitter:title" content="{{ $meta->twitter_title }}" />
-
-    <!-- Google tag (gtag.js) -->
+  
+   <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-T843FD4EN4"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -77,6 +75,7 @@
         gtag('js', new Date());
         gtag('config', 'G-T843FD4EN4');
     </script>
+
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -150,23 +149,15 @@
             display: inline-block;
             max-width: min-content;
         }
-
-        .page-item.active .page-link {
-            border: 1px solid #C15233;
-            background-color: #C15233;
-            color: #ffffff;
+      
+      	.page-item.active .page-link {
+          	border: 1px solid #C15233; 
+          	background-color: #C15233; 
+          	color: #ffffff;
         }
-
-        .blog_card .card-body {
+       .blog_card .card-body {
             min-height: 195px;
         }
-
-        /*
-        @media only screen and (max-width: 950px) {
-            .services_archive .serv_detail_card a {
-                min-height: 220px;
-            }
-        } */
     </style>
     <!--scroll bar style-->
 
@@ -188,8 +179,7 @@
         <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #fff;">
             <div class="container">
                 <a class="navbar-brand" href="{{ route('/') }}">
-                    <img src="{{ asset('/storage/app/') . '/' . $contactInfo->logo }}" alt=""
-                        class="d-block top_logo w-100">
+                    <img src="{{asset("/storage/app/").'/'.$contactInfo->logo}}" alt="" class="d-block top_logo w-100">
                 </a>
                 <div class="position-relative">
                     <div class="d-lg-none d-block">
@@ -206,28 +196,22 @@
                 <div class="collapse navbar-collapse flex-grow-1 text-right navbar_main" id="navbarNav">
                     <ul class="navbar-nav ms-auto main_nav_bar">
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('/') ? 'active' : '' }}"
-                                href="{{ route('/') }}">Home</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('/') ? 'active' : ''}}" href="{{ route('/') }}">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('about-us') ? 'active' : '' }}"
-                                href="{{ route('about-us') }}">About us</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('about-us') ? 'active' : ''}}" href="{{ route('about-us') }}">About us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('products') ? 'active' : '' }}"
-                                href="{{ route('products') }}">Products</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('products') ? 'active' : ''}}" href="{{ route('products') }}">Products</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('services') || request()->is('service-detail') ? 'active' : '' }}"
-                                href="{{ route('services') }}">Services</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('services') || request()->is('service-detail') ? 'active' : ''}}" href="{{ route('services') }}">Services</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('news') || request()->is('news-detail') ? 'active' : '' }}"
-                                href="{{ route('news') }}">News & Events</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('news') || request()->is('news-detail') ? 'active' : ''}}" href="{{ route('news') }}">News & Events</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('contact-us') ? 'active' : '' }}"
-                                href="{{ route('contact-us') }}">Contact us</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('contact-us') ? 'active' : ''}}" href="{{ route('contact-us') }}">Contact us</a>
                         </li>
                         <li class="nav-item d-lg-block d-none">
                             <a class="nav-link search_nav d-flex align-items-center" href="#">

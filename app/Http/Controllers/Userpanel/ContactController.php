@@ -59,13 +59,12 @@ class ContactController extends Controller
         $data->status = 'Y';
         $data->save();
 
+        //dd($data);
         $bcc_email = array(
           'geeshan@tekgeeks.net'
         );
 
-        //dd($data);
-
-        \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request, $bcc_email)  {
+          \Mail::send('userpanel.mail.enquirymail', ['enquirydetails' => $data, 'contactsdetails' => $contactInfo], function ($message) use ($contactInfo, $request,$bcc_email)  {
             $message->from('info@unipower.com');
           
             $message->to($request->email)->bcc($bcc_email)->subject('Unipower - New Enquiry');

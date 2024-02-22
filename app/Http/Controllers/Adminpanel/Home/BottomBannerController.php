@@ -27,7 +27,7 @@ class BottomBannerController extends Controller
     {
         $request->validate([
             'heading' => 'required',
-            'description' => 'required | max:250',
+            'description' => 'required | max:250'
         ]);
 
         $data =  BottomBannerContent::find($request->id);

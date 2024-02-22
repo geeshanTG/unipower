@@ -19,7 +19,7 @@
                         @endfor
 
                     </div>
-                    @if(count($images)>1)
+              	@if(count($images)>1)
                     <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
                         data-bs-slide="prev">
                         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -30,7 +30,7 @@
                         <span class="carousel-control-next-icon" aria-hidden="true"></span>
                         <span class="visually-hidden">Next</span>
                     </button>
-                    @endif
+                 @endif
                 </div>
                 <!-- Slider Section  -->
                 <br>
@@ -56,15 +56,14 @@
                             <img src="{{ asset('/storage/app/') . '/' . $news->image_1 }}"
                                 class="card-img-top rounded-0" alt="...">
                             <div class="card-body bg-white">
-                                <h5 class="card-title" >{{ Str::limit($news->heading, 40) }}</h5>
-                               
-                                 @php
-                                 $description = strip_tags($news->description);
-                                 $words = str_word_count($description, 1);
-                                 $limitedWords = array_slice($words, 0, 16);
-                                 $limitedDescription = implode(' ', $limitedWords);
-                             @endphp
-                                <p class="card-text mb-1">{{ Str::limit($limitedDescription, 55) }}...</p>
+                                  <h5 class="card-title" >{{ Str::limit($news->heading, 35) }}</h5>
+                                @php
+                                    $description = strip_tags($news->description);
+                                    $words = str_word_count($description, 1);
+                                    $limitedWords = array_slice($words, 0, 16);
+                                    $limitedDescription = implode(' ', $limitedWords);
+                                @endphp
+                                 <p class="card-text mb-1">{{ Str::limit($limitedDescription, 55) }}...</p>
 
                                 <a href="{{ route('news-detail', ['name' =>preg_replace('/-+/', '-', preg_replace('/[^a-zA-Z0-9\s-]/', '', preg_replace('/\s+/', '-', strtolower($news->heading)))), 'id' => encrypt($news->id)]) }}" class="text_link">Read More &nbsp;<i class="fa fa-arrow-right"
                                         aria-hidden="true"></i></a>
