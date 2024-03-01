@@ -1,10 +1,6 @@
 <?php
 
-
-
 namespace App\Http\Controllers\Userpanel;
-
-
 
 use App\Models\Product;
 
@@ -22,19 +18,14 @@ use App\Http\Controllers\Controller;
 
 use DB;
 
-
-
 class ProductController extends Controller
-
 {
-
     public function index(Request $request)
-
     {
-
         $pageTitle = 'All Products';
+        $mainCat = '';
 
-
+        $subCat = '';
 
         $mainCategories = MainCategory::where('status', 'Y')
 
@@ -50,83 +41,27 @@ class ProductController extends Controller
 
             ->get();
 
+        $query = Product::where('is_delete', 0)
 
+            ->where('status', 'Y')
+            ->orderBy('main_category_id', 'ASC');
 
-        // dd($request->main_category_id);
-
-        if (!empty($request->main_category_id) && !empty($request->sub_category_id)) {
-
+        if ($request->main_category_id) {
             $mainCat = $request->main_category_id;
 
-            $subCat = $request->sub_category_id;
+            $query = $query->where('main_category_id', $request->main_category_id);
 
-            // dd($request->main_category_id);
-
-            $products = Product::where('main_category_id', $request->main_category_id)
-
-                ->where('sub_category_id', $request->sub_category_id)
-
-                ->where('is_delete', 0)
-
-                ->where('status', 'Y')
-
-                ->paginate(12);
-
-        }elseif(!empty($request->main_category_id)) {
-
-            $mainCat = $request->main_category_id;
-
-            $subCat = '';
-
-            $products = Product::where('main_category_id',$request->main_category_id)
-
-                ->where('is_delete', 0)
-
-                ->where('status', 'Y')
-
-                ->paginate(12);
-
-
-
-        }elseif(!empty($request->sub_category_id)){
-
-            $mainCat = '';
-
-            $subCat = $request->sub_category_id;
-
-            $products = Product::where('sub_category_id',$request->sub_category_id)
-
-                ->where('is_delete', 0)
-
-                ->where('status', 'Y')
-
-                ->paginate(12);
-
-
-
+            $subCategories = $subCategories->where('main_category_id', $request->main_category_id);
         }
 
-
-
-      else {
-
-            // dd('test');
-
-            $mainCat = '';
-
-            $subCat = '';
-
-            $products = Product::where('status', 'Y')
-
-                ->where('is_delete', 0)
-
-                ->orderBy('order', 'ASC')
-
-                ->paginate(12);
-
+        if ($request->sub_category_id != '') {
+            $subCat = $request->sub_category_id;
+            $mainCatID = SubCategory::select('main_category_id')->where('status', 'Y')->where('is_delete', 0)->where('id', $subCat)->first();
+            $mainCat = $mainCatID->main_category_id;
+            $query = $query->where('sub_category_id', $request->sub_category_id);
         }
 
-
+        $products = $query->paginate(12);
 
         $contactInfo = ContactInfo::first();
 
@@ -140,18 +75,11 @@ class ProductController extends Controller
 
             ->get();
 
-
-
         return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo', 'serviceList', 'mainCat', 'subCat'));
-
     }
 
-
-
     public function getSubCategoriesWeb(Request $request)
-
     {
-
         // dd($request->main_category_id);
 
         $subCategories = SubCategory::where('main_category_id', $request->main_category_id)->get();
@@ -159,28 +87,17 @@ class ProductController extends Controller
         // dd($subCategories);
 
         return response()->json($subCategories);
-
     }
 
-
-
     public function getFilteredProducts(Request $request)
-
     {
-
         // \DB::enableQueryLog();
-
-
 
         // dd(\DB::getQueryLog());
 
         // dd($products);
 
-
-
         $pageTitle = 'All Products';
-
-
 
         $mainCategories = MainCategory::where('status', 'Y')
 
@@ -214,21 +131,18 @@ class ProductController extends Controller
 
             ->get();
 
-       // dd($products);
+        // dd($products);
 
         return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo', 'serviceList'));
-
     }
 
-
-
     public function productCategories(Request $request)
-
     {
+        $mainCat = '';
+
+        $subCat = '';
 
         $pageTitle = 'All Products';
-
-
 
         $mainCategories = MainCategory::where('status', 'Y')
 
@@ -236,21 +150,16 @@ class ProductController extends Controller
 
             ->get();
 
-        $subCategories = SubCategory::where('status', 'Y')
-
-            ->where('is_delete', 0)
-
-            ->orderBy('order', 'ASC')
-
-            ->get();
-
-
-
         $mainCatName = $request->segment(2);
 
         $catName = str_replace('-', ' ', $mainCatName);
 
         $mainCatId = MainCategory::where('heading', 'like', '%' . $catName . '%')->first();
+        $subCat = SubCategory::where('status', 'Y')
+            ->where('main_category_id', $mainCatId->id)
+            ->where('is_delete', 0)
+            ->orderBy('order', 'ASC')
+            ->first();
 
         $products = Product::select('*')
 
@@ -259,10 +168,15 @@ class ProductController extends Controller
             ->where('is_delete', 0)
 
             ->where('main_category_id', $mainCatId->id)
+            ->where('sub_category_id', $subCat->id)
 
             ->orderBy('order', 'ASC')
 
             ->paginate(12);
+        $subCat = $subCat->id;
+        $mainCat = $mainCatId->id;
+
+        $subCategories = SubCategory::where('status', 'Y')->where('main_category_id', $mainCat)->where('is_delete', 0)->orderBy('order', 'ASC')->get();
 
         $contactInfo = ContactInfo::first();
 
@@ -276,25 +190,12 @@ class ProductController extends Controller
 
             ->get();
 
-
-
-        $mainCat = '';
-
-        $subCat = '';
-
-
-
         return view('userpanel.products', compact('pageTitle', 'mainCategories', 'subCategories', 'products', 'contactInfo', 'serviceList', 'mainCat', 'subCat'));
-
     }
 
-
-
     public function productDetail(Request $request)
-
     {
-
-       // dd('test');
+        // dd('test');
 
         $slug = $request->segment(2);
 
@@ -336,11 +237,6 @@ class ProductController extends Controller
 
             ->get();
 
-
-
         return view('userpanel.productdetail', compact('pageTitle', 'products', 'productList', 'contactInfo', 'serviceList'));
-
     }
-
 }
-

@@ -266,7 +266,7 @@
     </div>
     <br>
     <div class="text-end">
-        <a href="{{ url('products') }}" class="text_link">View All &nbsp;<i class="fa fa-arrow-right"
+        <a href="{{ url('products') }}" class="text_link">View All Products &nbsp;<i class="fa fa-arrow-right"
                 aria-hidden="true"></i></a>
     </div>
 </div>

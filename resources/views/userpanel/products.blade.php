@@ -24,7 +24,7 @@
                         <label class="form-label mb-1">Select Sub Category</label>
                         <select class="form-select" aria-label="Default select example" id="sub_category_id"
                             name="sub_category_id">
-                            <option disabled selected>Select</option>
+                            <option value="">All</option>
                             @foreach ($subCategories as $subCategory)
                                 <option value="{{ $subCategory->id }}"
                                     {{ $subCat == $subCategory->id ? 'selected' : '' }}>{{ $subCategory->heading }}
@@ -79,7 +79,8 @@
     <br>
     <nav aria-label="Page navigation example">
         <ul class="pagination justify-content-end gap-2 pro_pagination">
-            {{ $products->links('userpanel.includes.pagination') }}
+            
+            {{ $products->appends(['main_category_id' => $mainCat, 'sub_category_id' => $subCat])->links('userpanel.includes.pagination') }}
             {{-- <li class="page-item">
                 <a class="page-link" href="#" aria-label="Previous">
                     <span aria-hidden="true">&laquo;</span>
