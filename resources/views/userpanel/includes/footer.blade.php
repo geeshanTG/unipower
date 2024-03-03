@@ -57,7 +57,7 @@
                         <a href="{{ route('about-us') }}">
                             <p class="mb-1">About us</p>
                         </a>
-                        <a href="{{ route('products') }}">
+                        <a href="{{ url('product-categories') . '/' . 'specialty-plant-nutrients' }}">
                             <p class="mb-1">Products</p>
                         </a>
                     </div>

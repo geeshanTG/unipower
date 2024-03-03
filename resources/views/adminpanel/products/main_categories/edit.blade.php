@@ -59,7 +59,7 @@
                                     <section class="col col-md-4">
                                         <label class="label">{{ __('Heading') }}<span style=" color: red;">*</span> </label>
                                         <label class="input">
-                                            <input type="text" id="heading" name="heading" required value="{{ $data->heading }}">
+                                            <input type="text" id="heading" name="heading" required value="{{ $data->heading }}" disabled>
                                         </label>
                                     </section>
                                     <section class="col col-md-4">

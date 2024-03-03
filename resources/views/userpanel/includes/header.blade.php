@@ -202,7 +202,7 @@
                             <a class="nav-link d-flex align-items-center {{ request()->is('about-us') ? 'active' : ''}}" href="{{ route('about-us') }}">About us</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center {{ request()->is('products') ? 'active' : ''}}" href="{{ route('products') }}">Products</a>
+                            <a class="nav-link d-flex align-items-center {{ request()->is('product-categories/specialty-plant-nutrients') ? 'active' : ''}}" href="{{ url('product-categories') . '/' . 'specialty-plant-nutrients' }}">Products</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link d-flex align-items-center {{ request()->is('services') || request()->is('service-detail') ? 'active' : ''}}" href="{{ route('services') }}">Services</a>
